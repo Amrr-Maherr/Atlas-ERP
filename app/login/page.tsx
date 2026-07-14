@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
-import { LoginForm } from "@/components/login-form"
-import { GalleryVerticalEndIcon } from "lucide-react"
+import { LoginForm } from "@/components/login-form";
+import { GalleryVerticalEndIcon } from "lucide-react";
+import Image from "next/image";
 
 export default function LoginPage() {
   return (
@@ -22,12 +23,15 @@ export default function LoginPage() {
         </div>
       </div>
       <div className="relative hidden bg-muted lg:block">
-        <img
-          src="/placeholder.svg"
-          alt="Image"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+        <Image
+          width={1000}
+          height={1000}
+          quality={100}
+          src="/Dark analytics-rafiki.png"
+          alt="Background"
+          className="absolute inset-0 h-full w-full object-cover"
         />
       </div>
     </div>
-  )
+  );
 }
