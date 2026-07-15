@@ -9,6 +9,7 @@ import { useState } from "react";
 import { ValidationMessage } from "./ValidationMessage";
 import useLogin from "../hooks/useLogin";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 type Inputs = {
   email: string;
   password: string;
@@ -31,9 +32,12 @@ export function LoginForm({
     mutate(data, {
       onSuccess: (response) => {
         localStorage.setItem("user", JSON.stringify(response));
+        toast.success("Welcome back, " + response.name + "!");
         router.replace(`/dashboard`);
       },
-      onError: () => {},
+      onError: (error) => {
+        toast.error(error.message);
+      },
     });
   };
 
