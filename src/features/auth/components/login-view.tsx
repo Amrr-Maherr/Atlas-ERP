@@ -28,15 +28,15 @@ export function LoginView() {
         </div>
       </div>
       <div className="relative hidden bg-muted lg:flex lg:items-center lg:justify-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-muted via-muted/80 to-muted/60" />
+        <div className="absolute" />
         <Image
-          width={800}
-          height={800}
+          width={1000}
+          height={1000}
           quality={90}
           priority
           src="/Dark analytics-rafiki.png"
           alt="Atlas ERP Analytics"
-          className="relative z-10 h-auto w-full max-w-lg object-contain p-12 opacity-90"
+          className="relative z-10 h-auto w-full max-w-lg object-contain"
         />
       </div>
     </div>
