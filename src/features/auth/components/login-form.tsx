@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { AlertCircleIcon, EyeIcon, EyeOffIcon } from "lucide-react";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { Spinner } from "@/components/ui/spinner";
 import { useState } from "react";
 import { ValidationMessage } from "./ValidationMessage";
-
+import { createClient } from "@/lib/supabase/client";
 type Inputs = {
   email: string;
   password: string;
@@ -23,7 +24,15 @@ export function LoginForm({
     formState: { errors },
   } = useForm<Inputs>();
   const [showPassword, setShowPassword] = useState(false);
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const supabase = createClient();
+    const response = await supabase.auth.signInWithPassword({
+      email: data.email,
+      password: data.password,
+    });
+    console.log(response);
+    console.log(errors);
+  };
 
   return (
     <form
@@ -47,11 +56,11 @@ export function LoginForm({
             type="email"
             placeholder="name@company.com"
             aria-invalid={!!errors.email}
-            {...register("email", { required: true })}
+            {...register("email", { required: "Email is required" })}
             className={`${errors.email ? "border-solid border-red-500" : ""}`}
           />
         </Field>
-        {errors.email && <ValidationMessage message="This field is required" />}
+        {errors.email && <ValidationMessage message={errors.email?.message} />}
         <Field>
           <div className="flex items-center justify-between">
             <FieldLabel htmlFor="password">Password</FieldLabel>
@@ -69,9 +78,15 @@ export function LoginForm({
               placeholder="Enter your password"
               aria-invalid={!!errors.password}
               {...register("password", {
-                required: true,
-                min: 10,
-                maxLength: 20,
+                required: "Password is required",
+                minLength: {
+                  value: 5,
+                  message: "Password must be at least 5 characters",
+                },
+                maxLength: {
+                  value: 10,
+                  message: "Password must not exceed 10 characters",
+                },
               })}
               className={`${errors.password ? "border-solid border-red-500" : ""}`}
             />
@@ -89,7 +104,7 @@ export function LoginForm({
           </div>
         </Field>
         {errors.password && (
-          <ValidationMessage message="This field is required" />
+          <ValidationMessage message={errors.password?.message} />
         )}
         <Field>
           <Button type="submit" className="w-full h-9">
