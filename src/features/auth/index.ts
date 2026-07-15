@@ -1,4 +1,5 @@
 export { LoginForm } from "./components/login-form"
+export { LoginView } from "./components/login-view"
 export { ValidationMessage } from "./components/ValidationMessage"
 export { default as useLogin } from "./hooks/useLogin"
 export { default as handleLogin } from "./api/handleLogin"
