@@ -1,29 +1,20 @@
 # Auth Feature
 
-This module handles authentication and authorization functionality for the Atlas ERP system.
+Handles authentication and authorization for Atlas ERP.
 
-## Folder Structure
+## Structure
 
-| Folder | Purpose |
-|--------|---------|
-| api/ | API client functions and HTTP requests |
-| components/ | UI components specific to this feature |
-| hooks/ | Custom React hooks for this feature |
-| schemas/ | Zod validation schemas |
-| services/ | Business logic and data transformation |
-| types/ | TypeScript type definitions |
-| utils/ | Feature-specific utility functions |
-| constants/ | Constants and configuration values |
-| store/ | State management (Zustand/Redux) |
-| lib/ | Feature-specific library utilities |
-| actions/ | Server actions (Next.js) |
-| mappers/ | Data mapping/transformation functions |
-| validators/ | Form and input validation |
-| permissions/ | Access control and permissions |
-| config/ | Feature configuration |
+```
+auth/
+├── components/    # Auth-specific UI components (LoginForm)
+├── pages/         # Page components (LoginPage)
+└── index.ts       # Barrel exports
+```
 
-## Notes
+## Components
 
-- Keep feature-specific code within this module
-- Import shared utilities from `@/utils`, `@/hooks`, `@/types`
-- Use barrel exports via `index.ts`
+- `login-form.tsx` - Email/password login form with GitHub OAuth
+
+## Pages
+
+- `login-page.tsx` - Full login page layout

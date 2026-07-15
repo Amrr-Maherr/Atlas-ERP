@@ -1,29 +1,27 @@
 # Dashboard Feature
 
-This module handles the main dashboard and analytics functionality for the Atlas ERP system.
+Handles the main dashboard and analytics for Atlas ERP.
 
-## Folder Structure
+## Structure
 
-| Folder | Purpose |
-|--------|---------|
-| api/ | API client functions and HTTP requests |
-| components/ | UI components specific to this feature |
-| hooks/ | Custom React hooks for this feature |
-| schemas/ | Zod validation schemas |
-| services/ | Business logic and data transformation |
-| types/ | TypeScript type definitions |
-| utils/ | Feature-specific utility functions |
-| constants/ | Constants and configuration values |
-| store/ | State management (Zustand/Redux) |
-| lib/ | Feature-specific library utilities |
-| actions/ | Server actions (Next.js) |
-| mappers/ | Data mapping/transformation functions |
-| validators/ | Form and input validation |
-| permissions/ | Access control and permissions |
-| config/ | Feature configuration |
+```
+dashboard/
+├── components/    # Dashboard-specific UI components
+├── pages/         # Page components and data
+├── schemas/       # Zod validation schemas
+├── services/      # Business logic
+├── types/         # TypeScript types
+├── utils/         # Utility functions
+└── index.ts       # Barrel exports
+```
 
-## Notes
+## Components
 
-- Keep feature-specific code within this module
-- Import shared utilities from `@/utils`, `@/hooks`, `@/types`
-- Use barrel exports via `index.ts`
+- `section-cards.tsx` - KPI summary cards
+- `chart-area-interactive.tsx` - Interactive area chart
+- `data-table.tsx` - Data table with DnD sorting
+
+## Pages
+
+- `dashboard-page.tsx` - Main dashboard layout
+- `data.json` - Sample data for the data table
