@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { AlertCircleIcon, EyeIcon, EyeOffIcon } from "lucide-react";
 import { useState } from "react";
-import { ErrorMessage } from "./ValidationMessage";
+import { ValidationMessage } from "./ValidationMessage";
 
 type Inputs = {
   email: string;
@@ -51,7 +51,7 @@ export function LoginForm({
             className={`${errors.email ? "border-solid border-red-500" : ""}`}
           />
         </Field>
-        {errors.email && <ErrorMessage message="This field is required" />}
+        {errors.email && <ValidationMessage message="This field is required" />}
         <Field>
           <div className="flex items-center justify-between">
             <FieldLabel htmlFor="password">Password</FieldLabel>
@@ -88,7 +88,9 @@ export function LoginForm({
             </button>
           </div>
         </Field>
-        {errors.password && <ErrorMessage message="This field is required" />}
+        {errors.password && (
+          <ValidationMessage message="This field is required" />
+        )}
         <Field>
           <Button type="submit" className="w-full h-9">
             Sign in

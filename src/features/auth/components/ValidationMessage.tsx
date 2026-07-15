@@ -4,7 +4,7 @@ type ErrorMessageProps = {
   message?: string;
 };
 
-export function ErrorMessage({ message }: ErrorMessageProps) {
+export function ValidationMessage({ message }: ErrorMessageProps) {
   if (!message) return null;
 
   return (
