@@ -1,18 +1,35 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import {
-  Field,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { AlertCircleIcon, EyeIcon, EyeOffIcon } from "lucide-react";
+import { useState } from "react";
+
+type Inputs = {
+  email: string;
+  password: string;
+};
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const [showPassword, setShowPassword] = useState(false);
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form
+      className={cn("flex flex-col gap-6", className)}
+      {...props}
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <FieldGroup>
         <div className="flex flex-col gap-2">
           <h1 className="text-2xl font-semibold tracking-tight text-foreground">
@@ -28,10 +45,17 @@ export function LoginForm({
             id="email"
             type="email"
             placeholder="name@company.com"
-            required
-            autoComplete="email"
+            aria-invalid={!!errors.email}
+            {...register("email", { required: true })}
+            className={`${errors.email ? "border-solid border-red-500" : ""}`}
           />
         </Field>
+        {errors.email && (
+          <p className="flex items-center gap-1.5 text-sm font-medium text-destructive">
+            <AlertCircleIcon className="size-4 shrink-0" />
+            This field is required
+          </p>
+        )}
         <Field>
           <div className="flex items-center justify-between">
             <FieldLabel htmlFor="password">Password</FieldLabel>
@@ -42,13 +66,38 @@ export function LoginForm({
               Forgot password?
             </a>
           </div>
-          <Input
-            id="password"
-            type="password"
-            required
-            autoComplete="current-password"
-          />
+          <div className="relative">
+            <Input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your password"
+              aria-invalid={!!errors.password}
+              {...register("password", {
+                required: true,
+                min: 10,
+                maxLength: 20,
+              })}
+              className={`${errors.password ? "border-solid border-red-500" : ""}`}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {showPassword ? (
+                <EyeOffIcon className="size-4" />
+              ) : (
+                <EyeIcon className="size-4" />
+              )}
+            </button>
+          </div>
         </Field>
+        {errors.password && (
+          <p className="flex items-center gap-1.5 text-sm font-medium text-destructive">
+            <AlertCircleIcon className="size-4 shrink-0" />
+            This field is required
+          </p>
+        )}
         <Field>
           <Button type="submit" className="w-full h-9">
             Sign in
@@ -56,5 +105,5 @@ export function LoginForm({
         </Field>
       </FieldGroup>
     </form>
-  )
+  );
 }
