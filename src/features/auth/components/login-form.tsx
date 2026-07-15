@@ -106,9 +106,7 @@ export function LoginForm({
             {isPending ? <Spinner className="size-4" /> : "Sign in"}
           </Button>
         </Field>
-        {error && (
-          <ValidationMessage message={error.message} />
-        )}
+        {error && <ValidationMessage message={error.message} />}
       </FieldGroup>
     </form>
   );
