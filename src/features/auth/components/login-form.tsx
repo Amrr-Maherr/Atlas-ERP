@@ -8,6 +8,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { useState } from "react";
 import { ValidationMessage } from "./ValidationMessage";
 import useLogin from "../hooks/useLogin";
+import { useRouter } from "next/navigation";
 type Inputs = {
   email: string;
   password: string;
@@ -25,8 +26,15 @@ export function LoginForm({
   } = useForm<Inputs>();
   const [showPassword, setShowPassword] = useState(false);
   const { mutate, isPending, error } = useLogin();
+  const router = useRouter();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    mutate(data);
+    mutate(data, {
+      onSuccess: (response) => {
+        localStorage.setItem("user", JSON.stringify(response));
+        router.push(`/dashboard`);
+      },
+      onError: () => {},
+    });
   };
 
   return (
