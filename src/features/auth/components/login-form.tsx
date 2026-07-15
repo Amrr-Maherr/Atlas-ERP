@@ -7,7 +7,7 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { Spinner } from "@/components/ui/spinner";
 import { useState } from "react";
 import { ValidationMessage } from "./ValidationMessage";
-import { createClient } from "@/lib/supabase/client";
+import useLogin from "../hooks/useLogin";
 type Inputs = {
   email: string;
   password: string;
@@ -24,14 +24,9 @@ export function LoginForm({
     formState: { errors },
   } = useForm<Inputs>();
   const [showPassword, setShowPassword] = useState(false);
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const supabase = createClient();
-    const response = await supabase.auth.signInWithPassword({
-      email: data.email,
-      password: data.password,
-    });
-    console.log(response);
-    console.log(errors);
+  const { mutate, isPending, error } = useLogin();
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    mutate(data);
   };
 
   return (
@@ -107,10 +102,13 @@ export function LoginForm({
           <ValidationMessage message={errors.password?.message} />
         )}
         <Field>
-          <Button type="submit" className="w-full h-9">
-            Sign in
+          <Button type="submit" className="w-full h-9" disabled={isPending}>
+            {isPending ? <Spinner className="size-4" /> : "Sign in"}
           </Button>
         </Field>
+        {error && (
+          <ValidationMessage message={error.message} />
+        )}
       </FieldGroup>
     </form>
   );
