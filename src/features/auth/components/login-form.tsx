@@ -31,7 +31,7 @@ export function LoginForm({
     mutate(data, {
       onSuccess: (response) => {
         localStorage.setItem("user", JSON.stringify(response));
-        router.push(`/dashboard`);
+        router.replace(`/dashboard`);
       },
       onError: () => {},
     });
