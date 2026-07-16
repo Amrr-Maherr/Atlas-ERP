@@ -9,6 +9,6 @@ type GetSettingProps = {
 };
 
 export default async function getSetting({ id }: GetSettingProps) {
-    const { data } = await api.get(`/users/${id}`);
+    const { data } = await api.get(`/settings/${id}`);
     return data;
 }

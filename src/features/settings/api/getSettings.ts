@@ -5,6 +5,6 @@ const api = axios.create({
 });
 
 export default async function getSettings() {
-    const { data } = await api.get("/users");
+    const { data } = await api.get("/settings");
     return data;
 }
