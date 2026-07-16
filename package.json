@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "json-server": "json-server --watch db.json --port 3001",
+    "build-db": "node db/merge-db.js",
+    "generate-db": "node scripts/generate-erp-data.js && npm run build-db",
+    "json-server": "npm run build-db && json-server --watch db.json --port 3001",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

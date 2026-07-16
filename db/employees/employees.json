@@ -1,0 +1,1911 @@
+[
+  {
+    "id": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "name": "Amr Maher",
+    "email": "admin@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Admin",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000001",
+    "salary": 25000,
+    "hireDate": "2025-06-01",
+    "department": "Administration",
+    "permissions": [
+      "all"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-06-01T08:00:00.000Z",
+    "updatedAt": "2025-06-01T08:00:00.000Z",
+    "firstName": "Amr",
+    "lastName": "Maher",
+    "position": "Admin",
+    "managerId": null,
+    "emergencyContact": {
+      "name": "Walid Sami",
+      "phone": "+201217158104",
+      "relationship": "Friend"
+    },
+    "nationalId": "2861019618470",
+    "dateOfBirth": "1986-03-07",
+    "address": "174 El-Thawra Street, Luxor",
+    "city": "Alexandria",
+    "bankAccount": "EG75111740481092",
+    "taxId": "TAX-EG-7022",
+    "documents": [
+      "amr-maher-id.pdf",
+      "amr-maher-contract.pdf"
+    ],
+    "certifications": [
+      "PMP",
+      "ISO 27001"
+    ],
+    "skills": [
+      "Leadership",
+      "Strategic Planning",
+      "Budgeting",
+      "English"
+    ],
+    "performanceRating": 3.04,
+    "salesCount": 0
+  },
+  {
+    "id": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "name": "Mohamed Salah",
+    "email": "manager@atlaserp.com",
+    "password": "$2b$10$2fc4d29e0852a272c072089354677ca123ac01d013746f9511fa4",
+    "role": "Manager",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000002",
+    "salary": 18000,
+    "hireDate": "2025-08-15",
+    "department": "Management",
+    "permissions": [
+      "sales",
+      "reports",
+      "inventory",
+      "employees"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-07-02T08:00:00.000Z",
+    "updatedAt": "2025-07-02T08:00:00.000Z",
+    "firstName": "Mohamed",
+    "lastName": "Salah",
+    "position": "Manager",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Hana Maher",
+      "phone": "+201336453951",
+      "relationship": "Spouse"
+    },
+    "nationalId": "2930310780714",
+    "dateOfBirth": "1977-06-17",
+    "address": "132 El-Thawra Street, Zagazig",
+    "city": "Alexandria",
+    "bankAccount": "EG37418067952536",
+    "taxId": "TAX-EG-7982",
+    "documents": [
+      "mohamed-salah-id.pdf",
+      "mohamed-salah-contract.pdf"
+    ],
+    "certifications": [
+      "MBA",
+      "Six Sigma"
+    ],
+    "skills": [
+      "Team Leadership",
+      "KPI Tracking",
+      "Reporting",
+      "English"
+    ],
+    "performanceRating": 4.67,
+    "salesCount": 20
+  },
+  {
+    "id": "588bd58a-7578-4aec-9db7-ec0ce3de00de",
+    "name": "Ali Hassan",
+    "email": "warehouse@atlaserp.com",
+    "password": "$2b$10$2314c7b3ea7666c0cabefa5e33e43bfaeac611c03206f0b2d815d",
+    "role": "Warehouse",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000003",
+    "salary": 12000,
+    "hireDate": "2025-09-01",
+    "department": "Warehouse",
+    "permissions": [
+      "inventory",
+      "purchase_orders"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-08-03T08:00:00.000Z",
+    "updatedAt": "2025-08-03T08:00:00.000Z",
+    "firstName": "Ali",
+    "lastName": "Hassan",
+    "position": "Warehouse",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Maha Saleh",
+      "phone": "+201325318051",
+      "relationship": "Spouse"
+    },
+    "nationalId": "2810722552339",
+    "dateOfBirth": "1977-05-16",
+    "address": "153 El-Tahrir Street, Alexandria",
+    "city": "Giza",
+    "bankAccount": "EG19620670640514",
+    "taxId": "TAX-EG-5173",
+    "documents": [
+      "ali-hassan-id.pdf",
+      "ali-hassan-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Inventory Management",
+      "Forklift Operation",
+      "WMS",
+      "Quality Control",
+      "Arabic"
+    ],
+    "performanceRating": 3.32,
+    "salesCount": 0
+  },
+  {
+    "id": "c2513c0d-20b2-4744-95fd-0ff584ffdc0e",
+    "name": "Mostafa Ahmed",
+    "email": "cashier@atlaserp.com",
+    "password": "$2b$10$4bf7adf7d62a41af51d735d545752dd763f6f4631105dc5d3cd89",
+    "role": "Cashier",
+    "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000004",
+    "salary": 10000,
+    "hireDate": "2026-01-05",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-09-04T08:00:00.000Z",
+    "updatedAt": "2025-09-04T08:00:00.000Z",
+    "firstName": "Mostafa",
+    "lastName": "Ahmed",
+    "position": "Cashier",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Layla Farouk",
+      "phone": "+201699988197",
+      "relationship": "Sibling"
+    },
+    "nationalId": "2920704503245",
+    "dateOfBirth": "1990-09-17",
+    "address": "148 El-Marg Street, Port Said",
+    "city": "Tanta",
+    "bankAccount": "EG95092734771238",
+    "taxId": "TAX-EG-1928",
+    "documents": [
+      "mostafa-ahmed-id.pdf",
+      "mostafa-ahmed-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Negotiation",
+      "CRM",
+      "Product Knowledge",
+      "B2B Sales",
+      "Data Analysis"
+    ],
+    "performanceRating": 5,
+    "salesCount": 114
+  },
+  {
+    "id": "fc8defd5-2ec8-4567-bb34-aeceaad470cd",
+    "name": "Nour El-Din",
+    "email": "nour@atlaserp.com",
+    "password": "$2b$10$dd12a5babd995d76ffb1ff8362b1030d273275bf02129bd0cadaa",
+    "role": "Sales",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000005",
+    "salary": 11000,
+    "hireDate": "2025-10-01",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-10-05T08:00:00.000Z",
+    "updatedAt": "2025-10-05T08:00:00.000Z",
+    "firstName": "Nour",
+    "lastName": "El-Din",
+    "position": "Sales",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Yasmin Youssef",
+      "phone": "+201197177163",
+      "relationship": "Friend"
+    },
+    "nationalId": "2830527663052",
+    "dateOfBirth": "1989-11-12",
+    "address": "91 El-Tahrir Street, Aswan",
+    "city": "Alexandria",
+    "bankAccount": "EG29383729914205",
+    "taxId": "TAX-EG-6764",
+    "documents": [
+      "nour-el-din-id.pdf",
+      "nour-el-din-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Negotiation",
+      "CRM",
+      "Product Knowledge",
+      "B2B Sales",
+      "Data Analysis"
+    ],
+    "performanceRating": 3.95,
+    "salesCount": 13
+  },
+  {
+    "id": "955fb650-da75-447e-a042-bbcb32cde039",
+    "name": "Fatma Hassan",
+    "email": "fatma@atlaserp.com",
+    "password": "$2b$10$2f3eef02057fcc9d76a2bb6b66a25f1939ee18d3ef5476596b661",
+    "role": "Accountant",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000006",
+    "salary": 14000,
+    "hireDate": "2025-07-20",
+    "department": "Finance",
+    "permissions": [
+      "reports",
+      "sales"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-11-06T08:00:00.000Z",
+    "updatedAt": "2025-11-06T08:00:00.000Z",
+    "firstName": "Fatma",
+    "lastName": "Hassan",
+    "position": "Accountant",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Heba Saleh",
+      "phone": "+201552251715",
+      "relationship": "Spouse"
+    },
+    "nationalId": "2800110660043",
+    "dateOfBirth": "1993-01-14",
+    "address": "124 El-Thawra Street, Luxor",
+    "city": "Giza",
+    "bankAccount": "EG89726746920606",
+    "taxId": "TAX-EG-7123",
+    "documents": [
+      "fatma-hassan-id.pdf",
+      "fatma-hassan-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Accounting",
+      "Excel",
+      "ERP Systems",
+      "Tax Compliance",
+      "Data Analysis"
+    ],
+    "performanceRating": 4.73,
+    "salesCount": 0
+  },
+  {
+    "id": "0286e99e-d47e-4c62-96ec-7201109aa0e8",
+    "name": "Hany Ibrahim",
+    "email": "hany@atlaserp.com",
+    "password": "$2b$10$782d66c2581f9daa054524d3d03a163f559d9deead5ef7e88c72d",
+    "role": "Purchasing",
+    "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000007",
+    "salary": 12500,
+    "hireDate": "2025-11-01",
+    "department": "Purchasing",
+    "permissions": [
+      "purchase_orders",
+      "suppliers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-06-07T08:00:00.000Z",
+    "updatedAt": "2025-06-07T08:00:00.000Z",
+    "firstName": "Hany",
+    "lastName": "Ibrahim",
+    "position": "Purchasing",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Salma Kamal",
+      "phone": "+201523806675",
+      "relationship": "Friend"
+    },
+    "nationalId": "2990819343663",
+    "dateOfBirth": "1982-06-24",
+    "address": "57 El-Thawra Street, Luxor",
+    "city": "Ismailia",
+    "bankAccount": "EG32124785666104",
+    "taxId": "TAX-EG-1522",
+    "documents": [
+      "hany-ibrahim-id.pdf",
+      "hany-ibrahim-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Vendor Management",
+      "Procurement",
+      "Cost Analysis",
+      "Data Analysis"
+    ],
+    "performanceRating": 4.88,
+    "salesCount": 0
+  },
+  {
+    "id": "61e0afc9-f03e-4e8e-bc6b-a582b940a4d0",
+    "name": "Dina Salah",
+    "email": "dina@atlaserp.com",
+    "password": "$2b$10$1da072ac65f9f0475dd88422c8163887d4b2483a77e4438d9b62b",
+    "role": "HR",
+    "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000008",
+    "salary": 13000,
+    "hireDate": "2025-10-15",
+    "department": "Human Resources",
+    "permissions": [
+      "employees"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-07-08T08:00:00.000Z",
+    "updatedAt": "2025-07-08T08:00:00.000Z",
+    "firstName": "Dina",
+    "lastName": "Salah",
+    "position": "HR",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Khaled Youssef",
+      "phone": "+201550794152",
+      "relationship": "Friend"
+    },
+    "nationalId": "2860504561968",
+    "dateOfBirth": "1985-07-27",
+    "address": "116 El-Sha'aer Street, Aswan",
+    "city": "Alexandria",
+    "bankAccount": "EG37994472631740",
+    "taxId": "TAX-EG-5796",
+    "documents": [
+      "dina-salah-id.pdf",
+      "dina-salah-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Communication",
+      "Teamwork",
+      "French"
+    ],
+    "performanceRating": 3.8,
+    "salesCount": 0
+  },
+  {
+    "id": "6f0624e7-5767-402a-adba-c81af644408f",
+    "name": "Sami Ghaly",
+    "email": "sami@atlaserp.com",
+    "password": "$2b$10$8fc1f9a1a29bd3b536e135549b4b48eebf2e2d838e87d740bb260",
+    "role": "Cashier",
+    "avatar": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000009",
+    "salary": 10000,
+    "hireDate": "2026-02-01",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-08-09T08:00:00.000Z",
+    "updatedAt": "2025-08-09T08:00:00.000Z",
+    "firstName": "Sami",
+    "lastName": "Ghaly",
+    "position": "Cashier",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Youssef Mounir",
+      "phone": "+201182355923",
+      "relationship": "Parent"
+    },
+    "nationalId": "2820927778325",
+    "dateOfBirth": "1984-09-21",
+    "address": "22 El-Kornish Street, Luxor",
+    "city": "Aswan",
+    "bankAccount": "EG76833597536967",
+    "taxId": "TAX-EG-4578",
+    "documents": [
+      "sami-ghaly-id.pdf",
+      "sami-ghaly-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Negotiation",
+      "CRM",
+      "Product Knowledge",
+      "B2B Sales",
+      "English"
+    ],
+    "performanceRating": 4.46,
+    "salesCount": 105
+  },
+  {
+    "id": "61986328-8424-4ae4-9955-61575f0d14e3",
+    "name": "Tarek Nabil",
+    "email": "tarek@atlaserp.com",
+    "password": "$2b$10$3ae55da2cf62ae402e1f7cd691a4f80cf4a86ca136d69ec269c59",
+    "role": "Warehouse",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000010",
+    "salary": 11500,
+    "hireDate": "2026-01-15",
+    "department": "Warehouse",
+    "permissions": [
+      "inventory",
+      "purchase_orders"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-09-10T08:00:00.000Z",
+    "updatedAt": "2025-09-10T08:00:00.000Z",
+    "firstName": "Tarek",
+    "lastName": "Nabil",
+    "position": "Warehouse",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Youssef Ibrahim",
+      "phone": "+201596595175",
+      "relationship": "Sibling"
+    },
+    "nationalId": "2811106878718",
+    "dateOfBirth": "1981-09-26",
+    "address": "13 Pyramids Road Street, Cairo",
+    "city": "Ismailia",
+    "bankAccount": "EG50048455843330",
+    "taxId": "TAX-EG-7734",
+    "documents": [
+      "tarek-nabil-id.pdf",
+      "tarek-nabil-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Inventory Management",
+      "Forklift Operation",
+      "WMS",
+      "Quality Control",
+      "Data Analysis"
+    ],
+    "performanceRating": 3.27,
+    "salesCount": 0
+  },
+  {
+    "id": "3df9da81-9e5e-4bc6-8e92-cd94c54edc76",
+    "name": "Heba El-Shamy",
+    "email": "heba@atlaserp.com",
+    "password": "$2b$10$587a8af3dbbb82e4d3b430d122f355ce47aa752c08007c5e44556",
+    "role": "Customer Service",
+    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000011",
+    "salary": 10500,
+    "hireDate": "2026-03-01",
+    "department": "Customer Service",
+    "permissions": [
+      "customers",
+      "sales"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-10-11T08:00:00.000Z",
+    "updatedAt": "2025-10-11T08:00:00.000Z",
+    "firstName": "Heba",
+    "lastName": "El-Shamy",
+    "position": "Customer Service",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Amr Farouk",
+      "phone": "+201685251012",
+      "relationship": "Friend"
+    },
+    "nationalId": "2890212877639",
+    "dateOfBirth": "1995-04-01",
+    "address": "47 El-Marg Street, Alexandria",
+    "city": "Mansoura",
+    "bankAccount": "EG85297960105388",
+    "taxId": "TAX-EG-6783",
+    "documents": [
+      "heba-el-shamy-id.pdf",
+      "heba-el-shamy-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Communication",
+      "Conflict Resolution",
+      "Product Support",
+      "Data Analysis"
+    ],
+    "performanceRating": 3.75,
+    "salesCount": 0
+  },
+  {
+    "id": "11c3e5de-a1c4-478c-8a0b-bda529af82e0",
+    "name": "Youssef Abdel-Fattah",
+    "email": "youssef@atlaserp.com",
+    "password": "$2b$10$bc7c1e30a321c0a51b5e94ef2cec367c4c522ec709f499e5f43af",
+    "role": "Sales",
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000012",
+    "salary": 11500,
+    "hireDate": "2025-12-01",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-11-12T08:00:00.000Z",
+    "updatedAt": "2025-11-12T08:00:00.000Z",
+    "firstName": "Youssef",
+    "lastName": "Abdel-Fattah",
+    "position": "Sales",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Karim Mounir",
+      "phone": "+201272210445",
+      "relationship": "Parent"
+    },
+    "nationalId": "2960628393555",
+    "dateOfBirth": "1988-04-15",
+    "address": "35 Corniche Street, Zagazig",
+    "city": "Zagazig",
+    "bankAccount": "EG72624942686088",
+    "taxId": "TAX-EG-1921",
+    "documents": [
+      "youssef-abdel-fattah-id.pdf",
+      "youssef-abdel-fattah-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Negotiation",
+      "CRM",
+      "Product Knowledge",
+      "B2B Sales",
+      "Data Analysis"
+    ],
+    "performanceRating": 4.25,
+    "salesCount": 8
+  },
+  {
+    "id": "49e87545-feff-471c-ace5-03ecbf50aea0",
+    "name": "Mohamed Refaat",
+    "email": "mrefaat@atlaserp.com",
+    "password": "$2b$10$108b3fe4822e804210141fdb6a0162272eb1ecfcc645861a16c15",
+    "role": "Sales",
+    "avatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000013",
+    "salary": 10800,
+    "hireDate": "2026-02-15",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-06-13T08:00:00.000Z",
+    "updatedAt": "2025-06-13T08:00:00.000Z",
+    "firstName": "Mohamed",
+    "lastName": "Refaat",
+    "position": "Sales",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Omar Saleh",
+      "phone": "+201963549925",
+      "relationship": "Parent"
+    },
+    "nationalId": "2890507583864",
+    "dateOfBirth": "1991-10-08",
+    "address": "173 Pyramids Road Street, Tanta",
+    "city": "Zagazig",
+    "bankAccount": "EG53138585777398",
+    "taxId": "TAX-EG-4021",
+    "documents": [
+      "mohamed-refaat-id.pdf",
+      "mohamed-refaat-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Negotiation",
+      "CRM",
+      "Product Knowledge",
+      "B2B Sales",
+      "Arabic"
+    ],
+    "performanceRating": 5,
+    "salesCount": 42
+  },
+  {
+    "id": "ba2d48f5-b26e-4ced-8b58-717ab65a59a0",
+    "name": "Amira Fahmy",
+    "email": "amira@atlaserp.com",
+    "password": "$2b$10$1f3bb15aa1c2fce4c3fa226ed7eb6229690e31a24a3946be4e406",
+    "role": "Accountant",
+    "avatar": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000014",
+    "salary": 13500,
+    "hireDate": "2026-01-20",
+    "department": "Finance",
+    "permissions": [
+      "reports",
+      "sales"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-07-14T08:00:00.000Z",
+    "updatedAt": "2025-07-14T08:00:00.000Z",
+    "firstName": "Amira",
+    "lastName": "Fahmy",
+    "position": "Accountant",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Walid Refaat",
+      "phone": "+201022140457",
+      "relationship": "Spouse"
+    },
+    "nationalId": "2850217604351",
+    "dateOfBirth": "1995-09-13",
+    "address": "133 Pyramids Road Street, Giza",
+    "city": "Ismailia",
+    "bankAccount": "EG51191410560203",
+    "taxId": "TAX-EG-2289",
+    "documents": [
+      "amira-fahmy-id.pdf",
+      "amira-fahmy-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Accounting",
+      "Excel",
+      "ERP Systems",
+      "Tax Compliance",
+      "Data Analysis"
+    ],
+    "performanceRating": 3.33,
+    "salesCount": 0
+  },
+  {
+    "id": "96b20bd0-0e03-4c29-96cd-5767a83ed3ed",
+    "name": "Walid Sherif",
+    "email": "walid@atlaserp.com",
+    "password": "$2b$10$cc5cafe0d6bcdedb14d542bd1c73926788d0677fee2956c7c0ba1",
+    "role": "Cashier",
+    "avatar": "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000015",
+    "salary": 10000,
+    "hireDate": "2026-03-10",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-08-15T08:00:00.000Z",
+    "updatedAt": "2025-08-15T08:00:00.000Z",
+    "firstName": "Walid",
+    "lastName": "Sherif",
+    "position": "Cashier",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Walid Khalil",
+      "phone": "+201489493448",
+      "relationship": "Parent"
+    },
+    "nationalId": "2990504156571",
+    "dateOfBirth": "1993-06-26",
+    "address": "82 El-Tahrir Street, Cairo",
+    "city": "Mansoura",
+    "bankAccount": "EG15977908703590",
+    "taxId": "TAX-EG-8047",
+    "documents": [
+      "walid-sherif-id.pdf",
+      "walid-sherif-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Negotiation",
+      "CRM",
+      "Product Knowledge",
+      "B2B Sales",
+      "French"
+    ],
+    "performanceRating": 5,
+    "salesCount": 100
+  },
+  {
+    "id": "b0f7d734-6d36-4b82-a6e9-481b73277e04",
+    "name": "Ramy Nabil",
+    "email": "ramy@atlaserp.com",
+    "password": "$2b$10$035e6156ff4a851b1d1ecb200a47fcbfb8b816d9ad0bec28f1c1d",
+    "role": "Purchasing",
+    "avatar": "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000016",
+    "salary": 12000,
+    "hireDate": "2026-02-20",
+    "department": "Purchasing",
+    "permissions": [
+      "purchase_orders",
+      "suppliers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-09-16T08:00:00.000Z",
+    "updatedAt": "2025-09-16T08:00:00.000Z",
+    "firstName": "Ramy",
+    "lastName": "Nabil",
+    "position": "Purchasing",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Nour Khalil",
+      "phone": "+201727920979",
+      "relationship": "Parent"
+    },
+    "nationalId": "2890915768154",
+    "dateOfBirth": "1993-03-11",
+    "address": "153 El-Tahrir Street, Zagazig",
+    "city": "Alexandria",
+    "bankAccount": "EG18005839242687",
+    "taxId": "TAX-EG-3060",
+    "documents": [
+      "ramy-nabil-id.pdf",
+      "ramy-nabil-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Vendor Management",
+      "Procurement",
+      "Cost Analysis",
+      "Data Analysis"
+    ],
+    "performanceRating": 3.67,
+    "salesCount": 0
+  },
+  {
+    "id": "a0fe4d65-1374-45e7-a4cc-b0388c8aa36d",
+    "name": "Yasmin Mostafa",
+    "email": "yasmin@atlaserp.com",
+    "password": "$2b$10$20a96a575a2192a60ded8c50ddefe0372779f8095e94cf2e76dab",
+    "role": "Customer Service",
+    "avatar": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000017",
+    "salary": 10200,
+    "hireDate": "2026-04-01",
+    "department": "Customer Service",
+    "permissions": [
+      "customers",
+      "sales"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-10-17T08:00:00.000Z",
+    "updatedAt": "2025-10-17T08:00:00.000Z",
+    "firstName": "Yasmin",
+    "lastName": "Mostafa",
+    "position": "Customer Service",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Amr Ashraf",
+      "phone": "+201734916569",
+      "relationship": "Parent"
+    },
+    "nationalId": "2870202629162",
+    "dateOfBirth": "1981-12-16",
+    "address": "70 El-Sha'aer Street, Giza",
+    "city": "Ismailia",
+    "bankAccount": "EG52388471373386",
+    "taxId": "TAX-EG-8214",
+    "documents": [
+      "yasmin-mostafa-id.pdf",
+      "yasmin-mostafa-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Communication",
+      "Conflict Resolution",
+      "Product Support",
+      "Arabic"
+    ],
+    "performanceRating": 3.2,
+    "salesCount": 0
+  },
+  {
+    "id": "1f3ec2c5-6aa9-4239-8205-97e16c06435d",
+    "name": "Gamal Youssef",
+    "email": "gamal@atlaserp.com",
+    "password": "$2b$10$f30c3f7e61ab9ba1ab626f42b0de35f99112411ff21308bc66bcf",
+    "role": "Warehouse",
+    "avatar": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000018",
+    "salary": 11000,
+    "hireDate": "2026-03-15",
+    "department": "Warehouse",
+    "permissions": [
+      "inventory",
+      "purchase_orders"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-11-18T08:00:00.000Z",
+    "updatedAt": "2025-11-18T08:00:00.000Z",
+    "firstName": "Gamal",
+    "lastName": "Youssef",
+    "position": "Warehouse",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Ali Mounir",
+      "phone": "+201863909526",
+      "relationship": "Spouse"
+    },
+    "nationalId": "2811003966856",
+    "dateOfBirth": "1988-07-19",
+    "address": "184 Pyramids Road Street, Zagazig",
+    "city": "Zagazig",
+    "bankAccount": "EG93489516104671",
+    "taxId": "TAX-EG-8505",
+    "documents": [
+      "gamal-youssef-id.pdf",
+      "gamal-youssef-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Inventory Management",
+      "Forklift Operation",
+      "WMS",
+      "Quality Control",
+      "Arabic"
+    ],
+    "performanceRating": 3.44,
+    "salesCount": 0
+  },
+  {
+    "id": "4142b4bf-d265-45e3-824e-e07b450ff904",
+    "name": "Shady Emad",
+    "email": "shady@atlaserp.com",
+    "password": "$2b$10$8b43522dc26474871b6b869ae700e2fdbf807811d07ba60017225",
+    "role": "IT Support",
+    "avatar": "https://images.unsplash.com/photo-1628157588556-872569c39a7a?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000019",
+    "salary": 12500,
+    "hireDate": "2026-01-10",
+    "department": "IT",
+    "permissions": [
+      "all"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-06-19T08:00:00.000Z",
+    "updatedAt": "2025-06-19T08:00:00.000Z",
+    "firstName": "Shady",
+    "lastName": "Emad",
+    "position": "IT Support",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Omar Maher",
+      "phone": "+201395112861",
+      "relationship": "Sibling"
+    },
+    "nationalId": "2901213919239",
+    "dateOfBirth": "1977-11-14",
+    "address": "45 El-Salam Street, Aswan",
+    "city": "Port Said",
+    "bankAccount": "EG83027171825464",
+    "taxId": "TAX-EG-1259",
+    "documents": [
+      "shady-emad-id.pdf",
+      "shady-emad-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Networking",
+      "Windows Server",
+      "Troubleshooting",
+      "Cybersecurity",
+      "French"
+    ],
+    "performanceRating": 4.6,
+    "salesCount": 0
+  },
+  {
+    "id": "082d04d8-5f8f-4460-994e-f00dd2e94fd9",
+    "name": "Tamer Soliman",
+    "email": "tamer@atlaserp.com",
+    "password": "$2b$10$28780f825fbed282157ae8f8c7e1798d44512a87f72e26e363b89",
+    "role": "Sales",
+    "avatar": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000020",
+    "salary": 11200,
+    "hireDate": "2026-04-15",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-07-20T08:00:00.000Z",
+    "updatedAt": "2025-07-20T08:00:00.000Z",
+    "firstName": "Tamer",
+    "lastName": "Soliman",
+    "position": "Sales",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Rania Saeed",
+      "phone": "+201853172658",
+      "relationship": "Sibling"
+    },
+    "nationalId": "2851108864938",
+    "dateOfBirth": "1989-07-10",
+    "address": "89 El-Thawra Street, Tanta",
+    "city": "Luxor",
+    "bankAccount": "EG17445848280468",
+    "taxId": "TAX-EG-4693",
+    "documents": [
+      "tamer-soliman-id.pdf",
+      "tamer-soliman-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Negotiation",
+      "CRM",
+      "Product Knowledge",
+      "B2B Sales",
+      "Arabic"
+    ],
+    "performanceRating": 4.74,
+    "salesCount": 32
+  },
+  {
+    "id": "4b1fab59-afd3-493e-8bf3-7503cc2177a5",
+    "name": "Layla Mansour",
+    "email": "layla@atlaserp.com",
+    "password": "$2b$10$94632bd87246ece3b1a4122ce2fc6fef60079d2ede5e5257070d7",
+    "role": "Cashier",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000021",
+    "salary": 10000,
+    "hireDate": "2026-05-01",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-08-21T08:00:00.000Z",
+    "updatedAt": "2025-08-21T08:00:00.000Z",
+    "firstName": "Layla",
+    "lastName": "Mansour",
+    "position": "Cashier",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Tarek Khalil",
+      "phone": "+201841373171",
+      "relationship": "Parent"
+    },
+    "nationalId": "2930520358518",
+    "dateOfBirth": "1981-04-08",
+    "address": "118 El-Marg Street, Mansoura",
+    "city": "Port Said",
+    "bankAccount": "EG73026978811022",
+    "taxId": "TAX-EG-8102",
+    "documents": [
+      "layla-mansour-id.pdf",
+      "layla-mansour-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Negotiation",
+      "CRM",
+      "Product Knowledge",
+      "B2B Sales",
+      "Arabic"
+    ],
+    "performanceRating": 5,
+    "salesCount": 77
+  },
+  {
+    "id": "27eb6e8b-9b1f-40d9-bc0b-081ab13a2776",
+    "name": "Bassem Nour",
+    "email": "bassem@atlaserp.com",
+    "password": "$2b$10$d0e6a1eceab4e53a21f63b7b22df59d94bbed59e67b0adc473983",
+    "role": "Manager",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000022",
+    "salary": 17000,
+    "hireDate": "2025-09-15",
+    "department": "Management",
+    "permissions": [
+      "sales",
+      "reports",
+      "inventory",
+      "employees"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-09-22T08:00:00.000Z",
+    "updatedAt": "2025-09-22T08:00:00.000Z",
+    "firstName": "Bassem",
+    "lastName": "Nour",
+    "position": "Manager",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Maha Mounir",
+      "phone": "+201479839293",
+      "relationship": "Parent"
+    },
+    "nationalId": "2971205143727",
+    "dateOfBirth": "1982-01-24",
+    "address": "138 Corniche Street, Luxor",
+    "city": "Port Said",
+    "bankAccount": "EG37174193512924",
+    "taxId": "TAX-EG-9126",
+    "documents": [
+      "bassem-nour-id.pdf",
+      "bassem-nour-contract.pdf"
+    ],
+    "certifications": [
+      "MBA",
+      "Six Sigma"
+    ],
+    "skills": [
+      "Team Leadership",
+      "KPI Tracking",
+      "Reporting",
+      "French"
+    ],
+    "performanceRating": 5,
+    "salesCount": 28
+  },
+  {
+    "id": "662d0c2f-391b-4665-9bba-0c6a1b7f5e68",
+    "name": "Eman Gaber",
+    "email": "eman@atlaserp.com",
+    "password": "$2b$10$0340409330ac9405dd0a56f01690dbb75dfb5fab740d5c12a8288",
+    "role": "Customer Service",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000023",
+    "salary": 10000,
+    "hireDate": "2026-05-15",
+    "department": "Customer Service",
+    "permissions": [
+      "customers",
+      "sales"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-10-23T08:00:00.000Z",
+    "updatedAt": "2025-10-23T08:00:00.000Z",
+    "firstName": "Eman",
+    "lastName": "Gaber",
+    "position": "Customer Service",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Walid El-Din",
+      "phone": "+201480400334",
+      "relationship": "Parent"
+    },
+    "nationalId": "2920418759703",
+    "dateOfBirth": "1981-12-17",
+    "address": "160 El-Kornish Street, Giza",
+    "city": "Tanta",
+    "bankAccount": "EG66472023527685",
+    "taxId": "TAX-EG-9241",
+    "documents": [
+      "eman-gaber-id.pdf",
+      "eman-gaber-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Communication",
+      "Conflict Resolution",
+      "Product Support",
+      "Arabic"
+    ],
+    "performanceRating": 4.77,
+    "salesCount": 0
+  },
+  {
+    "id": "888d7e83-cca5-455f-b76e-56e0b5e40a3d",
+    "name": "Ashraf Mounir",
+    "email": "ashraf@atlaserp.com",
+    "password": "$2b$10$fb42e84402394caa15b612d60f0bbdb46aa2c57eebfa2ff8959d2",
+    "role": "Warehouse",
+    "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000024",
+    "salary": 11500,
+    "hireDate": "2026-04-01",
+    "department": "Warehouse",
+    "permissions": [
+      "inventory",
+      "purchase_orders"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-11-24T08:00:00.000Z",
+    "updatedAt": "2025-11-24T08:00:00.000Z",
+    "firstName": "Ashraf",
+    "lastName": "Mounir",
+    "position": "Warehouse",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Mostafa Refaat",
+      "phone": "+201778244495",
+      "relationship": "Spouse"
+    },
+    "nationalId": "2840524402234",
+    "dateOfBirth": "1986-08-16",
+    "address": "37 El-Tahrir Street, Mansoura",
+    "city": "Cairo",
+    "bankAccount": "EG82404779281930",
+    "taxId": "TAX-EG-7353",
+    "documents": [
+      "ashraf-mounir-id.pdf",
+      "ashraf-mounir-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Inventory Management",
+      "Forklift Operation",
+      "WMS",
+      "Quality Control",
+      "Arabic"
+    ],
+    "performanceRating": 3.76,
+    "salesCount": 0
+  },
+  {
+    "id": "1fb46774-0b02-4b5a-8d25-75251147af88",
+    "name": "Reem Samir",
+    "email": "reem@atlaserp.com",
+    "password": "$2b$10$95e8681251c1fa32818b341dd347320f2dbd286709773d718ee69",
+    "role": "HR",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    "phone": "+201501000025",
+    "salary": 12800,
+    "hireDate": "2026-03-01",
+    "department": "Human Resources",
+    "permissions": [
+      "employees"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-06-25T08:00:00.000Z",
+    "updatedAt": "2025-06-25T08:00:00.000Z",
+    "firstName": "Reem",
+    "lastName": "Samir",
+    "position": "HR",
+    "managerId": "b23aaff1-a236-45d3-9f5b-e99d6d3cc293",
+    "emergencyContact": {
+      "name": "Walid Ali",
+      "phone": "+201584999052",
+      "relationship": "Friend"
+    },
+    "nationalId": "2821223709775",
+    "dateOfBirth": "1978-07-11",
+    "address": "189 El-Marg Street, Giza",
+    "city": "Giza",
+    "bankAccount": "EG72534594295617",
+    "taxId": "TAX-EG-1113",
+    "documents": [
+      "reem-samir-id.pdf",
+      "reem-samir-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Communication",
+      "Teamwork",
+      "Arabic"
+    ],
+    "performanceRating": 4.29,
+    "salesCount": 0
+  },
+  {
+    "id": "73e443e0-7af3-4483-ad31-fe06799ab38e",
+    "name": "Amr Bakry",
+    "email": "amr.bakry25@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Sales",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015051566206",
+    "salary": 10136,
+    "hireDate": "2024-07-28",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2024-07-28T05:40:54.380Z",
+    "updatedAt": "2025-03-17T15:02:48.094Z",
+    "firstName": "Amr",
+    "lastName": "Bakry",
+    "position": "Sales",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Tarek El-Din",
+      "phone": "+201718208013",
+      "relationship": "Spouse"
+    },
+    "nationalId": "29201036178924",
+    "dateOfBirth": "1993-12-03",
+    "address": "21 Corniche Street, Ismailia",
+    "city": "Cairo",
+    "bankAccount": "EG67923552835538",
+    "taxId": "TAX-EG-2016",
+    "documents": [
+      "amr.bakry25-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "ERP Systems",
+      "Inventory Management",
+      "Negotiation",
+      "CRM"
+    ],
+    "performanceRating": 3.83,
+    "salesCount": 20
+  },
+  {
+    "id": "cb0cc572-bd67-4f2f-944b-71ddf4e2fda6",
+    "name": "Sherif Saleh",
+    "email": "sherif.saleh26@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Sales",
+    "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015027804804",
+    "salary": 10376,
+    "hireDate": "2023-01-03",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2023-01-03T03:30:30.987Z",
+    "updatedAt": "2025-01-27T02:08:40.084Z",
+    "firstName": "Sherif",
+    "lastName": "Saleh",
+    "position": "Sales",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Amr Bakry",
+      "phone": "+201162271303",
+      "relationship": "Spouse"
+    },
+    "nationalId": "28408191611402",
+    "dateOfBirth": "1995-09-19",
+    "address": "144 El-Marg Street, Luxor",
+    "city": "Luxor",
+    "bankAccount": "EG58435718665214",
+    "taxId": "TAX-EG-2721",
+    "documents": [
+      "sherif.saleh26-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Excel",
+      "CRM"
+    ],
+    "performanceRating": 3.94,
+    "salesCount": 21
+  },
+  {
+    "id": "b127ef08-10d0-4711-849c-d8edd6c89e26",
+    "name": "Youssef Nabil",
+    "email": "youssef.nabil27@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Cashier",
+    "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015088968030",
+    "salary": 7463,
+    "hireDate": "2024-04-25",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2024-04-25T14:38:50.174Z",
+    "updatedAt": "2025-11-07T12:17:47.780Z",
+    "firstName": "Youssef",
+    "lastName": "Nabil",
+    "position": "Cashier",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Ali Ahmed",
+      "phone": "+201948911456",
+      "relationship": "Sibling"
+    },
+    "nationalId": "29604029558527",
+    "dateOfBirth": "1981-02-28",
+    "address": "167 El-Kornish Street, Giza",
+    "city": "Minya",
+    "bankAccount": "EG81487361736743",
+    "taxId": "TAX-EG-4737",
+    "documents": [
+      "youssef.nabil27-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Negotiation",
+      "Communication",
+      "ERP Systems",
+      "Inventory Management"
+    ],
+    "performanceRating": 3.56,
+    "salesCount": 10
+  },
+  {
+    "id": "dd0dbd88-f5e7-4733-93da-324665e1df33",
+    "name": "Dina Ghaly",
+    "email": "dina.ghaly28@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Cashier",
+    "avatar": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015065946344",
+    "salary": 7787,
+    "hireDate": "2024-07-10",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2024-07-10T16:30:45.953Z",
+    "updatedAt": "2026-01-15T10:59:22.256Z",
+    "firstName": "Dina",
+    "lastName": "Ghaly",
+    "position": "Cashier",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Ali Farouk",
+      "phone": "+201325705056",
+      "relationship": "Parent"
+    },
+    "nationalId": "29408043831044",
+    "dateOfBirth": "1987-07-01",
+    "address": "138 El-Thawra Street, Giza",
+    "city": "Nasr City",
+    "bankAccount": "EG77754884582634",
+    "taxId": "TAX-EG-8132",
+    "documents": [
+      "dina.ghaly28-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Communication",
+      "Excel",
+      "Negotiation"
+    ],
+    "performanceRating": 4.72,
+    "salesCount": 14
+  },
+  {
+    "id": "b28fef0d-8163-4e6e-b198-04e57d27d4b3",
+    "name": "Tarek Maher",
+    "email": "tarek.maher29@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Warehouse",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015067283005",
+    "salary": 8428,
+    "hireDate": "2022-08-12",
+    "department": "Warehouse",
+    "permissions": [
+      "inventory",
+      "purchase_orders"
+    ],
+    "isActive": false,
+    "status": "active",
+    "createdAt": "2022-08-12T23:13:21.636Z",
+    "updatedAt": "2025-09-06T22:43:51.030Z",
+    "firstName": "Tarek",
+    "lastName": "Maher",
+    "position": "Warehouse",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Sherif El-Din",
+      "phone": "+201336061309",
+      "relationship": "Spouse"
+    },
+    "nationalId": "29212217064669",
+    "dateOfBirth": "1989-08-19",
+    "address": "198 El-Tahrir Street, Heliopolis",
+    "city": "Luxor",
+    "bankAccount": "EG30680892526768",
+    "taxId": "TAX-EG-2903",
+    "documents": [
+      "tarek.maher29-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "ERP Systems",
+      "Excel",
+      "CRM",
+      "Negotiation"
+    ],
+    "performanceRating": 4.12,
+    "salesCount": 0
+  },
+  {
+    "id": "797ab396-3c4d-4e1b-bc5a-ffea21567436",
+    "name": "Mahmoud Youssef",
+    "email": "mahmoud.youssef30@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Warehouse",
+    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015039778608",
+    "salary": 10621,
+    "hireDate": "2022-10-14",
+    "department": "Warehouse",
+    "permissions": [
+      "inventory",
+      "purchase_orders"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2022-10-14T12:41:29.434Z",
+    "updatedAt": "2025-08-24T12:36:02.035Z",
+    "firstName": "Mahmoud",
+    "lastName": "Youssef",
+    "position": "Warehouse",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Omar Ghaly",
+      "phone": "+201541233559",
+      "relationship": "Sibling"
+    },
+    "nationalId": "28412039959373",
+    "dateOfBirth": "1984-03-24",
+    "address": "167 Ramses Street, Nasr City",
+    "city": "Nasr City",
+    "bankAccount": "EG77331786315027",
+    "taxId": "TAX-EG-2525",
+    "documents": [
+      "mahmoud.youssef30-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "ERP Systems",
+      "Inventory Management",
+      "Negotiation"
+    ],
+    "performanceRating": 3.6,
+    "salesCount": 0
+  },
+  {
+    "id": "d4e05ec9-740d-4f99-9cd9-a58ce818ef02",
+    "name": "Khaled Kamal",
+    "email": "khaled.kamal31@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Accountant",
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015079468088",
+    "salary": 13688,
+    "hireDate": "2024-04-25",
+    "department": "Finance",
+    "permissions": [
+      "reports"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2024-04-25T02:18:53.442Z",
+    "updatedAt": "2025-08-13T11:05:22.946Z",
+    "firstName": "Khaled",
+    "lastName": "Kamal",
+    "position": "Accountant",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Bassem Nasser",
+      "phone": "+201940378345",
+      "relationship": "Spouse"
+    },
+    "nationalId": "28009266666757",
+    "dateOfBirth": "1994-04-13",
+    "address": "244 El-Tahrir Street, Cairo",
+    "city": "Tanta",
+    "bankAccount": "EG79889449678607",
+    "taxId": "TAX-EG-5583",
+    "documents": [
+      "khaled.kamal31-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Excel",
+      "CRM",
+      "Negotiation",
+      "ERP Systems"
+    ],
+    "performanceRating": 4.52,
+    "salesCount": 0
+  },
+  {
+    "id": "0cf07513-c00c-4b54-89f5-ce7f64c75f7d",
+    "name": "Mahmoud Ahmed",
+    "email": "mahmoud.ahmed32@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Purchasing",
+    "avatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015049195143",
+    "salary": 11551,
+    "hireDate": "2022-08-17",
+    "department": "Purchasing",
+    "permissions": [
+      "reports"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2022-08-17T19:11:20.360Z",
+    "updatedAt": "2026-06-20T08:56:03.510Z",
+    "firstName": "Mahmoud",
+    "lastName": "Ahmed",
+    "position": "Purchasing",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Sherif Mansour",
+      "phone": "+201275386529",
+      "relationship": "Spouse"
+    },
+    "nationalId": "29704249672691",
+    "dateOfBirth": "1992-09-11",
+    "address": "158 El-Sha'aer Street, Tanta",
+    "city": "Ismailia",
+    "bankAccount": "EG31081976747808",
+    "taxId": "TAX-EG-6245",
+    "documents": [
+      "mahmoud.ahmed32-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Communication",
+      "Excel",
+      "Negotiation"
+    ],
+    "performanceRating": 4.73,
+    "salesCount": 0
+  },
+  {
+    "id": "5f30a7ec-332c-4613-ad52-0946e63f27d3",
+    "name": "Walid Bakry",
+    "email": "walid.bakry33@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Customer Service",
+    "avatar": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015063425081",
+    "salary": 10997,
+    "hireDate": "2024-03-08",
+    "department": "Customer Service",
+    "permissions": [
+      "reports"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2024-03-08T20:39:19.454Z",
+    "updatedAt": "2025-09-10T13:00:45.146Z",
+    "firstName": "Walid",
+    "lastName": "Bakry",
+    "position": "Customer Service",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Mahmoud Ashraf",
+      "phone": "+201736120076",
+      "relationship": "Parent"
+    },
+    "nationalId": "28505119175498",
+    "dateOfBirth": "1986-11-11",
+    "address": "170 El-Thawra Street, Heliopolis",
+    "city": "Cairo",
+    "bankAccount": "EG10648917299474",
+    "taxId": "TAX-EG-2534",
+    "documents": [
+      "walid.bakry33-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Excel",
+      "Negotiation",
+      "ERP Systems"
+    ],
+    "performanceRating": 3.17,
+    "salesCount": 0
+  },
+  {
+    "id": "113cbbc2-92fb-448a-b6fa-2c45ab26ab72",
+    "name": "Mostafa Kamal",
+    "email": "mostafa.kamal34@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Customer Service",
+    "avatar": "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015061000715",
+    "salary": 9537,
+    "hireDate": "2024-02-16",
+    "department": "Customer Service",
+    "permissions": [
+      "reports"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2024-02-16T02:28:45.306Z",
+    "updatedAt": "2026-06-14T22:02:10.719Z",
+    "firstName": "Mostafa",
+    "lastName": "Kamal",
+    "position": "Customer Service",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Ahmed Soliman",
+      "phone": "+201452539819",
+      "relationship": "Sibling"
+    },
+    "nationalId": "28803168065673",
+    "dateOfBirth": "1981-04-28",
+    "address": "129 El-Tahrir Street, Aswan",
+    "city": "Mansoura",
+    "bankAccount": "EG68361194617044",
+    "taxId": "TAX-EG-9296",
+    "documents": [
+      "mostafa.kamal34-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "ERP Systems",
+      "Excel",
+      "Inventory Management",
+      "Communication"
+    ],
+    "performanceRating": 3.55,
+    "salesCount": 0
+  },
+  {
+    "id": "6d9d0a11-8a85-425e-b522-429acd0c0a55",
+    "name": "Maha Soliman",
+    "email": "maha.soliman35@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "IT Support",
+    "avatar": "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015081579592",
+    "salary": 12830,
+    "hireDate": "2022-03-12",
+    "department": "IT",
+    "permissions": [
+      "reports"
+    ],
+    "isActive": false,
+    "status": "active",
+    "createdAt": "2022-03-12T04:03:29.959Z",
+    "updatedAt": "2025-05-10T17:06:30.631Z",
+    "firstName": "Maha",
+    "lastName": "Soliman",
+    "position": "IT Support",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Karim Maher",
+      "phone": "+201921446721",
+      "relationship": "Sibling"
+    },
+    "nationalId": "28703076683196",
+    "dateOfBirth": "1980-05-01",
+    "address": "248 Ramses Street, Zagazig",
+    "city": "Alexandria",
+    "bankAccount": "EG66204549367647",
+    "taxId": "TAX-EG-5714",
+    "documents": [
+      "maha.soliman35-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Communication",
+      "ERP Systems",
+      "Inventory Management",
+      "Excel"
+    ],
+    "performanceRating": 3.62,
+    "salesCount": 0
+  },
+  {
+    "id": "b56dc51a-eb82-4b57-af8d-e92003dfcac1",
+    "name": "Ghada Fawzy",
+    "email": "ghada.fawzy36@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "HR",
+    "avatar": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015045024046",
+    "salary": 11824,
+    "hireDate": "2024-08-30",
+    "department": "HR",
+    "permissions": [
+      "reports"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2024-08-30T01:40:39.100Z",
+    "updatedAt": "2025-02-01T23:10:30.341Z",
+    "firstName": "Ghada",
+    "lastName": "Fawzy",
+    "position": "HR",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Youssef El-Sayed",
+      "phone": "+201374747659",
+      "relationship": "Parent"
+    },
+    "nationalId": "29412169425816",
+    "dateOfBirth": "1984-07-04",
+    "address": "208 Pyramids Road Street, Luxor",
+    "city": "Minya",
+    "bankAccount": "EG69957186516886",
+    "taxId": "TAX-EG-7203",
+    "documents": [
+      "ghada.fawzy36-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "ERP Systems",
+      "CRM"
+    ],
+    "performanceRating": 3.74,
+    "salesCount": 0
+  },
+  {
+    "id": "e4c5c661-f287-48bb-8cf7-05132dd6ce2a",
+    "name": "Mohamed Abbas",
+    "email": "mohamed.abbas37@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Sales",
+    "avatar": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015069687229",
+    "salary": 12763,
+    "hireDate": "2025-03-10",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-03-10T22:22:26.332Z",
+    "updatedAt": "2025-04-10T11:28:32.666Z",
+    "firstName": "Mohamed",
+    "lastName": "Abbas",
+    "position": "Sales",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Nour Fawzy",
+      "phone": "+201347441216",
+      "relationship": "Parent"
+    },
+    "nationalId": "28903257603152",
+    "dateOfBirth": "1984-05-26",
+    "address": "227 El-Thawra Street, Maadi",
+    "city": "Alexandria",
+    "bankAccount": "EG50857195268246",
+    "taxId": "TAX-EG-6078",
+    "documents": [
+      "mohamed.abbas37-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "CRM",
+      "Inventory Management",
+      "Negotiation"
+    ],
+    "performanceRating": 3.49,
+    "salesCount": 40
+  },
+  {
+    "id": "c1506f3f-a727-479c-a9b9-521d42146014",
+    "name": "Heba Ibrahim",
+    "email": "heba.ibrahim38@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Sales",
+    "avatar": "https://images.unsplash.com/photo-1628157588556-872569c39a7a?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015035818235",
+    "salary": 11627,
+    "hireDate": "2022-08-21",
+    "department": "Sales",
+    "permissions": [
+      "sales",
+      "customers"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2022-08-21T23:00:11.263Z",
+    "updatedAt": "2025-03-13T03:20:19.933Z",
+    "firstName": "Heba",
+    "lastName": "Ibrahim",
+    "position": "Sales",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Bassem Nabil",
+      "phone": "+201899729488",
+      "relationship": "Parent"
+    },
+    "nationalId": "28202123968615",
+    "dateOfBirth": "1988-04-02",
+    "address": "179 El-Sha'aer Street, Mansoura",
+    "city": "Giza",
+    "bankAccount": "EG50302760837277",
+    "taxId": "TAX-EG-2390",
+    "documents": [
+      "heba.ibrahim38-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "Inventory Management",
+      "ERP Systems",
+      "Negotiation"
+    ],
+    "performanceRating": 5,
+    "salesCount": 22
+  },
+  {
+    "id": "5d6a1d7f-7d5e-4c25-9f37-ffe7e5620015",
+    "name": "Mona Mounir",
+    "email": "mona.mounir39@atlaserp.com",
+    "password": "$2b$10$a5a18c366ef7d8a16ee1802748761fad77027a55d163dfd460491",
+    "role": "Branch Manager",
+    "avatar": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=400&fit=crop&crop=face",
+    "phone": "+2015095153716",
+    "salary": 16633,
+    "hireDate": "2025-07-10",
+    "department": "Management",
+    "permissions": [
+      "reports"
+    ],
+    "isActive": true,
+    "status": "active",
+    "createdAt": "2025-07-10T19:05:54.279Z",
+    "updatedAt": "2025-01-09T11:54:06.271Z",
+    "firstName": "Mona",
+    "lastName": "Mounir",
+    "position": "Branch Manager",
+    "managerId": "2c5a1062-d287-44ee-b2a3-b2ef303c36b0",
+    "emergencyContact": {
+      "name": "Karim Youssef",
+      "phone": "+201421745481",
+      "relationship": "Spouse"
+    },
+    "nationalId": "29401036319710",
+    "dateOfBirth": "1982-05-18",
+    "address": "164 Corniche Street, Ismailia",
+    "city": "Port Said",
+    "bankAccount": "EG13864387471746",
+    "taxId": "TAX-EG-8011",
+    "documents": [
+      "mona.mounir39-contract.pdf"
+    ],
+    "certifications": [],
+    "skills": [
+      "ERP Systems",
+      "Inventory Management",
+      "CRM"
+    ],
+    "performanceRating": 3.69,
+    "salesCount": 33
+  }
+]
