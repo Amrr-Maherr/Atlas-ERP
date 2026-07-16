@@ -1,11 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { NavDocuments } from "@/components/layout/navigation/nav-documents"
-import { NavMain } from "@/components/layout/navigation/nav-main"
-import { NavSecondary } from "@/components/layout/navigation/nav-secondary"
-import { NavUser } from "@/components/layout/navigation/nav-user"
+import { NavMain } from "@/components/layout/navigation/nav-main";
+import { NavSecondary } from "@/components/layout/navigation/nav-secondary";
+import { NavUser } from "@/components/layout/navigation/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -14,8 +13,21 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon } from "lucide-react"
+} from "@/components/ui/sidebar";
+import {
+  LayoutDashboardIcon,
+  TagIcon,
+  UsersIcon,
+  TruckIcon,
+  PackageIcon,
+  UserCogIcon,
+  ReceiptIcon,
+  ShoppingCartIcon,
+  BoxesIcon,
+  Settings2Icon,
+  CommandIcon,
+} from "lucide-react";
+import Link from "next/link";
 
 const data = {
   user: {
@@ -26,155 +38,58 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
-      icon: (
-        <LayoutDashboardIcon
-        />
-      ),
+      url: "/dashboard",
+      icon: <LayoutDashboardIcon />,
     },
     {
-      title: "Lifecycle",
-      url: "#",
-      icon: (
-        <ListIcon
-        />
-      ),
+      title: "Categories",
+      url: "/dashboard/categories",
+      icon: <TagIcon />,
     },
     {
-      title: "Analytics",
-      url: "#",
-      icon: (
-        <ChartBarIcon
-        />
-      ),
+      title: "Customers",
+      url: "/dashboard/customers",
+      icon: <UsersIcon />,
     },
     {
-      title: "Projects",
-      url: "#",
-      icon: (
-        <FolderIcon
-        />
-      ),
+      title: "Suppliers",
+      url: "/dashboard/suppliers",
+      icon: <TruckIcon />,
     },
     {
-      title: "Team",
-      url: "#",
-      icon: (
-        <UsersIcon
-        />
-      ),
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: (
-        <CameraIcon
-        />
-      ),
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: "Products",
+      url: "/dashboard/products",
+      icon: <PackageIcon />,
     },
     {
-      title: "Proposal",
-      icon: (
-        <FileTextIcon
-        />
-      ),
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: "Employees",
+      url: "/dashboard/employees",
+      icon: <UserCogIcon />,
     },
     {
-      title: "Prompts",
-      icon: (
-        <FileTextIcon
-        />
-      ),
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: "Sales",
+      url: "/dashboard/sales",
+      icon: <ReceiptIcon />,
+    },
+    {
+      title: "Purchase Orders",
+      url: "/dashboard/purchase-orders",
+      icon: <ShoppingCartIcon />,
+    },
+    {
+      title: "Inventory",
+      url: "/dashboard/inventory",
+      icon: <BoxesIcon />,
     },
   ],
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
-      icon: (
-        <Settings2Icon
-        />
-      ),
-    },
-    {
-      title: "Get Help",
-      url: "#",
-      icon: (
-        <CircleHelpIcon
-        />
-      ),
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: (
-        <SearchIcon
-        />
-      ),
+      url: "/dashboard/settings",
+      icon: <Settings2Icon />,
     },
   ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: (
-        <DatabaseIcon
-        />
-      ),
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: (
-        <FileChartColumnIcon
-        />
-      ),
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: (
-        <FileIcon
-        />
-      ),
-    },
-  ],
-}
+};
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
@@ -183,22 +98,21 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton
               className="data-[slot=sidebar-menu-button]:p-1.5!"
-              render={<a href="#" />}
+              render={<Link href={"/"} />}
             >
               <CommandIcon className="size-5!" />
-              <span className="text-base font-semibold">Acme Inc.</span>
+              <span className="text-base font-semibold">Atlas ERP</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
