@@ -21,7 +21,10 @@ export default async function handleLogin({ email, password }: HandleLoginProps)
     const user = users[0];
 
     if (user.password !== password) {
-        throw new Error("Invalid email or password.");
+        throw new Error("Invalid password.");
+    }
+    if (user.email !== email) {
+        throw new Error("Invalid email.");
     }
 
     if (!user.isActive) {
