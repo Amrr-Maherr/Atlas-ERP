@@ -1,0 +1,20 @@
+import { Badge } from "@/components/ui/badge";
+
+const STATUS_STYLES: Record<string, string> = {
+  active: "bg-[var(--success)] text-[var(--success-foreground)]",
+  inactive: "bg-[var(--destructive)] text-[var(--destructive-foreground)]",
+};
+
+const DEFAULT_STYLE = "bg-[var(--destructive)] text-[var(--destructive-foreground)]";
+
+type CategoryStatusBadgeProps = {
+  status: string;
+};
+
+export function CategoryStatusBadge({ status }: CategoryStatusBadgeProps) {
+  return (
+    <Badge className={STATUS_STYLES[status] ?? DEFAULT_STYLE}>
+      {status}
+    </Badge>
+  );
+}
