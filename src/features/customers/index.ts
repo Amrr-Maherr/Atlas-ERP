@@ -1,2 +1,16 @@
-export { getCustomers, getCustomer } from "./api"
-export { useCustomers, useCustomer } from "./hooks"
+export { getCustomers, getCustomer } from "./api/customers.api";
+export { useCustomers, useCustomer } from "./hooks/customers.hooks";
+export { CustomersList } from "./components/customers-list";
+export { CustomersTable } from "./components/customers-table";
+export { CustomersTableRow } from "./components/customers-table-row";
+export { CustomersSkeleton } from "./components/customers-skeleton";
+export { CustomersError } from "./components/customers-error";
+export { CustomersEmpty } from "./components/customers-empty";
+export { CustomerStatusBadge } from "./components/customer-status-badge";
+export { CustomerDetails } from "./components/customer-details";
+export { CustomerDetailsHeader } from "./components/customer-details-header";
+export { CustomerDetailsCard } from "./components/customer-details-card";
+export { CustomerDetailsSkeleton } from "./components/customer-details-skeleton";
+export { CustomerDetailsError } from "./components/customer-details-error";
+export { CustomerEditDialog } from "./components/customer-edit-dialog";
+export type { Customer } from "./types/customer.types";
