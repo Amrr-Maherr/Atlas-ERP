@@ -1,0 +1,37 @@
+export type Employee = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+  avatar: string;
+  phone: string;
+  salary: number;
+  hireDate: string;
+  department: string;
+  permissions: string[];
+  isActive: boolean;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+  firstName: string;
+  lastName: string;
+  position: string;
+  managerId: string | null;
+  emergencyContact: {
+    name: string;
+    phone: string;
+    relationship: string;
+  };
+  nationalId: string;
+  dateOfBirth: string;
+  address: string;
+  city: string;
+  bankAccount: string;
+  taxId: string;
+  documents: string[];
+  certifications: string[];
+  skills: string[];
+  performanceRating: number;
+  salesCount: number;
+};
