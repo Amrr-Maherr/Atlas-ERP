@@ -1,0 +1,28 @@
+export type Supplier = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  contactPerson: string;
+  website: string;
+  taxNumber: string;
+  notes: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+  companyName: string;
+  balance: number;
+  rating: number;
+  totalOrders: number;
+  lastOrderDate: string;
+  paymentTerms: string;
+  deliveryDays: number;
+  isVerified: boolean;
+  contactPhone: string;
+  contactEmail: string;
+  country: string;
+  image: string;
+  logo: string;
+  status: string;
+};
