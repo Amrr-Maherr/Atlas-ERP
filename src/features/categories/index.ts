@@ -12,4 +12,5 @@ export { CategoryDetailsHeader } from "./components/category-details-header";
 export { CategoryDetailsCard } from "./components/category-details-card";
 export { CategoryDetailsSkeleton } from "./components/category-details-skeleton";
 export { CategoryDetailsError } from "./components/category-details-error";
+export { CategoryEditDialog } from "./components/category-edit-dialog";
 export type { Category } from "./types/category.types";

@@ -6,7 +6,7 @@ type CategoryDetailsErrorProps = { error: Error | null };
 export function CategoryDetailsError({ error }: CategoryDetailsErrorProps) {
   if (!error) return null;
   return (
-    <Card className="border-[var(--destructive)]/50 bg-[var(--destructive)]/5">
+    <Card className="border-[var(--destructive)] bg-[var(--destructive)]/5">
       <CardContent className="flex flex-col items-center gap-3 py-10 text-center">
         <AlertCircleIcon className="size-8 text-[var(--destructive)]" />
         <p className="text-sm font-medium text-[var(--destructive)]">
