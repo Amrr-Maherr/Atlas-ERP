@@ -1,10 +1,12 @@
 import { Category } from "../types/category.types";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { formatDate } from "@/components/utils/format-date";
 import { ImageIcon, EyeIcon, PencilIcon, Trash2Icon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 import { CategoryStatusBadge } from "./category-status-badge";
 
 type CategoriesTableRowProps = {
@@ -52,9 +54,14 @@ export function CategoriesTableRow({ category }: CategoriesTableRowProps) {
       </TableCell>
       <TableCell className="text-end">
         <div className="flex items-center justify-end gap-1">
-          <Button variant="ghost" size="icon-sm">
+          <Link
+            href={`/dashboard/categories/${category.id}`}
+            className={cn(
+              buttonVariants({ variant: "ghost", size: "icon-sm" }),
+            )}
+          >
             <EyeIcon />
-          </Button>
+          </Link>
           <Button variant="ghost" size="icon-sm">
             <PencilIcon />
           </Button>
