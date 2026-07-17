@@ -1,0 +1,28 @@
+export type Sale = {
+  id: string;
+  invoiceNumber: string;
+  customerId: string;
+  cashierId: string;
+  subtotal: number;
+  tax: number;
+  discount: number;
+  total: number;
+  paymentMethod: string;
+  paymentStatus: string;
+  invoiceStatus: string;
+  notes: string;
+  createdAt: string;
+  updatedAt: string;
+  employeeId: string;
+  saleDate: string;
+  shippingAddress: string;
+  shippingMethod: string;
+  shippingCost: number;
+  paidAmount: number;
+  changeAmount: number;
+  items: number;
+  customerName: string;
+  employeeName: string;
+  orderStatus: string;
+  remainingAmount: number;
+};
