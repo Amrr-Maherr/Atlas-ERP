@@ -1,0 +1,30 @@
+import { Skeleton } from "@/components/ui/skeleton";
+import { Card, CardContent } from "@/components/ui/card";
+
+type PurchaseOrdersSkeletonProps = { isLoading: boolean };
+
+export function PurchaseOrdersSkeleton({ isLoading }: PurchaseOrdersSkeletonProps) {
+  if (!isLoading) return null;
+  return (
+    <div className="flex flex-col gap-3">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Card key={i} className="rounded-lg">
+          <CardContent className="grid grid-cols-8 items-center gap-4 py-3">
+            <Skeleton className="h-5 w-16 rounded" />
+            <Skeleton className="h-5 w-8 rounded-full" />
+            <Skeleton className="h-4 w-16" />
+            <Skeleton className="h-5 w-16 rounded-full" />
+            <Skeleton className="h-4 w-16" />
+            <Skeleton className="h-4 w-16" />
+            <Skeleton className="h-5 w-16 rounded-full" />
+            <div className="flex items-center justify-end gap-1">
+              <Skeleton className="size-7 rounded-lg" />
+              <Skeleton className="size-7 rounded-lg" />
+              <Skeleton className="size-7 rounded-lg" />
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
