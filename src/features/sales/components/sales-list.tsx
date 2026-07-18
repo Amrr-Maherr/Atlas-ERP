@@ -1,7 +1,14 @@
+"use client"
+
+import { useState } from "react"
 import { PageHeader } from "@/components/shared/page-header";
 import { DataTable } from "@/components/shared/data-table";
+import { CreateDialog } from "@/components/shared/create-dialog";
+import { Button } from "@/components/ui/button";
+import { PlusIcon } from "lucide-react";
 import { Sale } from "../types/sale.types";
 import { saleColumns, saleExportColumns } from "../columns";
+import { SaleForm } from "./sale-form";
 
 type SalesListProps = {
   salesData: Sale[];
@@ -22,11 +29,19 @@ export function SalesList({
   total,
   onChangePage,
 }: SalesListProps) {
+  const [open, setOpen] = useState(false);
+
   return (
     <section className="flex flex-col gap-6">
       <PageHeader
         title="Sales"
         description="View and manage sales invoices and transactions."
+        actions={
+          <Button onClick={() => setOpen(true)}>
+            <PlusIcon />
+            Add Sale
+          </Button>
+        }
       />
       <DataTable
         columns={saleColumns}
@@ -42,6 +57,14 @@ export function SalesList({
         emptyTitle="No sales yet"
         emptyDescription="Your sales will appear here."
       />
+      <CreateDialog
+        open={open}
+        onOpenChange={setOpen}
+        title="Add Sale"
+        description="Create a new sale transaction."
+      >
+        <SaleForm />
+      </CreateDialog>
     </section>
   );
 }

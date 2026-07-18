@@ -1,7 +1,14 @@
+"use client"
+
+import { useState } from "react"
 import { PageHeader } from "@/components/shared/page-header";
 import { DataTable } from "@/components/shared/data-table";
+import { CreateDialog } from "@/components/shared/create-dialog";
+import { Button } from "@/components/ui/button";
+import { PlusIcon } from "lucide-react";
 import { InventoryItem } from "../types/inventory.types";
 import { inventoryColumns, inventoryExportColumns } from "../columns";
+import { InventoryForm } from "./inventory-form";
 
 type InventoryListProps = {
   inventoryData: InventoryItem[];
@@ -22,11 +29,19 @@ export function InventoryList({
   total,
   onChangePage,
 }: InventoryListProps) {
+  const [open, setOpen] = useState(false);
+
   return (
     <section className="flex flex-col gap-6">
       <PageHeader
         title="Inventory"
         description="Track stock levels, reorder points, and warehouse locations."
+        actions={
+          <Button onClick={() => setOpen(true)}>
+            <PlusIcon />
+            Add Inventory Item
+          </Button>
+        }
       />
       <DataTable
         columns={inventoryColumns}
@@ -42,6 +57,14 @@ export function InventoryList({
         emptyTitle="No inventory items"
         emptyDescription="Add products to your inventory to get started."
       />
+      <CreateDialog
+        open={open}
+        onOpenChange={setOpen}
+        title="Add Inventory Item"
+        description="Add a new item to your inventory."
+      >
+        <InventoryForm />
+      </CreateDialog>
     </section>
   );
 }
