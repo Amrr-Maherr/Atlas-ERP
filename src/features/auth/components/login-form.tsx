@@ -32,6 +32,9 @@ export function LoginForm({
     mutate(data, {
       onSuccess: (response) => {
         localStorage.setItem("user", JSON.stringify(response));
+        document.cookie = `user=${encodeURIComponent(
+          JSON.stringify(response),
+        )}; path=/`;
         toast.success("Welcome back, " + response.name + "!");
         router.replace(`/dashboard`);
       },
