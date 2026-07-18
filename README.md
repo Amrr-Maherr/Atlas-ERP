@@ -61,15 +61,18 @@ The system is designed for **business owners**, **operations managers**, **wareh
 | Feature | Description |
 |---------|-------------|
 | **Authentication** | Email/password login with role-based users (admin, manager, cashier, warehouse). Client-side validation, show/hide password toggle, toast notifications, and localStorage session persistence |
-| **Dashboard Analytics** | KPI summary cards (Total Revenue, New Customers, Active Accounts, Growth Rate) with trend indicators. Interactive area chart with 7/30/90-day filtering. Responsive layout with mobile/desktop awareness |
-| **Data Table** | Advanced data table with drag-and-drop row reordering, column sorting, column visibility toggle, row selection, pagination (10–50 rows per page), inline editing, and row action menus |
+| **Dashboard Analytics** | KPI summary cards (Total Revenue, New Customers, Active Accounts, Growth Rate) with real API data. Monthly revenue area chart (Recharts). Tabbed cards for recent orders, top customers, low-stock alerts, and top suppliers |
+| **Shared DataTable** | Reusable data table built on TanStack Table with column sorting, loading skeletons, error/empty states, pagination, and a toolbar with export actions. Used across all 8 entity list views |
+| **Server-Side Pagination** | DataPagination component with ellipsis logic, wired to all 8 API endpoints using JSON Server `?_page=N&_per_page=10` with `{ data, items }` response format |
+| **Data Export** | ExportMenu dropdown on every entity table. Export to CSV (via `export-to-csv`), Excel (SpreadsheetML XML), and PDF (print-ready HTML) |
+| **Create Dialogs** | Reusable CreateDialog wrapper with shared PageHeader action buttons. Entity-specific form layouts for all 8 entities |
 | **Sidebar Navigation** | Collapsible sidebar with categorized navigation (Main, Secondary), user avatar dropdown, Quick Create button, and responsive mobile sheet overlay |
-| **Top Header** | Breadcrumb-style header with sidebar toggle trigger and page title |
+| **Top Header** | Breadcrumb-style header with sidebar toggle trigger, page title, and optional action slot |
+| **Detail Views** | Rich detail pages for all 8 entities with composed card layouts, loading skeletons, error states, and entity-specific data sections |
 | **Toast Notifications** | Themed toast system with success, error, info, and warning variants using Sonner |
 | **Dark Mode** | Full dark mode support via next-themes with system/light/dark toggle |
-| **Form Validation** | Client-side form validation using React Hook Form with inline error messages |
 | **Responsive Design** | Mobile-first responsive layout with adaptive sidebar, header, and content area |
-| **UI Component Library** | 25+ reusable UI primitives (Button, Card, Badge, Table, Tabs, Drawer, Sheet, Select, Checkbox, Tooltip, etc.) |
+| **UI Component Library** | 30 reusable UI primitives (Button, Card, Badge, Table, Tabs, Drawer, Sheet, Select, Checkbox, Tooltip, Dialog, Textarea, etc.) |
 
 ### Seed Data
 
@@ -141,6 +144,12 @@ The mock database comes pre-loaded with realistic data for an Egyptian electroni
 |------------|---------|---------|
 | [Recharts](https://recharts.org) | ^3.8.0 | Responsive area charts with theme-aware color configuration |
 
+### Export
+
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| [export-to-csv](https://www.npmjs.com/package/export-to-csv) | ^1.4.0 | Client-side CSV export with configurable columns and options |
+
 ### Utilities
 
 | Technology | Version | Purpose |
@@ -169,41 +178,40 @@ atlas-erp/
 │       ├── layout.tsx            # Dashboard shell (Sidebar + Header)
 │       └── dashboard/
 │           ├── page.tsx          # Analytics dashboard
-│           ├── categories/       # Category management
-│           ├── customers/        # Customer management
-│           ├── employees/        # Employee management
-│           ├── inventory/        # Inventory tracking
-│           ├── products/         # Product catalog
-│           ├── purchase-orders/  # Purchase order management
-│           ├── sales/            # Sales management
+│           ├── categories/       # Category list + [id] detail
+│           ├── customers/        # Customer list + [id] detail
+│           ├── employees/        # Employee list + [id] detail
+│           ├── inventory/        # Inventory list + [id] detail
+│           ├── products/         # Product list + [id] detail
+│           ├── purchase-orders/  # Purchase order list + [id] detail
+│           ├── sales/            # Sale list + [id] detail
 │           ├── settings/         # Application settings
-│           └── suppliers/        # Supplier management
+│           └── suppliers/        # Supplier list + [id] detail
 │
 ├── features/                     # Feature modules (vertical slice architecture)
-│   ├── auth/                     # Authentication feature
-│   │   ├── api/                  # API handlers
-│   │   ├── components/           # Login form, validation, view
-│   │   ├── hooks/                # useLogin mutation hook
-│   │   ├── pages/                # Page wrappers with metadata
-│   │   ├── schemas/              # Zod validation schemas
-│   │   ├── services/             # Business logic services
-│   │   ├── types/                # TypeScript type definitions
-│   │   └── utils/                # Feature-specific utilities
-│   ├── dashboard/                # Dashboard analytics feature
-│   │   ├── components/           # Chart, data table, KPI cards
-│   │   └── pages/                # Dashboard page + mock data
-│   ├── customers/                # Customer management (scaffolded)
-│   ├── employees/                # Employee management (scaffolded)
-│   ├── inventory/                # Inventory tracking (scaffolded)
-│   ├── products/                 # Product catalog (scaffolded)
-│   ├── settings/                 # Settings (scaffolded)
-│   └── suppliers/                # Supplier management (scaffolded)
+│   ├── auth/                     # Authentication (login form, hooks, API)
+│   ├── dashboard/                # Dashboard analytics (charts, KPI cards)
+│   ├── categories/               # Category CRUD (api, hooks, components, types)
+│   ├── customers/                # Customer CRUD (api, hooks, components, types)
+│   ├── employees/                # Employee CRUD (api, hooks, components, types)
+│   ├── products/                 # Product CRUD (api, hooks, components, types)
+│   ├── suppliers/                # Supplier CRUD (api, hooks, components, types)
+│   ├── inventory/                # Inventory tracking (api, hooks, components, types)
+│   ├── sales/                    # Sales management (api, hooks, components, types)
+│   ├── purchase-orders/          # Purchase order management (api, hooks, components, types)
+│   └── settings/                 # Settings (scaffolded)
 │
 ├── components/                   # Shared components
 │   ├── layout/                   # Layout components
 │   │   └── navigation/           # Sidebar, header, nav items, user menu
 │   ├── shared/                   # Feature-agnostic shared components
-│   └── ui/                       # 25+ shadcn/ui primitives
+│   │   ├── data-table/           # Reusable DataTable (TanStack Table)
+│   │   ├── create-dialog/        # Reusable create dialog wrapper
+│   │   ├── pagination/           # DataPagination component
+│   │   └── page-header.tsx       # Page header with title + actions slot
+│   ├── lib/                      # Shared libraries
+│   │   └── export/               # CSV, Excel, PDF export utilities
+│   └── ui/                       # 30 shadcn/ui primitives
 │
 ├── providers/                    # React context providers
 │   └── query-provider.tsx        # TanStack Query client (60s stale time)
@@ -235,7 +243,7 @@ atlas-erp/
 
 Traditional projects organize code by technical type (all components in one folder, all hooks in another). Atlas ERP uses **feature-based (vertical slice) architecture** instead:
 
-- **Each feature is self-contained** — `auth`, `dashboard`, `customers`, etc. each have their own `api/`, `components/`, `hooks/`, `pages/`, `schemas/`, `services/`, `types/`, and `utils/` directories
+- **Each feature is self-contained** — `auth`, `dashboard`, `customers`, etc. each have their own `api/`, `components/`, `hooks/`, `types/` directories
 - **No cross-feature imports** — Features don't depend on each other, making them independently developable and testable
 - **Scales with complexity** — Adding a new feature means creating one new folder, not scattering code across 5+ directories
 - **Clear ownership** — When working on "Products", everything you need lives in `src/features/products/`
@@ -261,7 +269,7 @@ Traditional projects organize code by technical type (all components in one fold
 
 ### Reusable UI System
 
-The `components/ui/` directory contains **25+ shadcn/ui primitives** that form the design system foundation. Every component follows the same pattern:
+The `components/ui/` directory contains **30 shadcn/ui primitives** that form the design system foundation. Every component follows the same pattern:
 
 - Built on headless `@base-ui/react` primitives
 - Styled with Tailwind CSS and CVA variants
@@ -269,14 +277,22 @@ The `components/ui/` directory contains **25+ shadcn/ui primitives** that form t
 - Theme-aware (light/dark mode support)
 - Composable and extendable
 
+### Shared Components
+
+The `components/shared/` directory contains feature-agnostic components used across all entity views:
+
+- **DataTable** — TanStack Table wrapper with sorting, loading/error/empty states, pagination, toolbar with export
+- **DataPagination** — Ellipsis-based pagination component
+- **CreateDialog** — Reusable dialog wrapper for entity creation forms
+- **PageHeader** — Title + description + optional actions slot
+
 ### Data Flow
 
-1. **Pages** are thin wrappers that compose feature components
-2. **Components** call custom hooks for data access
-3. **Hooks** (React Query) manage server state, caching, and mutations
+1. **Pages** are thin wrappers that compose feature components, manage pagination state, and pass data
+2. **Components** receive data as props and render tables, forms, and detail views
+3. **Hooks** (React Query) manage server state, caching, and API communication
 4. **API handlers** use Axios to communicate with the REST backend
-5. **Schemas** (Zod) validate data at the boundary
-6. **Types** ensure end-to-end type safety
+5. **Types** ensure end-to-end type safety
 
 ### State Management
 
@@ -294,15 +310,15 @@ The `components/ui/` directory contains **25+ shadcn/ui primitives** that form t
 | Screen | Route | Status | Description |
 |--------|-------|--------|-------------|
 | **Login** | `/login` | Implemented | Split-screen authentication with email/password form, validation, and role-based login |
-| **Dashboard** | `/dashboard` | Implemented | Analytics overview with KPI cards, interactive area chart, and advanced data table |
-| **Categories** | `/dashboard/categories` | Scaffolded | Product category management |
-| **Customers** | `/dashboard/customers` | Scaffolded | Customer records with loyalty tiers and spending history |
-| **Suppliers** | `/dashboard/suppliers` | Scaffolded | Supplier profiles with ratings and payment terms |
-| **Products** | `/dashboard/products` | Scaffolded | Product catalog with SKUs, pricing, and specifications |
-| **Employees** | `/dashboard/employees` | Scaffolded | Employee directory with roles, departments, and payroll |
-| **Sales** | `/dashboard/sales` | Scaffolded | Sales transactions with invoices and payment tracking |
-| **Purchase Orders** | `/dashboard/purchase-orders` | Scaffolded | Procurement workflow with approval and receiving |
-| **Inventory** | `/dashboard/inventory` | Scaffolded | Stock levels, movements, and warehouse management |
+| **Dashboard** | `/dashboard` | Implemented | Analytics overview with KPI cards, monthly revenue chart, tabbed order/customer/inventory/supplier cards |
+| **Categories** | `/dashboard/categories` | Implemented | Paginated list with export, create dialog, detail view with stats and SEO info |
+| **Customers** | `/dashboard/customers` | Implemented | Paginated list with export, create dialog, detail view with contact/order/payment sections |
+| **Suppliers** | `/dashboard/suppliers` | Implemented | Paginated list with export, create dialog, detail view with verification/rating/orders info |
+| **Products** | `/dashboard/products` | Implemented | Paginated list with export, create dialog, detail view with pricing/stock/specifications |
+| **Employees** | `/dashboard/employees` | Implemented | Paginated list with export, create dialog, detail view with department/salary/performance |
+| **Sales** | `/dashboard/sales` | Implemented | Paginated list with export, create dialog, detail view with invoice/payment/financial breakdown |
+| **Purchase Orders** | `/dashboard/purchase-orders` | Implemented | Paginated list with export, create dialog, detail view with items/payment/shipping sections |
+| **Inventory** | `/dashboard/inventory` | Implemented | Paginated list with export, create dialog, detail view with stock levels/pricing/locations |
 | **Settings** | `/dashboard/settings` | Scaffolded | Application and user preferences |
 
 ---
@@ -318,7 +334,7 @@ The `components/ui/` directory contains **25+ shadcn/ui primitives** that form t
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/atlas-erp.git
+git clone https://github.com/Amrr-Maherr/Atlas-ERP.git
 cd atlas-erp
 
 # Install dependencies
@@ -379,20 +395,18 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 
 > The following features are planned but not yet implemented.
 
-### Core Features
+### CRUD Operations (In Progress)
 
-- [ ] **CRUD Operations** — Full create, read, update, delete for all entities
-- [ ] **Product Catalog** — Product management with images, specifications, and variants
-- [ ] **Customer Management** — Customer profiles with loyalty program and spending analytics
-- [ ] **Supplier Management** — Supplier directory with performance ratings
-- [ ] **Sales Management** — Invoice generation, payment tracking, and refund processing
-- [ ] **Purchase Orders** — Procurement workflow with approval chains and receiving
-- [ ] **Inventory Management** — Stock tracking, low-stock alerts, and movement history
-- [ ] **Employee Management** — HR directory with roles, departments, and payroll
-- [ ] **Category Management** — Hierarchical product categories with SEO metadata
+- [x] **Read Operations** — List views with pagination, sorting, and detail pages for all 8 entities
+- [x] **Export** — CSV, Excel, and PDF export for all entity tables
+- [ ] **Create Operations** — Wire up form submissions with mutation hooks, validation, and cache invalidation
+- [ ] **Update Operations** — Edit dialogs with form state, mutation hooks, and optimistic updates
+- [ ] **Delete Operations** — Confirmation dialogs with mutation hooks and cache invalidation
+- [ ] **Form Validation** — Zod schemas for all entity forms
 
 ### Authentication & Security
 
+- [x] **Login** — Email/password with role-based users and localStorage session
 - [ ] **JWT Authentication** — Token-based auth with refresh tokens
 - [ ] **Route Guards** — Middleware-protected routes for authenticated users only
 - [ ] **Role-Based Access Control (RBAC)** — Permission-based feature access
@@ -400,14 +414,18 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 
 ### Reporting & Analytics
 
+- [x] **Dashboard Analytics** — KPI cards, monthly revenue chart, tabbed overview cards
+- [x] **Export to CSV** — Client-side CSV export for all entities
+- [x] **Export to Excel** — SpreadsheetML XML export
+- [x] **Export to PDF** — Print-ready HTML export
 - [ ] **Sales Reports** — Daily, weekly, monthly revenue analytics
 - [ ] **Inventory Reports** — Stock movement and valuation reports
 - [ ] **Financial Reports** — Profit/loss, expense tracking, and tax summaries
-- [ ] **Export to PDF** — Generate printable reports
-- [ ] **Export to Excel** — Spreadsheet export for data analysis
 
 ### User Experience
 
+- [x] **Dark Mode** — System/light/dark toggle via next-themes
+- [x] **Responsive Design** — Mobile-first with adaptive sidebar and layouts
 - [ ] **Global Search** — Full-text search across all entities
 - [ ] **Advanced Filtering** — Multi-criteria filtering with saved presets
 - [ ] **Notifications** — Real-time alerts for low stock, new orders, etc.
@@ -428,10 +446,13 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 
 ## Project Highlights
 
-- **Feature-Based Architecture** — Vertical slice design where each business domain is self-contained with its own API layer, components, hooks, types, and schemas
+- **Feature-Based Architecture** — Vertical slice design where each business domain is self-contained with its own API layer, components, hooks, and types
 - **Enterprise-Ready Folder Structure** — Scalable project organization that mirrors real-world business domains
-- **Reusable UI System** — 25+ accessible, theme-aware components built on Base UI primitives with CVA variants
-- **Type-Safe Development** — End-to-end TypeScript with strict mode, Zod schemas, and typed API responses
+- **Shared DataTable** — Reusable TanStack Table component with sorting, pagination, export, and loading/error/empty states — used across all 8 entity views
+- **Data Export** — Client-side CSV, Excel, and PDF export on every entity table with configurable column mappings
+- **Server-Side Pagination** — Ellipsis-based pagination wired to all 8 API endpoints with consistent `{ data, items }` response format
+- **Reusable UI System** — 30 accessible, theme-aware components built on Base UI primitives with CVA variants
+- **Type-Safe Development** — End-to-end TypeScript with strict mode, typed API responses, and entity-specific type definitions
 - **Design System** — Comprehensive design tokens using OKLCH color space, documented in `DESIGN_SYSTEM.md`
 - **Rich Seed Data** — Realistic mock database with relational data for an Egyptian electronics trading company
 - **Responsive by Default** — Mobile-first design with adaptive sidebar, header, and content layouts
@@ -446,10 +467,11 @@ This project demonstrates:
 - **Large-Scale React Architecture** — Feature-based organization with vertical slice modules
 - **Next.js App Router Mastery** — Route groups, nested layouts, server components, and client components
 - **State Management** — TanStack Query for server state, React Hook Form for forms, Context for UI state
-- **API Integration** — RESTful data fetching with Axios, React Query caching, and mutation patterns
-- **Form Handling** — Complex form validation, error states, and submission workflows
+- **API Integration** — RESTful data fetching with Axios, React Query caching, and server-side pagination patterns
+- **Shared Component Design** — Building reusable DataTable, CreateDialog, and PageHeader components used across all entities
+- **Data Export** — Client-side CSV, Excel, and PDF generation with configurable column mappings
 - **Reusable Component Design** — Building a composable UI system with shadcn/ui and CVA
-- **Data Table Engineering** — Advanced tables with sorting, filtering, pagination, drag-and-drop, and inline editing
+- **Data Table Engineering** — TanStack Table integration with sorting, pagination, and toolbar actions
 - **Design System Implementation** — OKLCH color tokens, CSS custom properties, and theme management
 - **Modern CSS** — Tailwind CSS v4 with CSS-first configuration and utility-first patterns
 - **Clean Project Organization** — Separation of concerns across presentation, business logic, and data layers
@@ -506,11 +528,9 @@ chore:    Build process or auxiliary tool changes
 
 ## Author
 
-**Your Name**
+**Amrr Maherr**
 
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [Your Name](https://linkedin.com/in/your-profile)
-- Email: your-email@example.com
+- GitHub: [@Amrr-Maherr](https://github.com/Amrr-Maherr)
 
 ---
 
@@ -521,7 +541,7 @@ This project is licensed under the **MIT License**.
 ```
 MIT License
 
-Copyright (c) 2026 Your Name
+Copyright (c) 2026 Amrr Maherr
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
