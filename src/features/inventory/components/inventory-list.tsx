@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/shared/page-header";
+import { DataTable } from "@/components/shared/data-table";
 import { InventoryItem } from "../types/inventory.types";
-import { InventoryTable } from "./inventory-table";
+import { inventoryColumns, inventoryExportColumns } from "../columns";
 
 type InventoryListProps = {
   inventoryData: InventoryItem[];
@@ -27,7 +28,8 @@ export function InventoryList({
         title="Inventory"
         description="Track stock levels, reorder points, and warehouse locations."
       />
-      <InventoryTable
+      <DataTable
+        columns={inventoryColumns}
         data={inventoryData}
         isLoading={isLoading}
         error={error}
@@ -35,6 +37,10 @@ export function InventoryList({
         per_page={per_page}
         total={total}
         onChangePage={onChangePage}
+        exportColumns={inventoryExportColumns}
+        exportFilename="inventory"
+        emptyTitle="No inventory items"
+        emptyDescription="Add products to your inventory to get started."
       />
     </section>
   );

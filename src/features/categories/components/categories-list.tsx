@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/shared/page-header";
+import { DataTable } from "@/components/shared/data-table";
 import { Category } from "../types/category.types";
-import { CategoriesTable } from "./categories-table";
+import { categoryColumns, categoryExportColumns } from "../columns";
 
 type CategoriesListProps = {
   categoriesData: Category[];
@@ -27,7 +28,8 @@ export function CategoriesList({
         title="Categories"
         description="Create, edit, and organize product categories."
       />
-      <CategoriesTable
+      <DataTable
+        columns={categoryColumns}
         data={categoriesData}
         isLoading={isLoading}
         error={error}
@@ -35,6 +37,10 @@ export function CategoriesList({
         per_page={per_page}
         total={total}
         onChangePage={onChangePage}
+        exportColumns={categoryExportColumns}
+        exportFilename="categories"
+        emptyTitle="No categories yet"
+        emptyDescription="Create your first category to get started."
       />
     </section>
   );

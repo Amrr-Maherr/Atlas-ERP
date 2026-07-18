@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/shared/page-header";
+import { DataTable } from "@/components/shared/data-table";
 import { PurchaseOrder } from "../types/purchase-order.types";
-import { PurchaseOrdersTable } from "./purchase-orders-table";
+import { purchaseOrderColumns, purchaseOrderExportColumns } from "../columns";
 
 type PurchaseOrdersListProps = {
   purchaseOrdersData: PurchaseOrder[];
@@ -27,7 +28,8 @@ export function PurchaseOrdersList({
         title="Purchase Orders"
         description="Manage purchase orders and procurement tracking."
       />
-      <PurchaseOrdersTable
+      <DataTable
+        columns={purchaseOrderColumns}
         data={purchaseOrdersData}
         isLoading={isLoading}
         error={error}
@@ -35,6 +37,10 @@ export function PurchaseOrdersList({
         per_page={per_page}
         total={total}
         onChangePage={onChangePage}
+        exportColumns={purchaseOrderExportColumns}
+        exportFilename="purchase-orders"
+        emptyTitle="No purchase orders yet"
+        emptyDescription="Create your first purchase order to get started."
       />
     </section>
   );

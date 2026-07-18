@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/shared/page-header";
+import { DataTable } from "@/components/shared/data-table";
 import { Employee } from "../types/employee.types";
-import { EmployeesTable } from "./employees-table";
+import { employeeColumns, employeeExportColumns } from "../columns";
 
 type EmployeesListProps = {
   employeesData: Employee[];
@@ -27,7 +28,8 @@ export function EmployeesList({
         title="Employees"
         description="Manage employee records and organizational details."
       />
-      <EmployeesTable
+      <DataTable
+        columns={employeeColumns}
         data={employeesData}
         isLoading={isLoading}
         error={error}
@@ -35,6 +37,10 @@ export function EmployeesList({
         per_page={per_page}
         total={total}
         onChangePage={onChangePage}
+        exportColumns={employeeExportColumns}
+        exportFilename="employees"
+        emptyTitle="No employees yet"
+        emptyDescription="Add your first employee to get started."
       />
     </section>
   );

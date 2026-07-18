@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/shared/page-header";
+import { DataTable } from "@/components/shared/data-table";
 import { Product } from "../types/product.types";
-import { ProductsTable } from "./products-table";
+import { productColumns, productExportColumns } from "../columns";
 
 type ProductsListProps = {
   productsData: Product[];
@@ -27,7 +28,8 @@ export function ProductsList({
         title="Products"
         description="Manage your product inventory and catalog."
       />
-      <ProductsTable
+      <DataTable
+        columns={productColumns}
         data={productsData}
         isLoading={isLoading}
         error={error}
@@ -35,6 +37,10 @@ export function ProductsList({
         per_page={per_page}
         total={total}
         onChangePage={onChangePage}
+        exportColumns={productExportColumns}
+        exportFilename="products"
+        emptyTitle="No products yet"
+        emptyDescription="Add your first product to get started."
       />
     </section>
   );

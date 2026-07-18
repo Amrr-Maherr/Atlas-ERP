@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/shared/page-header";
+import { DataTable } from "@/components/shared/data-table";
 import { Sale } from "../types/sale.types";
-import { SalesTable } from "./sales-table";
+import { saleColumns, saleExportColumns } from "../columns";
 
 type SalesListProps = {
   salesData: Sale[];
@@ -27,7 +28,8 @@ export function SalesList({
         title="Sales"
         description="View and manage sales invoices and transactions."
       />
-      <SalesTable
+      <DataTable
+        columns={saleColumns}
         data={salesData}
         isLoading={isLoading}
         error={error}
@@ -35,6 +37,10 @@ export function SalesList({
         per_page={per_page}
         total={total}
         onChangePage={onChangePage}
+        exportColumns={saleExportColumns}
+        exportFilename="sales"
+        emptyTitle="No sales yet"
+        emptyDescription="Your sales will appear here."
       />
     </section>
   );

@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/shared/page-header";
+import { DataTable } from "@/components/shared/data-table";
 import { Supplier } from "../types/supplier.types";
-import { SuppliersTable } from "./suppliers-table";
+import { supplierColumns, supplierExportColumns } from "../columns";
 
 type SuppliersListProps = {
   suppliersData: Supplier[];
@@ -27,7 +28,8 @@ export function SuppliersList({
         title="Suppliers"
         description="Manage supplier relationships and procurement details."
       />
-      <SuppliersTable
+      <DataTable
+        columns={supplierColumns}
         data={suppliersData}
         isLoading={isLoading}
         error={error}
@@ -35,6 +37,10 @@ export function SuppliersList({
         per_page={per_page}
         total={total}
         onChangePage={onChangePage}
+        exportColumns={supplierExportColumns}
+        exportFilename="suppliers"
+        emptyTitle="No suppliers yet"
+        emptyDescription="Add your first supplier to get started."
       />
     </section>
   );

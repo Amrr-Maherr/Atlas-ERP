@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/shared/page-header";
+import { DataTable } from "@/components/shared/data-table";
 import { Customer } from "../types/customer.types";
-import { CustomersTable } from "./customers-table";
+import { customerColumns, customerExportColumns } from "../columns";
 
 type CustomersListProps = {
   customersData: Customer[];
@@ -27,7 +28,8 @@ export function CustomersList({
         title="Customers"
         description="Manage customer relationships and account details."
       />
-      <CustomersTable
+      <DataTable
+        columns={customerColumns}
         data={customersData}
         isLoading={isLoading}
         error={error}
@@ -35,6 +37,10 @@ export function CustomersList({
         per_page={per_page}
         total={total}
         onChangePage={onChangePage}
+        exportColumns={customerExportColumns}
+        exportFilename="customers"
+        emptyTitle="No customers yet"
+        emptyDescription="Add your first customer to get started."
       />
     </section>
   );
