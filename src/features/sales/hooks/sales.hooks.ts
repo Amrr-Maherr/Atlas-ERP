@@ -3,10 +3,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { getSales, getSale } from "../api/sales.api";
 
-export function useSales() {
+export function useSales({ page = 1, per_page = 10 } = {}) {
   return useQuery({
-    queryKey: ["sales"],
-    queryFn: () => getSales(),
+    queryKey: ["sales", page, per_page],
+    queryFn: () => getSales({ page, per_page }),
   });
 }
 

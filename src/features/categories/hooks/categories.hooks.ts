@@ -3,10 +3,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { getCategories, getCategory } from "../api/categories.api";
 
-export function useCategories() {
+export function useCategories({ page = 1, per_page = 10 } = {}) {
   return useQuery({
-    queryKey: ["categories"],
-    queryFn: () => getCategories(),
+    queryKey: ["categories", page, per_page],
+    queryFn: () => getCategories({ page, per_page }),
   });
 }
 
