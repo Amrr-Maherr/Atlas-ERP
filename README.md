@@ -70,7 +70,10 @@ The system is designed for **business owners**, **operations managers**, **wareh
 | **Top Header** | Breadcrumb-style header with sidebar toggle trigger, page title, and optional action slot |
 | **Detail Views** | Rich detail pages for all 8 entities with composed card layouts, loading skeletons, error states, and entity-specific data sections |
 | **Toast Notifications** | Themed toast system with success, error, info, and warning variants using Sonner |
-| **Dark Mode** | Full dark mode support via next-themes with system/light/dark toggle |
+| **Settings** | Full settings page with tabbed UI (Company, Finance, Inventory, Sales, Notifications, Preferences). Displays all configuration values with badges for boolean settings |
+| **User Profile** | Profile page showing avatar, role badge, and personal info (name, email, phone, department, position, permissions). Reads user from localStorage session |
+| **Active Sidebar Links** | Sidebar navigation highlights the current route using pathname detection with `isActive` prop on menu buttons |
+| **Dark Mode** | Full dark mode support via next-themes with system/light/dark toggle in the header |
 | **Responsive Design** | Mobile-first responsive layout with adaptive sidebar, header, and content area |
 | **UI Component Library** | 30 reusable UI primitives (Button, Card, Badge, Table, Tabs, Drawer, Sheet, Select, Checkbox, Tooltip, Dialog, Textarea, etc.) |
 
@@ -185,8 +188,9 @@ atlas-erp/
 │           ├── products/         # Product list + [id] detail
 │           ├── purchase-orders/  # Purchase order list + [id] detail
 │           ├── sales/            # Sale list + [id] detail
-│           ├── settings/         # Application settings
-│           └── suppliers/        # Supplier list + [id] detail
+│           ├── settings/         # Application settings (tabbed sections)
+│           ├── suppliers/        # Supplier list + [id] detail
+│           └── profile/          # User profile page
 │
 ├── features/                     # Feature modules (vertical slice architecture)
 │   ├── auth/                     # Authentication (login form, hooks, API)
@@ -199,7 +203,8 @@ atlas-erp/
 │   ├── inventory/                # Inventory tracking (api, hooks, components, types)
 │   ├── sales/                    # Sales management (api, hooks, components, types)
 │   ├── purchase-orders/          # Purchase order management (api, hooks, components, types)
-│   └── settings/                 # Settings (scaffolded)
+│   ├── settings/                 # Settings (api, hooks, components, types)
+│   └── profile/                  # User profile (api, hooks, components, types, utils)
 │
 ├── components/                   # Shared components
 │   ├── layout/                   # Layout components
@@ -319,7 +324,8 @@ The `components/shared/` directory contains feature-agnostic components used acr
 | **Sales** | `/dashboard/sales` | Implemented | Paginated list with export, create dialog, detail view with invoice/payment/financial breakdown |
 | **Purchase Orders** | `/dashboard/purchase-orders` | Implemented | Paginated list with export, create dialog, detail view with items/payment/shipping sections |
 | **Inventory** | `/dashboard/inventory` | Implemented | Paginated list with export, create dialog, detail view with stock levels/pricing/locations |
-| **Settings** | `/dashboard/settings` | Scaffolded | Application and user preferences |
+| **Settings** | `/dashboard/settings` | Implemented | Application settings displayed in tabbed sections (Company, Finance, Inventory, Sales, Notifications, Preferences) |
+| **Profile** | `/dashboard/profile` | Implemented | User profile with avatar, personal info, department, permissions, and activity dates |
 
 ---
 
@@ -356,10 +362,10 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 | Email | Password | Role |
 |-------|----------|------|
-| admin@atlaserp.com | admin123 | Admin |
-| manager@atlaserp.com | manager1 | Manager |
-| cashier@atlaserp.com | cashier1 | Cashier |
-| warehouse@atlaserp.com | warehouse1 | Warehouse |
+| admin@atlaserp.com | 123456 | Admin |
+| manager@atlaserp.com | 123456 | Manager |
+| cashier@atlaserp.com | 123456 | Cashier |
+| warehouse@atlaserp.com | 123456 | Warehouse |
 
 ---
 
