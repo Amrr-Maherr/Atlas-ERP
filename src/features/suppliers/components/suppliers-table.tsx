@@ -11,6 +11,19 @@ import { SuppliersError } from "./suppliers-error";
 import { SuppliersEmpty } from "./suppliers-empty";
 import { SuppliersTableRow } from "./suppliers-table-row";
 import DataPagination from "@/components/shared/pagination/data-pagination";
+import { ExportMenu } from "@/components/ui/export-menu";
+import type { ExportColumn } from "@/components/lib/export/exportCsv";
+
+const supplierColumns: ExportColumn<Supplier>[] = [
+  { key: "name", label: "Supplier" },
+  { key: "contactPerson", label: "Contact" },
+  { key: "phone", label: "Phone" },
+  { key: "country", label: "Country" },
+  { key: "totalOrders", label: "Orders" },
+  { key: "balance", label: "Balance" },
+  { key: "createdAt", label: "Created" },
+  { key: "status", label: "Status" },
+]
 
 type SuppliersTableProps = {
   data: Supplier[];
@@ -39,6 +52,9 @@ export function SuppliersTable({
 
       {!isLoading && !error && data.length > 0 && (
         <div className="rounded-lg border">
+          <div className="flex items-center justify-end p-2 border-b">
+            <ExportMenu data={data} columns={supplierColumns} filename="suppliers" />
+          </div>
           <Table>
             <TableHeader>
               <TableRow>

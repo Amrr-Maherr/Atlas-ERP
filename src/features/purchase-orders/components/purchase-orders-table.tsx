@@ -11,6 +11,18 @@ import { PurchaseOrdersError } from "./purchase-orders-error";
 import { PurchaseOrdersEmpty } from "./purchase-orders-empty";
 import { PurchaseOrdersTableRow } from "./purchase-orders-table-row";
 import DataPagination from "@/components/shared/pagination/data-pagination";
+import { ExportMenu } from "@/components/ui/export-menu";
+import type { ExportColumn } from "@/components/lib/export/exportCsv";
+
+const poColumns: ExportColumn<PurchaseOrder>[] = [
+  { key: "poNumber", label: "PO Number" },
+  { key: "items", label: "Items" },
+  { key: "total", label: "Total" },
+  { key: "paymentMethod", label: "Payment" },
+  { key: "orderDate", label: "Order Date" },
+  { key: "expectedDate", label: "Expected" },
+  { key: "orderStatus", label: "Status" },
+]
 
 type PurchaseOrdersTableProps = {
   data: PurchaseOrder[];
@@ -39,6 +51,9 @@ export function PurchaseOrdersTable({
 
       {!isLoading && !error && data.length > 0 && (
         <div className="rounded-lg border">
+          <div className="flex items-center justify-end p-2 border-b">
+            <ExportMenu data={data} columns={poColumns} filename="purchase-orders" />
+          </div>
           <Table>
             <TableHeader>
               <TableRow>

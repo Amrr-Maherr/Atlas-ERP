@@ -11,6 +11,18 @@ import { InventoryError } from "./inventory-error";
 import { InventoryEmpty } from "./inventory-empty";
 import { InventoryTableRow } from "./inventory-table-row";
 import DataPagination from "@/components/shared/pagination/data-pagination";
+import { ExportMenu } from "@/components/ui/export-menu";
+import type { ExportColumn } from "@/components/lib/export/exportCsv";
+
+const inventoryColumns: ExportColumn<InventoryItem>[] = [
+  { key: "name", label: "Product" },
+  { key: "sku", label: "SKU" },
+  { key: "stock", label: "Stock" },
+  { key: "minStock", label: "Min Stock" },
+  { key: "reorderLevel", label: "Reorder Level" },
+  { key: "costPrice", label: "Cost Price" },
+  { key: "status", label: "Status" },
+]
 
 type InventoryTableProps = {
   data: InventoryItem[];
@@ -39,6 +51,9 @@ export function InventoryTable({
 
       {!isLoading && !error && data.length > 0 && (
         <div className="rounded-lg border">
+          <div className="flex items-center justify-end p-2 border-b">
+            <ExportMenu data={data} columns={inventoryColumns} filename="inventory" />
+          </div>
           <Table>
             <TableHeader>
               <TableRow>

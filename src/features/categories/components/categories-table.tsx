@@ -11,6 +11,18 @@ import { CategoriesError } from "./categories-error";
 import { CategoriesEmpty } from "./categories-empty";
 import { CategoriesTableRow } from "./categories-table-row";
 import DataPagination from "@/components/shared/pagination/data-pagination";
+import { ExportMenu } from "@/components/ui/export-menu";
+import type { ExportColumn } from "@/components/lib/export/exportCsv";
+
+const categoryColumns: ExportColumn<Category>[] = [
+  { key: "name", label: "Category" },
+  { key: "description", label: "Description" },
+  { key: "slug", label: "Slug" },
+  { key: "productCount", label: "Products" },
+  { key: "displayOrder", label: "Order" },
+  { key: "createdAt", label: "Created" },
+  { key: "status", label: "Status" },
+]
 
 type CategoriesTableProps = {
   data: Category[];
@@ -39,6 +51,9 @@ export function CategoriesTable({
 
       {!isLoading && !error && data.length > 0 && (
         <div className="rounded-lg border">
+          <div className="flex items-center justify-end p-2 border-b">
+            <ExportMenu data={data} columns={categoryColumns} filename="categories" />
+          </div>
           <Table>
             <TableHeader>
               <TableRow>

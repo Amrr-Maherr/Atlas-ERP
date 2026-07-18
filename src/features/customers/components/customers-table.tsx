@@ -11,6 +11,19 @@ import { CustomersError } from "./customers-error";
 import { CustomersEmpty } from "./customers-empty";
 import { CustomersTableRow } from "./customers-table-row";
 import DataPagination from "@/components/shared/pagination/data-pagination";
+import { ExportMenu } from "@/components/ui/export-menu";
+import type { ExportColumn } from "@/components/lib/export/exportCsv";
+
+const customerColumns: ExportColumn<Customer>[] = [
+  { key: "name", label: "Customer" },
+  { key: "email", label: "Email" },
+  { key: "phone", label: "Phone" },
+  { key: "city", label: "City" },
+  { key: "totalOrders", label: "Orders" },
+  { key: "totalSpent", label: "Total Spent" },
+  { key: "createdAt", label: "Created" },
+  { key: "status", label: "Status" },
+]
 
 type CustomersTableProps = {
   data: Customer[];
@@ -39,6 +52,9 @@ export function CustomersTable({
 
       {!isLoading && !error && data.length > 0 && (
         <div className="rounded-lg border">
+          <div className="flex items-center justify-end p-2 border-b">
+            <ExportMenu data={data} columns={customerColumns} filename="customers" />
+          </div>
           <Table>
             <TableHeader>
               <TableRow>
