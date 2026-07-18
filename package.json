@@ -23,6 +23,7 @@
     "axios": "^1.18.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "export-to-csv": "^1.4.0",
     "framer-motion": "^12.42.2",
     "json-server": "^1.0.0-beta.15",
     "lucide-react": "^1.24.0",
