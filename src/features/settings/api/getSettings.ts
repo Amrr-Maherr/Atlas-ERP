@@ -5,6 +5,6 @@ const api = axios.create({
 });
 
 export default async function getSettings() {
-    const { data } = await api.get("/settings");
-    return data;
+    const { data } = await api.get("/settings?_page=1&_per_page=10");
+    return data.data;
 }
