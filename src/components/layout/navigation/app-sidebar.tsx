@@ -26,15 +26,11 @@ import {
   BoxesIcon,
   Settings2Icon,
   CommandIcon,
+  CircleUserRoundIcon,
 } from "lucide-react";
 import Link from "next/link";
 
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   navMain: [
     {
       title: "Dashboard",
@@ -84,6 +80,11 @@ const data = {
   ],
   navSecondary: [
     {
+      title: "Profile",
+      url: "/dashboard/profile",
+      icon: <CircleUserRoundIcon />,
+    },
+    {
       title: "Settings",
       url: "/dashboard/settings",
       icon: <Settings2Icon />,
@@ -111,7 +112,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   );
