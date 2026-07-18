@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { LoginView } from "@/features/auth/components/login-view";
 
 export const metadata: Metadata = {
@@ -12,5 +13,9 @@ export const metadata: Metadata = {
 };
 
 export default function LoginPage() {
-  return <LoginView />;
+  return (
+    <Suspense>
+      <LoginView />
+    </Suspense>
+  );
 }
