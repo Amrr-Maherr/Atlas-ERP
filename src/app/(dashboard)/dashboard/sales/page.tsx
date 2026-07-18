@@ -1,16 +1,23 @@
 "use client";
+import { useState } from "react";
 import { useSales } from "@/features/sales";
 import { SalesList } from "@/features/sales";
 
 export default function SalesPage() {
-  const { data, isLoading, error } = useSales();
+  const [page, setPage] = useState(1);
+  const per_page = 10;
+  const { data, isLoading, error } = useSales({ page, per_page });
 
   return (
     <div className="flex flex-col gap-6 p-6">
       <SalesList
-        salesData={data ?? []}
+        salesData={data?.items ?? []}
         isLoading={isLoading}
         error={error}
+        page={page}
+        per_page={per_page}
+        total={data?.total ?? 0}
+        onChangePage={setPage}
       />
     </div>
   );
