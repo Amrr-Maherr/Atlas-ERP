@@ -2,7 +2,6 @@ import { Category } from "../types/category.types";
 import {
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
@@ -11,17 +10,26 @@ import { CategoriesSkeleton } from "./categories-skeleton";
 import { CategoriesError } from "./categories-error";
 import { CategoriesEmpty } from "./categories-empty";
 import { CategoriesTableRow } from "./categories-table-row";
+import DataPagination from "@/components/shared/pagination/data-pagination";
 
 type CategoriesTableProps = {
   data: Category[];
   isLoading: boolean;
   error: Error | null;
+  page?: number;
+  per_page?: number;
+  total?: number;
+  onChangePage?: (page: number) => void;
 };
 
 export function CategoriesTable({
   data,
   isLoading,
   error,
+  page = 1,
+  per_page = 10,
+  total = 0,
+  onChangePage,
 }: CategoriesTableProps) {
   return (
     <>
@@ -50,6 +58,9 @@ export function CategoriesTable({
               ))}
             </TableBody>
           </Table>
+          <div className="flex justify-end p-4">
+            <DataPagination page={page} per_page={per_page} total={total} onChangePage={onChangePage} />
+          </div>
         </div>
       )}
     </>
