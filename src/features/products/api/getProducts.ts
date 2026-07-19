@@ -1,12 +1,8 @@
-import axios from "axios";
-
-const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001",
-});
+import api from "../../../lib/api";
 
 type GetProductsProps = {
-  page?: number;
-  per_page?: number;
+    page?: number;
+    per_page?: number;
 };
 
 export default async function getProducts({ page = 1, per_page = 10 }: GetProductsProps = {}) {

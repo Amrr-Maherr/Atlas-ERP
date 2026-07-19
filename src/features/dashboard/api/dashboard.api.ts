@@ -1,8 +1,4 @@
-import axios from "axios";
-
-const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001",
-});
+import api from "../../../lib/api";
 
 export async function getDashboardCategories() {
   const { data } = await api.get("/categories?_page=1&_per_page=10");
