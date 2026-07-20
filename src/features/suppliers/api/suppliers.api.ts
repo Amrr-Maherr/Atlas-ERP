@@ -13,3 +13,8 @@ export async function getSupplier({ id }: GetSupplierProps) {
   const { data } = await api.get(`/suppliers/${id}`);
   return data;
 }
+
+export async function DeleteSupplier({ id }: GetSupplierProps) {
+  const { data } = await api.delete(`/suppliers/${id}`);
+  return data;
+}

@@ -1,5 +1,5 @@
-export { getSuppliers, getSupplier } from "./api/suppliers.api";
-export { useSuppliers, useSupplier } from "./hooks/suppliers.hooks";
+export { getSuppliers, getSupplier, DeleteSupplier } from "./api/suppliers.api";
+export { useSuppliers, useSupplier, useDeleteSupplier } from "./hooks/suppliers.hooks";
 export { SuppliersList } from "./components/suppliers-list";
 export { SuppliersTable } from "./components/suppliers-table";
 export { SuppliersTableRow } from "./components/suppliers-table-row";
@@ -13,4 +13,7 @@ export { SupplierDetailsCard } from "./components/supplier-details-card";
 export { SupplierDetailsSkeleton } from "./components/supplier-details-skeleton";
 export { SupplierDetailsError } from "./components/supplier-details-error";
 export { SupplierEditDialog } from "./components/supplier-edit-dialog";
+export { SupplierRowActions } from "./components/supplier-row-actions";
+export { DeleteSupplierButton } from "./components/delete-supplier-button";
+export { DeleteSupplierDialog } from "./components/delete-supplier-dialog";
 export type { Supplier } from "./types/supplier.types";
