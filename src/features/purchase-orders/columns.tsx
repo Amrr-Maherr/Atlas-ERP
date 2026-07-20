@@ -2,12 +2,9 @@
 
 import type { ColumnDef } from "@tanstack/react-table"
 import { Badge } from "@/components/ui/badge"
-import { Button, buttonVariants } from "@/components/ui/button"
 import { formatDate } from "@/components/utils/format-date"
-import { EyeIcon, PencilIcon, Trash2Icon } from "lucide-react"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
 import { PurchaseOrderStatusBadge } from "./components/purchase-order-status-badge"
+import { PurchaseOrderRowActions } from "./components/purchase-order-row-actions"
 import type { PurchaseOrder } from "./types/purchase-order.types"
 
 export const purchaseOrderColumns: ColumnDef<PurchaseOrder>[] = [
@@ -61,18 +58,7 @@ export const purchaseOrderColumns: ColumnDef<PurchaseOrder>[] = [
   {
     id: "actions",
     header: "Actions",
-    cell: ({ row }) => {
-      const po = row.original
-      return (
-        <div className="flex items-center justify-end gap-1">
-          <Link href={`/dashboard/purchase-orders/${po.id}`} className={cn(buttonVariants({ variant: "ghost", size: "icon-sm" }))}>
-            <EyeIcon />
-          </Link>
-          <Button variant="ghost" size="icon-sm"><PencilIcon /></Button>
-          <Button variant="destructive" size="icon-sm"><Trash2Icon /></Button>
-        </div>
-      )
-    },
+    cell: ({ row }) => <PurchaseOrderRowActions purchaseOrder={row.original} />,
   },
 ]
 

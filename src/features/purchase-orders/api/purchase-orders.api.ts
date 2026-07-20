@@ -13,3 +13,8 @@ export async function getPurchaseOrder({ id }: GetPurchaseOrderProps) {
   const { data } = await api.get(`/purchaseOrders/${id}`);
   return data;
 }
+
+export async function DeletePurchaseOrder({ id }: GetPurchaseOrderProps) {
+  const { data } = await api.delete(`/purchaseOrders/${id}`);
+  return data;
+}

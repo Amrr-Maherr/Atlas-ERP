@@ -1,5 +1,5 @@
-export { getPurchaseOrders, getPurchaseOrder } from "./api/purchase-orders.api";
-export { usePurchaseOrders, usePurchaseOrder } from "./hooks/purchase-orders.hooks";
+export { getPurchaseOrders, getPurchaseOrder, DeletePurchaseOrder } from "./api/purchase-orders.api";
+export { usePurchaseOrders, usePurchaseOrder, useDeletePurchaseOrder } from "./hooks/purchase-orders.hooks";
 export { PurchaseOrdersList } from "./components/purchase-orders-list";
 export { PurchaseOrdersTable } from "./components/purchase-orders-table";
 export { PurchaseOrdersTableRow } from "./components/purchase-orders-table-row";
@@ -12,4 +12,7 @@ export { PurchaseOrderDetailsHeader } from "./components/purchase-order-details-
 export { PurchaseOrderDetailsCard } from "./components/purchase-order-details-card";
 export { PurchaseOrderDetailsSkeleton } from "./components/purchase-order-details-skeleton";
 export { PurchaseOrderDetailsError } from "./components/purchase-order-details-error";
+export { PurchaseOrderRowActions } from "./components/purchase-order-row-actions";
+export { DeletePurchaseOrderButton } from "./components/delete-purchase-order-button";
+export { DeletePurchaseOrderDialog } from "./components/delete-purchase-order-dialog";
 export type { PurchaseOrder } from "./types/purchase-order.types";
