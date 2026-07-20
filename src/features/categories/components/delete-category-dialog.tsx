@@ -17,18 +17,20 @@ type DeleteCategoryDialogProps = {
   category: Category;
   onConfirm: () => void;
   isPending: boolean;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 };
 
 export function DeleteCategoryDialog({
   category,
   onConfirm,
   isPending,
+  open,
+  onOpenChange,
 }: DeleteCategoryDialogProps) {
   return (
-    <AlertDialog>
-      <AlertDialogTrigger
-        render={<Button variant="destructive" size="icon-sm" />}
-      >
+    <AlertDialog open={open} onOpenChange={onOpenChange}>
+      <AlertDialogTrigger render={<Button variant="destructive" size="icon-sm" />}>
         <Trash2Icon />
       </AlertDialogTrigger>
 
@@ -37,20 +39,16 @@ export function DeleteCategoryDialog({
           <AlertDialogTitle>Delete category?</AlertDialogTitle>
 
           <AlertDialogDescription>
-            Are you sure you want to delete <strong>{category.name}</strong>?
-            This action cannot be undone and may affect related products
-            associated with this category.
+            Are you sure you want to delete{" "}
+            <strong>{category.name}</strong>? This action cannot be undone
+            and may affect related products associated with this category.
           </AlertDialogDescription>
         </AlertDialogHeader>
 
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
 
-          <AlertDialogAction
-            variant="destructive"
-            onClick={onConfirm}
-            disabled={isPending}
-          >
+          <AlertDialogAction onClick={onConfirm} disabled={isPending}>
             {isPending ? "Deleting..." : "Delete"}
           </AlertDialogAction>
         </AlertDialogFooter>
