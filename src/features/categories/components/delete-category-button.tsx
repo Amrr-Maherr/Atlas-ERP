@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { toast } from "sonner";
 import { useDeleteCategory } from "../hooks/categories.hooks";
 import { DeleteCategoryDialog } from "./delete-category-dialog";
@@ -10,6 +11,7 @@ type DeleteCategoryButtonProps = {
 };
 
 export function DeleteCategoryButton({ category }: DeleteCategoryButtonProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const { isPending, mutate: deleteCategory } = useDeleteCategory();
 
   function handleConfirm() {
@@ -17,6 +19,7 @@ export function DeleteCategoryButton({ category }: DeleteCategoryButtonProps) {
       { id: category.id },
       {
         onSuccess: () => {
+          setIsOpen(false);
           toast.success("Category deleted", {
             description: `"${category.name}" was successfully deleted.`,
           });
@@ -36,6 +39,8 @@ export function DeleteCategoryButton({ category }: DeleteCategoryButtonProps) {
       category={category}
       onConfirm={handleConfirm}
       isPending={isPending}
+      open={isOpen}
+      onOpenChange={setIsOpen}
     />
   );
 }
