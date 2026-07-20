@@ -2,13 +2,11 @@
 
 import type { ColumnDef } from "@tanstack/react-table"
 import { Badge } from "@/components/ui/badge"
-import { Button, buttonVariants } from "@/components/ui/button"
 import { formatDate } from "@/components/utils/format-date"
-import { UserIcon, EyeIcon, PencilIcon, Trash2Icon } from "lucide-react"
+import { UserIcon } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
 import { EmployeeStatusBadge } from "./components/employee-status-badge"
+import { EmployeeRowActions } from "./components/employee-row-actions"
 import type { Employee } from "./types/employee.types"
 
 export const employeeColumns: ColumnDef<Employee>[] = [
@@ -77,18 +75,7 @@ export const employeeColumns: ColumnDef<Employee>[] = [
   {
     id: "actions",
     header: "Actions",
-    cell: ({ row }) => {
-      const employee = row.original
-      return (
-        <div className="flex items-center justify-end gap-1">
-          <Link href={`/dashboard/employees/${employee.id}`} className={cn(buttonVariants({ variant: "ghost", size: "icon-sm" }))}>
-            <EyeIcon />
-          </Link>
-          <Button variant="ghost" size="icon-sm"><PencilIcon /></Button>
-          <Button variant="destructive" size="icon-sm"><Trash2Icon /></Button>
-        </div>
-      )
-    },
+    cell: ({ row }) => <EmployeeRowActions employee={row.original} />,
   },
 ]
 

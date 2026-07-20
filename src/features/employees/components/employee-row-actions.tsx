@@ -1,18 +1,36 @@
-import { Button } from "@/components/ui/button";
-import { EyeIcon, PencilIcon, Trash2Icon } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { EyeIcon } from "lucide-react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import type { Employee } from "../types/employee.types";
+import { DeleteEmployeeButton } from "./delete-employee-button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-export function EmployeeRowActions() {
+type EmployeeRowActionsProps = {
+  employee: Employee;
+};
+
+export function EmployeeRowActions({ employee }: EmployeeRowActionsProps) {
   return (
     <div className="flex items-center justify-end gap-1">
-      <Button variant="ghost" size="icon-sm">
-        <EyeIcon />
-      </Button>
-      <Button variant="ghost" size="icon-sm">
-        <PencilIcon />
-      </Button>
-      <Button variant="destructive" size="icon-sm">
-        <Trash2Icon />
-      </Button>
+      <Link
+        href={`/dashboard/employees/${employee.id}`}
+        className={cn(buttonVariants({ variant: "ghost", size: "icon-sm" }))}
+      >
+        <Tooltip>
+          <TooltipTrigger>
+            <EyeIcon />
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>View employee details</p>
+          </TooltipContent>
+        </Tooltip>
+      </Link>
+      <DeleteEmployeeButton employee={employee} />
     </div>
   );
 }

@@ -1,5 +1,5 @@
-export { getEmployees, getEmployee } from "./api/employees.api";
-export { useEmployees, useEmployee } from "./hooks/employees.hooks";
+export { getEmployees, getEmployee, DeleteEmployee } from "./api/employees.api";
+export { useEmployees, useEmployee, useDeleteEmployee } from "./hooks/employees.hooks";
 export { EmployeesList } from "./components/employees-list";
 export { EmployeesTable } from "./components/employees-table";
 export { EmployeesTableRow } from "./components/employees-table-row";
@@ -13,4 +13,7 @@ export { EmployeeDetailsCard } from "./components/employee-details-card";
 export { EmployeeDetailsSkeleton } from "./components/employee-details-skeleton";
 export { EmployeeDetailsError } from "./components/employee-details-error";
 export { EmployeeEditDialog } from "./components/employee-edit-dialog";
+export { EmployeeRowActions } from "./components/employee-row-actions";
+export { DeleteEmployeeButton } from "./components/delete-employee-button";
+export { DeleteEmployeeDialog } from "./components/delete-employee-dialog";
 export type { Employee } from "./types/employee.types";

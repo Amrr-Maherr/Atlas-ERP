@@ -13,3 +13,8 @@ export async function getEmployee({ id }: GetEmployeeProps) {
   const { data } = await api.get(`/employees/${id}`);
   return data;
 }
+
+export async function DeleteEmployee({ id }: GetEmployeeProps) {
+  const { data } = await api.delete(`/employees/${id}`);
+  return data;
+}
