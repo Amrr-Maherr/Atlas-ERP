@@ -1,11 +1,8 @@
 "use client"
 
 import type { ColumnDef } from "@tanstack/react-table"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { EyeIcon, PencilIcon, Trash2Icon } from "lucide-react"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
 import { InventoryStatusBadge } from "./components/inventory-status-badge"
+import { InventoryItemRowActions } from "./components/inventory-item-row-actions"
 import type { InventoryItem } from "./types/inventory.types"
 
 export const inventoryColumns: ColumnDef<InventoryItem>[] = [
@@ -58,18 +55,7 @@ export const inventoryColumns: ColumnDef<InventoryItem>[] = [
   {
     id: "actions",
     header: "Actions",
-    cell: ({ row }) => {
-      const item = row.original
-      return (
-        <div className="flex items-center justify-end gap-1">
-          <Link href={`/dashboard/inventory/${item.id}`} className={cn(buttonVariants({ variant: "ghost", size: "icon-sm" }))}>
-            <EyeIcon />
-          </Link>
-          <Button variant="ghost" size="icon-sm"><PencilIcon /></Button>
-          <Button variant="destructive" size="icon-sm"><Trash2Icon /></Button>
-        </div>
-      )
-    },
+    cell: ({ row }) => <InventoryItemRowActions inventoryItem={row.original} />,
   },
 ]
 

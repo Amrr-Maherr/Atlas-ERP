@@ -13,3 +13,8 @@ export async function getInventoryItem({ id }: GetInventoryItemProps) {
   const { data } = await api.get(`/products/${id}`);
   return data;
 }
+
+export async function DeleteInventoryItem({ id }: GetInventoryItemProps) {
+  const { data } = await api.delete(`/products/${id}`);
+  return data;
+}

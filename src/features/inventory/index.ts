@@ -1,5 +1,5 @@
-export { getInventory, getInventoryItem } from "./api/inventory.api";
-export { useInventory, useInventoryItem } from "./hooks/inventory.hooks";
+export { getInventory, getInventoryItem, DeleteInventoryItem } from "./api/inventory.api";
+export { useInventory, useInventoryItem, useDeleteInventoryItem } from "./hooks/inventory.hooks";
 export { InventoryList } from "./components/inventory-list";
 export { InventoryTable } from "./components/inventory-table";
 export { InventoryTableRow } from "./components/inventory-table-row";
@@ -12,4 +12,7 @@ export { InventoryDetailsHeader } from "./components/inventory-details-header";
 export { InventoryDetailsCard } from "./components/inventory-details-card";
 export { InventoryDetailsSkeleton } from "./components/inventory-details-skeleton";
 export { InventoryDetailsError } from "./components/inventory-details-error";
+export { InventoryItemRowActions } from "./components/inventory-item-row-actions";
+export { DeleteInventoryItemButton } from "./components/delete-inventory-item-button";
+export { DeleteInventoryItemDialog } from "./components/delete-inventory-item-dialog";
 export type { InventoryItem } from "./types/inventory.types";
