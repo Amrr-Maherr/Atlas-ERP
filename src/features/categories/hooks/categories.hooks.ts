@@ -1,8 +1,7 @@
 "use client";
 
-import { QueryClient, useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { DeleteCategory, getCategories, getCategory } from "../api/categories.api";
-const queryClient = new QueryClient()
 export function useCategories({ page = 1, per_page = 10 } = {}) {
   return useQuery({
     queryKey: ["categories", page, per_page],
@@ -20,9 +19,12 @@ export function useCategory({ id }: UseCategoryProps) {
   });
 }
 // hook for delete category
-export function useDeleteCategory({ id }: UseCategoryProps) {
+export function useDeleteCategory() {
+  const queryClient = useQueryClient();
+
   return useMutation({
-    mutationFn: () => DeleteCategory({ id }),
+    mutationFn: ({ id }: { id: string }) => DeleteCategory({ id }),
+
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["categories"],
