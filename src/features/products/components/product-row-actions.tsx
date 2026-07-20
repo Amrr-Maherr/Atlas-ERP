@@ -1,18 +1,36 @@
-import { Button } from "@/components/ui/button";
-import { EyeIcon, PencilIcon, Trash2Icon } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { EyeIcon } from "lucide-react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import type { Product } from "../types/product.types";
+import { DeleteProductButton } from "./delete-product-button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-export function ProductRowActions() {
+type ProductRowActionsProps = {
+  product: Product;
+};
+
+export function ProductRowActions({ product }: ProductRowActionsProps) {
   return (
     <div className="flex items-center justify-end gap-1">
-      <Button variant="ghost" size="icon-sm">
-        <EyeIcon />
-      </Button>
-      <Button variant="ghost" size="icon-sm">
-        <PencilIcon />
-      </Button>
-      <Button variant="destructive" size="icon-sm">
-        <Trash2Icon />
-      </Button>
+      <Link
+        href={`/dashboard/products/${product.id}`}
+        className={cn(buttonVariants({ variant: "ghost", size: "icon-sm" }))}
+      >
+        <Tooltip>
+          <TooltipTrigger>
+            <EyeIcon />
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>View product details</p>
+          </TooltipContent>
+        </Tooltip>
+      </Link>
+      <DeleteProductButton product={product} />
     </div>
   );
 }

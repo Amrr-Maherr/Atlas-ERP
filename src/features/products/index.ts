@@ -1,5 +1,5 @@
-export { getProducts, getProduct } from "./api"
-export { useProducts, useProduct } from "./hooks"
+export { getProducts, getProduct, deleteProduct } from "./api"
+export { useProducts, useProduct, useDeleteProduct } from "./hooks"
 export { ProductsList } from "./components/products-list";
 export { ProductsTable } from "./components/products-table";
 export { ProductsTableRow } from "./components/products-table-row";
@@ -13,4 +13,7 @@ export { ProductDetailsCard } from "./components/product-details-card";
 export { ProductDetailsSkeleton } from "./components/product-details-skeleton";
 export { ProductDetailsError } from "./components/product-details-error";
 export { ProductEditDialog } from "./components/product-edit-dialog";
+export { ProductRowActions } from "./components/product-row-actions";
+export { DeleteProductButton } from "./components/delete-product-button";
+export { DeleteProductDialog } from "./components/delete-product-dialog";
 export type { Product } from "./types/product.types";
