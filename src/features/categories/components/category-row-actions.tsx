@@ -1,18 +1,29 @@
-import { Button } from "@/components/ui/button";
-import { EyeIcon, PencilIcon, Trash2Icon } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { EyeIcon, PencilIcon } from "lucide-react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import type { Category } from "../types/category.types";
+import { DeleteCategoryButton } from "./delete-category-button";
 
-export function CategoryRowActions() {
+type CategoryRowActionsProps = {
+  category: Category;
+};
+
+export function CategoryRowActions({ category }: CategoryRowActionsProps) {
   return (
     <div className="flex items-center justify-end gap-1">
-      <Button variant="ghost" size="icon-sm">
+      <Link
+        href={`/dashboard/categories/${category.id}`}
+        className={cn(
+          buttonVariants({ variant: "ghost", size: "icon-sm" }),
+        )}
+      >
         <EyeIcon />
-      </Button>
+      </Link>
       <Button variant="ghost" size="icon-sm">
         <PencilIcon />
       </Button>
-      <Button variant="destructive" size="icon-sm">
-        <Trash2Icon />
-      </Button>
+      <DeleteCategoryButton category={category} />
     </div>
   );
 }
