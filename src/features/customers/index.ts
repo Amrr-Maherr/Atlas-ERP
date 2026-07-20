@@ -1,5 +1,5 @@
-export { getCustomers, getCustomer } from "./api/customers.api";
-export { useCustomers, useCustomer } from "./hooks/customers.hooks";
+export { getCustomers, getCustomer, DeleteCustomer } from "./api/customers.api";
+export { useCustomers, useCustomer, useDeleteCustomer } from "./hooks/customers.hooks";
 export { CustomersList } from "./components/customers-list";
 export { CustomersTable } from "./components/customers-table";
 export { CustomersTableRow } from "./components/customers-table-row";
@@ -13,4 +13,7 @@ export { CustomerDetailsCard } from "./components/customer-details-card";
 export { CustomerDetailsSkeleton } from "./components/customer-details-skeleton";
 export { CustomerDetailsError } from "./components/customer-details-error";
 export { CustomerEditDialog } from "./components/customer-edit-dialog";
+export { CustomerRowActions } from "./components/customer-row-actions";
+export { DeleteCustomerButton } from "./components/delete-customer-button";
+export { DeleteCustomerDialog } from "./components/delete-customer-dialog";
 export type { Customer } from "./types/customer.types";

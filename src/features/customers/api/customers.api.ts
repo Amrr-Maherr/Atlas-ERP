@@ -13,3 +13,8 @@ export async function getCustomer({ id }: GetCustomerProps) {
   const { data } = await api.get(`/customers/${id}`);
   return data;
 }
+
+export async function DeleteCustomer({ id }: GetCustomerProps) {
+  const { data } = await api.delete(`/customers/${id}`);
+  return data;
+}
