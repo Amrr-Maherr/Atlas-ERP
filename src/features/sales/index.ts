@@ -1,5 +1,5 @@
-export { getSales, getSale } from "./api/sales.api";
-export { useSales, useSale } from "./hooks/sales.hooks";
+export { getSales, getSale, DeleteSale } from "./api/sales.api";
+export { useSales, useSale, useDeleteSale } from "./hooks/sales.hooks";
 export { SalesList } from "./components/sales-list";
 export { SalesTable } from "./components/sales-table";
 export { SalesTableRow } from "./components/sales-table-row";
@@ -12,4 +12,7 @@ export { SaleDetailsHeader } from "./components/sale-details-header";
 export { SaleDetailsCard } from "./components/sale-details-card";
 export { SaleDetailsSkeleton } from "./components/sale-details-skeleton";
 export { SaleDetailsError } from "./components/sale-details-error";
+export { SaleRowActions } from "./components/sale-row-actions";
+export { DeleteSaleButton } from "./components/delete-sale-button";
+export { DeleteSaleDialog } from "./components/delete-sale-dialog";
 export type { Sale } from "./types/sale.types";

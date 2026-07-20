@@ -1,7 +1,7 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { getSales, getSale } from "../api/sales.api";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { getSales, getSale, DeleteSale } from "../api/sales.api";
 
 export function useSales({ page = 1, per_page = 10 } = {}) {
   return useQuery({
@@ -18,5 +18,19 @@ export function useSale({ id }: UseSaleProps) {
   return useQuery({
     queryKey: ["sales", id],
     queryFn: () => getSale({ id }),
+  });
+}
+
+export function useDeleteSale() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id }: { id: string }) => DeleteSale({ id }),
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["sales"],
+      });
+    },
   });
 }

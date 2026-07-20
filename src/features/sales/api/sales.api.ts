@@ -13,3 +13,8 @@ export async function getSale({ id }: GetSaleProps) {
   const { data } = await api.get(`/sales/${id}`);
   return data;
 }
+
+export async function DeleteSale({ id }: GetSaleProps) {
+  const { data } = await api.delete(`/sales/${id}`);
+  return data;
+}

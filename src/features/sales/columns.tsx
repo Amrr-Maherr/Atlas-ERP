@@ -2,12 +2,9 @@
 
 import type { ColumnDef } from "@tanstack/react-table"
 import { Badge } from "@/components/ui/badge"
-import { Button, buttonVariants } from "@/components/ui/button"
 import { formatDate } from "@/components/utils/format-date"
-import { EyeIcon, PencilIcon, Trash2Icon } from "lucide-react"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
 import { SaleStatusBadge } from "./components/sale-status-badge"
+import { SaleRowActions } from "./components/sale-row-actions"
 import type { Sale } from "./types/sale.types"
 
 export const saleColumns: ColumnDef<Sale>[] = [
@@ -66,18 +63,7 @@ export const saleColumns: ColumnDef<Sale>[] = [
   {
     id: "actions",
     header: "Actions",
-    cell: ({ row }) => {
-      const sale = row.original
-      return (
-        <div className="flex items-center justify-end gap-1">
-          <Link href={`/dashboard/sales/${sale.id}`} className={cn(buttonVariants({ variant: "ghost", size: "icon-sm" }))}>
-            <EyeIcon />
-          </Link>
-          <Button variant="ghost" size="icon-sm"><PencilIcon /></Button>
-          <Button variant="destructive" size="icon-sm"><Trash2Icon /></Button>
-        </div>
-      )
-    },
+    cell: ({ row }) => <SaleRowActions sale={row.original} />,
   },
 ]
 
