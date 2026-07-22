@@ -14,5 +14,4 @@ export { PurchaseOrderDetailsSkeleton } from "./components/purchase-order-detail
 export { PurchaseOrderDetailsError } from "./components/purchase-order-details-error";
 export { PurchaseOrderRowActions } from "./components/purchase-order-row-actions";
 export { DeletePurchaseOrderButton } from "./components/delete-purchase-order-button";
-export { DeletePurchaseOrderDialog } from "./components/delete-purchase-order-dialog";
 export type { PurchaseOrder } from "./types/purchase-order.types";

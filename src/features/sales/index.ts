@@ -14,5 +14,4 @@ export { SaleDetailsSkeleton } from "./components/sale-details-skeleton";
 export { SaleDetailsError } from "./components/sale-details-error";
 export { SaleRowActions } from "./components/sale-row-actions";
 export { DeleteSaleButton } from "./components/delete-sale-button";
-export { DeleteSaleDialog } from "./components/delete-sale-dialog";
 export type { Sale } from "./types/sale.types";

@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { DeleteButton } from "@/components/shared/delete-button/delete-button";
 import { useDeleteCustomer } from "../hooks/customers.hooks";
-import { DeleteCustomerDialog } from "./delete-customer-dialog";
-import type { Customer } from "../types/customer.types";
 
 type DeleteCustomerButtonProps = {
-  customer: Customer;
+  customer: { id: string; name: string };
 };
 
 export function DeleteCustomerButton({ customer }: DeleteCustomerButtonProps) {
@@ -35,8 +34,10 @@ export function DeleteCustomerButton({ customer }: DeleteCustomerButtonProps) {
   }
 
   return (
-    <DeleteCustomerDialog
-      customer={customer}
+    <DeleteButton
+      entityName="Customer"
+      entityDisplayName={customer.name}
+      description="This action cannot be undone and may affect related orders and sales associated with this customer."
       onConfirm={handleConfirm}
       isPending={isPending}
       open={isOpen}

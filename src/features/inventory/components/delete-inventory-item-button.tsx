@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { DeleteButton } from "@/components/shared/delete-button/delete-button";
 import { useDeleteInventoryItem } from "../hooks/inventory.hooks";
-import { DeleteInventoryItemDialog } from "./delete-inventory-item-dialog";
-import type { InventoryItem } from "../types/inventory.types";
 
 type DeleteInventoryItemButtonProps = {
-  inventoryItem: InventoryItem;
+  inventoryItem: { id: string; name: string };
 };
 
 export function DeleteInventoryItemButton({
@@ -38,8 +37,10 @@ export function DeleteInventoryItemButton({
   }
 
   return (
-    <DeleteInventoryItemDialog
-      inventoryItem={inventoryItem}
+    <DeleteButton
+      entityName="Inventory item"
+      entityDisplayName={inventoryItem.name}
+      description="This action cannot be undone and may affect related product and sales records associated with this item."
       onConfirm={handleConfirm}
       isPending={isPending}
       open={isOpen}

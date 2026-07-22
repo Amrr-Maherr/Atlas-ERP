@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { DeleteButton } from "@/components/shared/delete-button/delete-button";
 import { useDeletePurchaseOrder } from "../hooks/purchase-orders.hooks";
-import { DeletePurchaseOrderDialog } from "./delete-purchase-order-dialog";
-import type { PurchaseOrder } from "../types/purchase-order.types";
 
 type DeletePurchaseOrderButtonProps = {
-  purchaseOrder: PurchaseOrder;
+  purchaseOrder: { id: string; poNumber: string };
 };
 
 export function DeletePurchaseOrderButton({
@@ -38,8 +37,10 @@ export function DeletePurchaseOrderButton({
   }
 
   return (
-    <DeletePurchaseOrderDialog
-      purchaseOrder={purchaseOrder}
+    <DeleteButton
+      entityName="Purchase order"
+      entityDisplayName={purchaseOrder.poNumber}
+      description="This action cannot be undone and may affect related inventory updates associated with this purchase order."
       onConfirm={handleConfirm}
       isPending={isPending}
       open={isOpen}

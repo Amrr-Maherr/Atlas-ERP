@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { DeleteButton } from "@/components/shared/delete-button/delete-button";
 import { useDeleteEmployee } from "../hooks/employees.hooks";
-import { DeleteEmployeeDialog } from "./delete-employee-dialog";
-import type { Employee } from "../types/employee.types";
 
 type DeleteEmployeeButtonProps = {
-  employee: Employee;
+  employee: { id: string; name: string };
 };
 
 export function DeleteEmployeeButton({ employee }: DeleteEmployeeButtonProps) {
@@ -35,8 +34,10 @@ export function DeleteEmployeeButton({ employee }: DeleteEmployeeButtonProps) {
   }
 
   return (
-    <DeleteEmployeeDialog
-      employee={employee}
+    <DeleteButton
+      entityName="Employee"
+      entityDisplayName={employee.name}
+      description="This action cannot be undone and may affect related sales and activity records associated with this employee."
       onConfirm={handleConfirm}
       isPending={isPending}
       open={isOpen}

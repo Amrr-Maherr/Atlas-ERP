@@ -14,5 +14,4 @@ export { InventoryDetailsSkeleton } from "./components/inventory-details-skeleto
 export { InventoryDetailsError } from "./components/inventory-details-error";
 export { InventoryItemRowActions } from "./components/inventory-item-row-actions";
 export { DeleteInventoryItemButton } from "./components/delete-inventory-item-button";
-export { DeleteInventoryItemDialog } from "./components/delete-inventory-item-dialog";
 export type { InventoryItem } from "./types/inventory.types";

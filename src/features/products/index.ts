@@ -15,5 +15,4 @@ export { ProductDetailsError } from "./components/product-details-error";
 export { ProductEditDialog } from "./components/product-edit-dialog";
 export { ProductRowActions } from "./components/product-row-actions";
 export { DeleteProductButton } from "./components/delete-product-button";
-export { DeleteProductDialog } from "./components/delete-product-dialog";
 export type { Product } from "./types/product.types";

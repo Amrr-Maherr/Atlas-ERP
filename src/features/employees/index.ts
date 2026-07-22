@@ -15,5 +15,4 @@ export { EmployeeDetailsError } from "./components/employee-details-error";
 export { EmployeeEditDialog } from "./components/employee-edit-dialog";
 export { EmployeeRowActions } from "./components/employee-row-actions";
 export { DeleteEmployeeButton } from "./components/delete-employee-button";
-export { DeleteEmployeeDialog } from "./components/delete-employee-dialog";
 export type { Employee } from "./types/employee.types";

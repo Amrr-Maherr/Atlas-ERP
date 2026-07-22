@@ -15,5 +15,4 @@ export { CustomerDetailsError } from "./components/customer-details-error";
 export { CustomerEditDialog } from "./components/customer-edit-dialog";
 export { CustomerRowActions } from "./components/customer-row-actions";
 export { DeleteCustomerButton } from "./components/delete-customer-button";
-export { DeleteCustomerDialog } from "./components/delete-customer-dialog";
 export type { Customer } from "./types/customer.types";

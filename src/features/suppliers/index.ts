@@ -15,5 +15,4 @@ export { SupplierDetailsError } from "./components/supplier-details-error";
 export { SupplierEditDialog } from "./components/supplier-edit-dialog";
 export { SupplierRowActions } from "./components/supplier-row-actions";
 export { DeleteSupplierButton } from "./components/delete-supplier-button";
-export { DeleteSupplierDialog } from "./components/delete-supplier-dialog";
 export type { Supplier } from "./types/supplier.types";

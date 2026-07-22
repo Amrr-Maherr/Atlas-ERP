@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { DeleteButton } from "@/components/shared/delete-button/delete-button";
 import { useDeleteSupplier } from "../hooks/suppliers.hooks";
-import { DeleteSupplierDialog } from "./delete-supplier-dialog";
-import type { Supplier } from "../types/supplier.types";
 
 type DeleteSupplierButtonProps = {
-  supplier: Supplier;
+  supplier: { id: string; companyName: string };
 };
 
 export function DeleteSupplierButton({ supplier }: DeleteSupplierButtonProps) {
@@ -35,8 +34,10 @@ export function DeleteSupplierButton({ supplier }: DeleteSupplierButtonProps) {
   }
 
   return (
-    <DeleteSupplierDialog
-      supplier={supplier}
+    <DeleteButton
+      entityName="Supplier"
+      entityDisplayName={supplier.companyName}
+      description="This action cannot be undone and may affect related products and purchase orders associated with this supplier."
       onConfirm={handleConfirm}
       isPending={isPending}
       open={isOpen}

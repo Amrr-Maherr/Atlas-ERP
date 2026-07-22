@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { DeleteButton } from "@/components/shared/delete-button/delete-button";
 import { useDeleteCategory } from "../hooks/categories.hooks";
-import { DeleteCategoryDialog } from "./delete-category-dialog";
-import type { Category } from "../types/category.types";
 
 type DeleteCategoryButtonProps = {
-  category: Category;
+  category: { id: string; name: string };
 };
 
 export function DeleteCategoryButton({ category }: DeleteCategoryButtonProps) {
@@ -35,8 +34,10 @@ export function DeleteCategoryButton({ category }: DeleteCategoryButtonProps) {
   }
 
   return (
-    <DeleteCategoryDialog
-      category={category}
+    <DeleteButton
+      entityName="Category"
+      entityDisplayName={category.name}
+      description="This action cannot be undone and may affect related products associated with this category."
       onConfirm={handleConfirm}
       isPending={isPending}
       open={isOpen}

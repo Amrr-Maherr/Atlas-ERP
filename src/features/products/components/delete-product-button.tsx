@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { DeleteButton } from "@/components/shared/delete-button/delete-button";
 import useDeleteProduct from "../hooks/useDeleteProduct";
-import { DeleteProductDialog } from "./delete-product-dialog";
-import type { Product } from "../types/product.types";
 
 type DeleteProductButtonProps = {
-  product: Product;
+  product: { id: string; name: string };
 };
 
 export function DeleteProductButton({ product }: DeleteProductButtonProps) {
@@ -35,8 +34,10 @@ export function DeleteProductButton({ product }: DeleteProductButtonProps) {
   }
 
   return (
-    <DeleteProductDialog
-      product={product}
+    <DeleteButton
+      entityName="Product"
+      entityDisplayName={product.name}
+      description="This action cannot be undone and may affect related inventory and sale records."
       onConfirm={handleConfirm}
       isPending={isPending}
       open={isOpen}

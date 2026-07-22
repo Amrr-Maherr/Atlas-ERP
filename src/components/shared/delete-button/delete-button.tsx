@@ -10,40 +10,56 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Trash2Icon } from "lucide-react";
-import type { Category } from "../types/category.types";
 
-type DeleteCategoryDialogProps = {
-  category: Category;
+type DeleteButtonProps = {
+  entityName: string;
+  entityDisplayName: string;
+  description: string;
   onConfirm: () => void;
   isPending: boolean;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };
 
-export function DeleteCategoryDialog({
-  category,
+export function DeleteButton({
+  entityName,
+  entityDisplayName,
+  description,
   onConfirm,
   isPending,
   open,
   onOpenChange,
-}: DeleteCategoryDialogProps) {
+}: DeleteButtonProps) {
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
-      <AlertDialogTrigger
-        render={<Button variant="destructive" size="icon-sm" />}
-      >
-        <Trash2Icon />
-      </AlertDialogTrigger>
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <AlertDialogTrigger
+              render={<Button variant="destructive" size="icon-sm" />}
+            />
+          }
+        >
+          <Trash2Icon />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Delete {entityName.toLowerCase()}</p>
+        </TooltipContent>
+      </Tooltip>
 
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete category?</AlertDialogTitle>
+          <AlertDialogTitle>Delete {entityName}?</AlertDialogTitle>
 
           <AlertDialogDescription>
-            Are you sure you want to delete <strong>{category.name}</strong>?
-            This action cannot be undone and may affect related products
-            associated with this category.
+            Are you sure you want to delete <strong>{entityDisplayName}</strong>?
+            {description}
           </AlertDialogDescription>
         </AlertDialogHeader>
 

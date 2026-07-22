@@ -15,5 +15,4 @@ export { CategoryDetailsError } from "./components/category-details-error";
 export { CategoryEditDialog } from "./components/category-edit-dialog";
 export { CategoryRowActions } from "./components/category-row-actions";
 export { DeleteCategoryButton } from "./components/delete-category-button";
-export { DeleteCategoryDialog } from "./components/delete-category-dialog";
 export type { Category } from "./types/category.types";
