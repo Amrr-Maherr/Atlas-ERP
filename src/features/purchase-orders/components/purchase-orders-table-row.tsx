@@ -1,11 +1,10 @@
 import { PurchaseOrder } from "../types/purchase-order.types";
 import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { formatDate } from "@/components/utils/format-date";
-import { EyeIcon, PencilIcon, Trash2Icon } from "lucide-react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { PencilIcon, Trash2Icon } from "lucide-react";
+import { ViewDetailsButton } from "@/components/shared/view-details-button";
 import { PurchaseOrderStatusBadge } from "./purchase-order-status-badge";
 
 type PurchaseOrdersTableRowProps = {
@@ -44,14 +43,10 @@ export function PurchaseOrdersTableRow({ purchaseOrder }: PurchaseOrdersTableRow
       </TableCell>
       <TableCell className="text-end">
         <div className="flex items-center justify-end gap-1">
-          <Link
+          <ViewDetailsButton
             href={`/dashboard/purchase-orders/${purchaseOrder.id}`}
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "icon-sm" }),
-            )}
-          >
-            <EyeIcon />
-          </Link>
+            label="View purchase order details"
+          />
           <Button variant="ghost" size="icon-sm">
             <PencilIcon />
           </Button>

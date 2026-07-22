@@ -1,9 +1,8 @@
 import { InventoryItem } from "../types/inventory.types";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
-import { EyeIcon, PencilIcon, Trash2Icon } from "lucide-react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { PencilIcon, Trash2Icon } from "lucide-react";
+import { ViewDetailsButton } from "@/components/shared/view-details-button";
 import { InventoryStatusBadge } from "./inventory-status-badge";
 
 type InventoryTableRowProps = {
@@ -44,14 +43,10 @@ export function InventoryTableRow({ item }: InventoryTableRowProps) {
       </TableCell>
       <TableCell className="text-end">
         <div className="flex items-center justify-end gap-1">
-          <Link
+          <ViewDetailsButton
             href={`/dashboard/inventory/${item.id}`}
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "icon-sm" }),
-            )}
-          >
-            <EyeIcon />
-          </Link>
+            label="View inventory item details"
+          />
           <Button variant="ghost" size="icon-sm">
             <PencilIcon />
           </Button>

@@ -1,11 +1,10 @@
 import { Sale } from "../types/sale.types";
 import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { formatDate } from "@/components/utils/format-date";
-import { EyeIcon, PencilIcon, Trash2Icon } from "lucide-react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { PencilIcon, Trash2Icon } from "lucide-react";
+import { ViewDetailsButton } from "@/components/shared/view-details-button";
 import { SaleStatusBadge } from "./sale-status-badge";
 
 type SalesTableRowProps = {
@@ -47,14 +46,10 @@ export function SalesTableRow({ sale }: SalesTableRowProps) {
       </TableCell>
       <TableCell className="text-end">
         <div className="flex items-center justify-end gap-1">
-          <Link
+          <ViewDetailsButton
             href={`/dashboard/sales/${sale.id}`}
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "icon-sm" }),
-            )}
-          >
-            <EyeIcon />
-          </Link>
+            label="View sale details"
+          />
           <Button variant="ghost" size="icon-sm">
             <PencilIcon />
           </Button>

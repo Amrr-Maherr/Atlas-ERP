@@ -1,12 +1,11 @@
 import { Supplier } from "../types/supplier.types";
 import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { formatDate } from "@/components/utils/format-date";
-import { BuildingIcon, EyeIcon, PencilIcon, Trash2Icon } from "lucide-react";
+import { BuildingIcon, PencilIcon, Trash2Icon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { ViewDetailsButton } from "@/components/shared/view-details-button";
 import { SupplierStatusBadge } from "./supplier-status-badge";
 
 type SuppliersTableRowProps = {
@@ -59,14 +58,10 @@ export function SuppliersTableRow({ supplier }: SuppliersTableRowProps) {
       </TableCell>
       <TableCell className="text-end">
         <div className="flex items-center justify-end gap-1">
-          <Link
+          <ViewDetailsButton
             href={`/dashboard/suppliers/${supplier.id}`}
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "icon-sm" }),
-            )}
-          >
-            <EyeIcon />
-          </Link>
+            label="View supplier details"
+          />
           <Button variant="ghost" size="icon-sm">
             <PencilIcon />
           </Button>
