@@ -26,6 +26,6 @@ type UseUpdateCategoryProps = {
 
 
 export async function UpdateCategory({ id, UpdateData }: UseUpdateCategoryProps) {
-  const { data } = await api.put(`/categories/${id}`, UpdateData);
+  const { data } = await api.patch(`/categories/${id}`, UpdateData);
   return data;
 }
