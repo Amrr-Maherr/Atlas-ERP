@@ -1,7 +1,9 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Customer } from "../types/customer.types"
+import { Customer } from "../types/customer.types";
+import { useForm, Controller } from "react-hook-form";
+import { useUpdateCustomer } from "../hooks/customers.hooks";
+import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
@@ -9,35 +11,79 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Field, FieldContent, FieldLabel } from "@/components/ui/field"
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Field,
+  FieldContent,
+  FieldError,
+  FieldLabel,
+} from "@/components/ui/field";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
 type CustomerEditDialogProps = {
-  customer: Customer
-  open: boolean
-  onOpenChange: (open: boolean) => void
-}
+  customer: Customer;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+};
+
+type CustomerFormValues = {
+  name: string;
+  email: string;
+  phone: string;
+  city: string;
+  status: "active" | "inactive" | "pending";
+  paymentTerms: string;
+};
 
 export function CustomerEditDialog({
   customer,
   open,
   onOpenChange,
 }: CustomerEditDialogProps) {
-  const [name, setName] = useState(customer.name)
-  const [email, setEmail] = useState(customer.email)
-  const [phone, setPhone] = useState(customer.phone)
-  const [city, setCity] = useState(customer.city)
-  const [status, setStatus] = useState(customer.status)
-  const [paymentTerms, setPaymentTerms] = useState(customer.paymentTerms)
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<CustomerFormValues>({
+    defaultValues: {
+      name: customer.name,
+      email: customer.email,
+      phone: customer.phone,
+      city: customer.city,
+      status: customer.status as "active" | "inactive" | "pending",
+      paymentTerms: customer.paymentTerms,
+    },
+  });
+
+  const { mutate: updateCustomer, isPending } = useUpdateCustomer();
+
+  const onSubmit = (data: CustomerFormValues): void => {
+    const updatedCustomer: Customer = {
+      ...customer,
+      ...data,
+    };
+    updateCustomer(
+      { id: customer.id, UpdateData: updatedCustomer },
+      {
+        onSuccess: () => {
+          toast.success("Customer updated");
+          onOpenChange(false);
+        },
+        onError: (error) => {
+          toast.error(error.message || "Update failed");
+        },
+      },
+    );
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -49,15 +95,25 @@ export function CustomerEditDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <Field orientation="vertical">
             <FieldLabel>Name</FieldLabel>
             <FieldContent>
               <Input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                {...register("name", {
+                  required: "Name is required",
+                  minLength: {
+                    value: 3,
+                    message: "Name must be at least 3 characters",
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: "Name must be at most 50 characters",
+                  },
+                })}
                 placeholder="Customer name"
               />
+              <FieldError errors={errors.name ? [errors.name] : []} />
             </FieldContent>
           </Field>
 
@@ -66,10 +122,16 @@ export function CustomerEditDialog({
               <FieldLabel>Email</FieldLabel>
               <FieldContent>
                 <Input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Invalid email address",
+                    },
+                  })}
                   placeholder="customer@email.com"
                 />
+                <FieldError errors={errors.email ? [errors.email] : []} />
               </FieldContent>
             </Field>
 
@@ -77,10 +139,12 @@ export function CustomerEditDialog({
               <FieldLabel>Phone</FieldLabel>
               <FieldContent>
                 <Input
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  {...register("phone", {
+                    required: "Phone is required",
+                  })}
                   placeholder="+20..."
                 />
+                <FieldError errors={errors.phone ? [errors.phone] : []} />
               </FieldContent>
             </Field>
           </div>
@@ -90,26 +154,39 @@ export function CustomerEditDialog({
               <FieldLabel>City</FieldLabel>
               <FieldContent>
                 <Input
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
+                  {...register("city", {
+                    required: "City is required",
+                  })}
                   placeholder="City"
                 />
+                <FieldError errors={errors.city ? [errors.city] : []} />
               </FieldContent>
             </Field>
 
             <Field orientation="vertical">
               <FieldLabel>Status</FieldLabel>
               <FieldContent>
-                <Select value={status} onValueChange={(v) => v && setStatus(v)}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="active">Active</SelectItem>
-                    <SelectItem value="inactive">Inactive</SelectItem>
-                    <SelectItem value="pending">Pending</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Controller
+                  control={control}
+                  name="status"
+                  rules={{ required: "Status is required" }}
+                  render={({ field }) => (
+                    <Select
+                      value={field.value}
+                      onValueChange={(v) => v && field.onChange(v)}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="active">Active</SelectItem>
+                        <SelectItem value="inactive">Inactive</SelectItem>
+                        <SelectItem value="pending">Pending</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+                <FieldError errors={errors.status ? [errors.status] : []} />
               </FieldContent>
             </Field>
           </div>
@@ -118,18 +195,24 @@ export function CustomerEditDialog({
             <FieldLabel>Payment Terms</FieldLabel>
             <FieldContent>
               <Input
-                value={paymentTerms}
-                onChange={(e) => setPaymentTerms(e.target.value)}
+                {...register("paymentTerms", {
+                  required: "Payment terms are required",
+                })}
                 placeholder="Net 30"
+              />
+              <FieldError
+                errors={errors.paymentTerms ? [errors.paymentTerms] : []}
               />
             </FieldContent>
           </Field>
-        </div>
 
-        <DialogFooter showCloseButton>
-          <Button>Save</Button>
-        </DialogFooter>
+          <DialogFooter showCloseButton>
+            <Button type="submit" disabled={isPending}>
+              Save
+            </Button>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
