@@ -1,7 +1,9 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Product } from "../types/product.types"
+import { Product } from "../types/product.types";
+import { useForm, Controller } from "react-hook-form";
+import { useUpdateProduct } from "../hooks/useUpdateProduct";
+import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
@@ -9,37 +11,83 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Field, FieldContent, FieldLabel } from "@/components/ui/field"
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Field,
+  FieldContent,
+  FieldError,
+  FieldLabel,
+} from "@/components/ui/field";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
 type ProductEditDialogProps = {
-  product: Product
-  open: boolean
-  onOpenChange: (open: boolean) => void
-}
+  product: Product;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+};
+
+type ProductFormValues = {
+  name: string;
+  description: string;
+  slug: string;
+  status: "active" | "low_stock" | "out_of_stock";
+  price: number;
+  stock: number;
+  brand: string;
+  sku: string;
+};
 
 export function ProductEditDialog({
   product,
   open,
   onOpenChange,
 }: ProductEditDialogProps) {
-  const [name, setName] = useState(product.name)
-  const [description, setDescription] = useState(product.description)
-  const [slug, setSlug] = useState(product.slug)
-  const [status, setStatus] = useState(product.status)
-  const [price, setPrice] = useState(product.price)
-  const [stock, setStock] = useState(product.stock)
-  const [brand, setBrand] = useState(product.brand)
-  const [sku, setSku] = useState(product.sku)
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<ProductFormValues>({
+    defaultValues: {
+      name: product.name,
+      description: product.description,
+      slug: product.slug,
+      status: product.status as "active" | "low_stock" | "out_of_stock",
+      price: product.price,
+      stock: product.stock,
+      brand: product.brand,
+      sku: product.sku,
+    },
+  });
+
+  const { mutate: updateProduct, isPending } = useUpdateProduct();
+
+  const onSubmit = (data: ProductFormValues): void => {
+    const updatedProduct: Product = {
+      ...product,
+      ...data,
+    };
+    updateProduct(
+      { id: product.id, UpdateData: updatedProduct },
+      {
+        onSuccess: () => {
+          toast.success("Product updated");
+          onOpenChange(false);
+        },
+        onError: (error) => {
+          toast.error(error.message || "Update failed");
+        },
+      },
+    );
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -51,15 +99,25 @@ export function ProductEditDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <Field orientation="vertical">
             <FieldLabel>Name</FieldLabel>
             <FieldContent>
               <Input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                {...register("name", {
+                  required: "Name is required",
+                  minLength: {
+                    value: 3,
+                    message: "Name must be at least 3 characters",
+                  },
+                  maxLength: {
+                    value: 100,
+                    message: "Name must be at most 100 characters",
+                  },
+                })}
                 placeholder="Product name"
               />
+              <FieldError errors={errors.name ? [errors.name] : []} />
             </FieldContent>
           </Field>
 
@@ -67,9 +125,21 @@ export function ProductEditDialog({
             <FieldLabel>Description</FieldLabel>
             <FieldContent>
               <Input
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                {...register("description", {
+                  required: "Description is required",
+                  minLength: {
+                    value: 10,
+                    message: "Description must be at least 10 characters",
+                  },
+                  maxLength: {
+                    value: 500,
+                    message: "Description must be at most 500 characters",
+                  },
+                })}
                 placeholder="Product description"
+              />
+              <FieldError
+                errors={errors.description ? [errors.description] : []}
               />
             </FieldContent>
           </Field>
@@ -79,10 +149,12 @@ export function ProductEditDialog({
               <FieldLabel>SKU</FieldLabel>
               <FieldContent>
                 <Input
-                  value={sku}
-                  onChange={(e) => setSku(e.target.value)}
+                  {...register("sku", {
+                    required: "SKU is required",
+                  })}
                   placeholder="SKU"
                 />
+                <FieldError errors={errors.sku ? [errors.sku] : []} />
               </FieldContent>
             </Field>
 
@@ -90,10 +162,12 @@ export function ProductEditDialog({
               <FieldLabel>Brand</FieldLabel>
               <FieldContent>
                 <Input
-                  value={brand}
-                  onChange={(e) => setBrand(e.target.value)}
+                  {...register("brand", {
+                    required: "Brand is required",
+                  })}
                   placeholder="Brand"
                 />
+                <FieldError errors={errors.brand ? [errors.brand] : []} />
               </FieldContent>
             </Field>
           </div>
@@ -103,26 +177,46 @@ export function ProductEditDialog({
               <FieldLabel>Slug</FieldLabel>
               <FieldContent>
                 <Input
-                  value={slug}
-                  onChange={(e) => setSlug(e.target.value)}
+                  {...register("slug", {
+                    required: "Slug is required",
+                    pattern: {
+                      value: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+                      message:
+                        "Slug must contain only lowercase letters, numbers, and hyphens",
+                    },
+                  })}
                   placeholder="product-slug"
                 />
+                <FieldError errors={errors.slug ? [errors.slug] : []} />
               </FieldContent>
             </Field>
 
             <Field orientation="vertical">
               <FieldLabel>Status</FieldLabel>
               <FieldContent>
-                <Select value={status} onValueChange={(v) => v && setStatus(v)}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="active">Active</SelectItem>
-                    <SelectItem value="low_stock">Low Stock</SelectItem>
-                    <SelectItem value="out_of_stock">Out of Stock</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Controller
+                  control={control}
+                  name="status"
+                  rules={{ required: "Status is required" }}
+                  render={({ field }) => (
+                    <Select
+                      value={field.value}
+                      onValueChange={(v) => v && field.onChange(v)}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="active">Active</SelectItem>
+                        <SelectItem value="low_stock">Low Stock</SelectItem>
+                        <SelectItem value="out_of_stock">
+                          Out of Stock
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+                <FieldError errors={errors.status ? [errors.status] : []} />
               </FieldContent>
             </Field>
           </div>
@@ -133,9 +227,16 @@ export function ProductEditDialog({
               <FieldContent>
                 <Input
                   type="number"
-                  value={price}
-                  onChange={(e) => setPrice(Number(e.target.value))}
+                  {...register("price", {
+                    required: "Price is required",
+                    valueAsNumber: true,
+                    min: {
+                      value: 0,
+                      message: "Price must be at least 0",
+                    },
+                  })}
                 />
+                <FieldError errors={errors.price ? [errors.price] : []} />
               </FieldContent>
             </Field>
 
@@ -144,18 +245,27 @@ export function ProductEditDialog({
               <FieldContent>
                 <Input
                   type="number"
-                  value={stock}
-                  onChange={(e) => setStock(Number(e.target.value))}
+                  {...register("stock", {
+                    required: "Stock is required",
+                    valueAsNumber: true,
+                    min: {
+                      value: 0,
+                      message: "Stock must be at least 0",
+                    },
+                  })}
                 />
+                <FieldError errors={errors.stock ? [errors.stock] : []} />
               </FieldContent>
             </Field>
           </div>
-        </div>
 
-        <DialogFooter showCloseButton>
-          <Button>Save</Button>
-        </DialogFooter>
+          <DialogFooter showCloseButton>
+            <Button type="submit" disabled={isPending}>
+              Save
+            </Button>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
