@@ -2,7 +2,7 @@
 
 import { Product } from "../types/product.types";
 import { useForm, Controller } from "react-hook-form";
-import { useUpdateProduct } from "../hooks/useUpdateProduct";
+import useUpdateProduct from "../hooks/useUpdateProduct";
 import { toast } from "sonner";
 import {
   Dialog,
