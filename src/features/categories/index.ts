@@ -1,5 +1,5 @@
-export { getCategories, getCategory } from "./api/categories.api";
-export { useCategories, useCategory } from "./hooks/categories.hooks";
+export { getCategories, getCategory, CreateCategory } from "./api/categories.api";
+export { useCategories, useCategory, useCreateCategory } from "./hooks/categories.hooks";
 export { CategoriesList } from "./components/categories-list";
 export { CategoriesTable } from "./components/categories-table";
 export { CategoriesTableRow } from "./components/categories-table-row";

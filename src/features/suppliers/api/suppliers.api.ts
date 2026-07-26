@@ -20,6 +20,15 @@ export async function DeleteSupplier({ id }: GetSupplierProps) {
   return data;
 }
 
+type CreateSupplierProps = {
+  CreateData: Supplier;
+};
+
+export async function CreateSupplier({ CreateData }: CreateSupplierProps) {
+  const { data } = await api.post(`/suppliers`, CreateData);
+  return data;
+}
+
 type UseUpdateSupplierProps = {
   id: string;
   UpdateData: Supplier;

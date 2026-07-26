@@ -1,5 +1,5 @@
-export { getProducts, getProduct, deleteProduct } from "./api"
-export { useProducts, useProduct, useDeleteProduct } from "./hooks"
+export { getProducts, getProduct, deleteProduct, createProduct } from "./api"
+export { useProducts, useProduct, useDeleteProduct, useCreateProduct } from "./hooks"
 export { ProductsList } from "./components/products-list";
 export { ProductsTable } from "./components/products-table";
 export { ProductsTableRow } from "./components/products-table-row";

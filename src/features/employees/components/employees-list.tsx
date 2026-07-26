@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { toast } from "sonner"
 import { PageHeader } from "@/components/shared/page-header";
 import { DataTable } from "@/components/shared/data-table";
 import { CreateDialog } from "@/components/shared/create-dialog";
@@ -9,6 +10,7 @@ import { PlusIcon } from "lucide-react";
 import { Employee } from "../types/employee.types";
 import { employeeColumns, employeeExportColumns } from "../columns";
 import { EmployeeForm } from "./employee-form";
+import { useCreateEmployee } from "../hooks/employees.hooks";
 
 type EmployeesListProps = {
   employeesData: Employee[];
@@ -30,6 +32,26 @@ export function EmployeesList({
   onChangePage,
 }: EmployeesListProps) {
   const [open, setOpen] = useState(false);
+  const { isPending, mutate: createEmployee } = useCreateEmployee();
+
+  function handleSave() {
+    createEmployee(
+      { CreateData: {} as Employee },
+      {
+        onSuccess: () => {
+          setOpen(false);
+          toast.success("Employee created", {
+            description: "New employee was successfully created.",
+          });
+        },
+        onError: () => {
+          toast.error("Create failed", {
+            description: "Unable to create this employee. Please try again later.",
+          });
+        },
+      },
+    );
+  }
 
   return (
     <section className="flex flex-col gap-6">
@@ -62,6 +84,8 @@ export function EmployeesList({
         onOpenChange={setOpen}
         title="Add Employee"
         description="Create a new employee record."
+        onSave={handleSave}
+        saveLabel={isPending ? "Creating..." : "Save"}
       >
         <EmployeeForm />
       </CreateDialog>

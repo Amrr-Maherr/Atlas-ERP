@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { toast } from "sonner"
 import { PageHeader } from "@/components/shared/page-header";
 import { DataTable } from "@/components/shared/data-table";
 import { CreateDialog } from "@/components/shared/create-dialog";
@@ -9,6 +10,7 @@ import { PlusIcon } from "lucide-react";
 import { Product } from "../types/product.types";
 import { productColumns, productExportColumns } from "../columns";
 import { ProductForm } from "./product-form";
+import useCreateProduct from "../hooks/useCreateProduct";
 
 type ProductsListProps = {
   productsData: Product[];
@@ -30,6 +32,26 @@ export function ProductsList({
   onChangePage,
 }: ProductsListProps) {
   const [open, setOpen] = useState(false);
+  const { isPending, mutate: createProduct } = useCreateProduct();
+
+  function handleSave() {
+    createProduct(
+      { CreateData: {} as Product },
+      {
+        onSuccess: () => {
+          setOpen(false);
+          toast.success("Product created", {
+            description: "New product was successfully created.",
+          });
+        },
+        onError: () => {
+          toast.error("Create failed", {
+            description: "Unable to create this product. Please try again later.",
+          });
+        },
+      },
+    );
+  }
 
   return (
     <section className="flex flex-col gap-6">
@@ -62,6 +84,8 @@ export function ProductsList({
         onOpenChange={setOpen}
         title="Add Product"
         description="Create a new product in your catalog."
+        onSave={handleSave}
+        saveLabel={isPending ? "Creating..." : "Save"}
       >
         <ProductForm />
       </CreateDialog>

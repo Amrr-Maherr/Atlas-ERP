@@ -1,5 +1,5 @@
-export { getEmployees, getEmployee, DeleteEmployee } from "./api/employees.api";
-export { useEmployees, useEmployee, useDeleteEmployee } from "./hooks/employees.hooks";
+export { getEmployees, getEmployee, DeleteEmployee, CreateEmployee } from "./api/employees.api";
+export { useEmployees, useEmployee, useDeleteEmployee, useCreateEmployee } from "./hooks/employees.hooks";
 export { EmployeesList } from "./components/employees-list";
 export { EmployeesTable } from "./components/employees-table";
 export { EmployeesTableRow } from "./components/employees-table-row";

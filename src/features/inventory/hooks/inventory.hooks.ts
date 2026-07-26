@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getInventory, getInventoryItem, DeleteInventoryItem, UpdateInventoryItem } from "../api/inventory.api";
+import { getInventory, getInventoryItem, DeleteInventoryItem, UpdateInventoryItem, CreateInventoryItem } from "../api/inventory.api";
 import { InventoryItem } from "../types/inventory.types";
 
 export function useInventory({ page = 1, per_page = 10 } = {}) {
@@ -27,6 +27,24 @@ export function useDeleteInventoryItem() {
 
   return useMutation({
     mutationFn: ({ id }: { id: string }) => DeleteInventoryItem({ id }),
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["inventory"],
+      });
+    },
+  });
+}
+
+type UseCreateInventoryItemProps = {
+  CreateData: InventoryItem;
+};
+
+export function useCreateInventoryItem() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ CreateData }: UseCreateInventoryItemProps) => CreateInventoryItem({ CreateData }),
 
     onSuccess: () => {
       queryClient.invalidateQueries({

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { toast } from "sonner"
 import { PageHeader } from "@/components/shared/page-header";
 import { DataTable } from "@/components/shared/data-table";
 import { CreateDialog } from "@/components/shared/create-dialog";
@@ -9,6 +10,7 @@ import { PlusIcon } from "lucide-react";
 import { Category } from "../types/category.types";
 import { categoryColumns, categoryExportColumns } from "../columns";
 import { CategoryForm } from "./category-form";
+import { useCreateCategory } from "../hooks/categories.hooks";
 
 type CategoriesListProps = {
   categoriesData: Category[];
@@ -30,6 +32,26 @@ export function CategoriesList({
   onChangePage,
 }: CategoriesListProps) {
   const [open, setOpen] = useState(false);
+  const { isPending, mutate: createCategory } = useCreateCategory();
+
+  function handleSave() {
+    createCategory(
+      { CreateData: {} as Category },
+      {
+        onSuccess: () => {
+          setOpen(false);
+          toast.success("Category created", {
+            description: "New category was successfully created.",
+          });
+        },
+        onError: () => {
+          toast.error("Create failed", {
+            description: "Unable to create this category. Please try again later.",
+          });
+        },
+      },
+    );
+  }
 
   return (
     <section className="flex flex-col gap-6">
@@ -62,6 +84,8 @@ export function CategoriesList({
         onOpenChange={setOpen}
         title="Add Category"
         description="Create a new product category."
+        onSave={handleSave}
+        saveLabel={isPending ? "Creating..." : "Save"}
       >
         <CategoryForm />
       </CreateDialog>

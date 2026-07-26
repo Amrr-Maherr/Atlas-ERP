@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getPurchaseOrders, getPurchaseOrder, DeletePurchaseOrder, UpdatePurchaseOrder } from "../api/purchase-orders.api";
+import { getPurchaseOrders, getPurchaseOrder, DeletePurchaseOrder, UpdatePurchaseOrder, CreatePurchaseOrder } from "../api/purchase-orders.api";
 import { PurchaseOrder } from "../types/purchase-order.types";
 
 export function usePurchaseOrders({ page = 1, per_page = 10 } = {}) {
@@ -27,6 +27,24 @@ export function useDeletePurchaseOrder() {
 
   return useMutation({
     mutationFn: ({ id }: { id: string }) => DeletePurchaseOrder({ id }),
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["purchaseOrders"],
+      });
+    },
+  });
+}
+
+type UseCreatePurchaseOrderProps = {
+  CreateData: PurchaseOrder;
+};
+
+export function useCreatePurchaseOrder() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ CreateData }: UseCreatePurchaseOrderProps) => CreatePurchaseOrder({ CreateData }),
 
     onSuccess: () => {
       queryClient.invalidateQueries({

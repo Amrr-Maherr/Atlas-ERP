@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getSuppliers, getSupplier, DeleteSupplier, UpdateSupplier } from "../api/suppliers.api";
+import { getSuppliers, getSupplier, DeleteSupplier, UpdateSupplier, CreateSupplier } from "../api/suppliers.api";
 import { Supplier } from "../types/supplier.types";
 
 export function useSuppliers({ page = 1, per_page = 10 } = {}) {
@@ -27,6 +27,24 @@ export function useDeleteSupplier() {
 
   return useMutation({
     mutationFn: ({ id }: { id: string }) => DeleteSupplier({ id }),
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["suppliers"],
+      });
+    },
+  });
+}
+
+type UseCreateSupplierProps = {
+  CreateData: Supplier;
+};
+
+export function useCreateSupplier() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ CreateData }: UseCreateSupplierProps) => CreateSupplier({ CreateData }),
 
     onSuccess: () => {
       queryClient.invalidateQueries({

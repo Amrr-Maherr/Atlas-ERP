@@ -20,6 +20,15 @@ export async function DeleteInventoryItem({ id }: GetInventoryItemProps) {
   return data;
 }
 
+type CreateInventoryItemProps = {
+  CreateData: InventoryItem;
+};
+
+export async function CreateInventoryItem({ CreateData }: CreateInventoryItemProps) {
+  const { data } = await api.post(`/products`, CreateData);
+  return data;
+}
+
 type UseUpdateInventoryItemProps = {
   id: string;
   UpdateData: InventoryItem;

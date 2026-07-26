@@ -20,6 +20,15 @@ export async function DeleteSale({ id }: GetSaleProps) {
   return data;
 }
 
+type CreateSaleProps = {
+  CreateData: Sale;
+};
+
+export async function CreateSale({ CreateData }: CreateSaleProps) {
+  const { data } = await api.post(`/sales`, CreateData);
+  return data;
+}
+
 type UseUpdateSaleProps = {
   id: string;
   UpdateData: Sale;

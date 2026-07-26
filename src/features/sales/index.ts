@@ -1,5 +1,5 @@
-export { getSales, getSale, DeleteSale } from "./api/sales.api";
-export { useSales, useSale, useDeleteSale } from "./hooks/sales.hooks";
+export { getSales, getSale, DeleteSale, CreateSale } from "./api/sales.api";
+export { useSales, useSale, useDeleteSale, useCreateSale } from "./hooks/sales.hooks";
 export { SalesList } from "./components/sales-list";
 export { SalesTable } from "./components/sales-table";
 export { SalesTableRow } from "./components/sales-table-row";

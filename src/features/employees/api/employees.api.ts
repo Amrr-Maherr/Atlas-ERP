@@ -20,6 +20,15 @@ export async function DeleteEmployee({ id }: GetEmployeeProps) {
   return data;
 }
 
+type CreateEmployeeProps = {
+  CreateData: Employee;
+};
+
+export async function CreateEmployee({ CreateData }: CreateEmployeeProps) {
+  const { data } = await api.post(`/employees`, CreateData);
+  return data;
+}
+
 type UseUpdateEmployeeProps = {
   id: string;
   UpdateData: Employee;

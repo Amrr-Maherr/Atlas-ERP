@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { toast } from "sonner"
 import { PageHeader } from "@/components/shared/page-header";
 import { DataTable } from "@/components/shared/data-table";
 import { CreateDialog } from "@/components/shared/create-dialog";
@@ -9,6 +10,7 @@ import { PlusIcon } from "lucide-react";
 import { PurchaseOrder } from "../types/purchase-order.types";
 import { purchaseOrderColumns, purchaseOrderExportColumns } from "../columns";
 import { PurchaseOrderForm } from "./purchase-order-form";
+import { useCreatePurchaseOrder } from "../hooks/purchase-orders.hooks";
 
 type PurchaseOrdersListProps = {
   purchaseOrdersData: PurchaseOrder[];
@@ -30,6 +32,26 @@ export function PurchaseOrdersList({
   onChangePage,
 }: PurchaseOrdersListProps) {
   const [open, setOpen] = useState(false);
+  const { isPending, mutate: createPurchaseOrder } = useCreatePurchaseOrder();
+
+  function handleSave() {
+    createPurchaseOrder(
+      { CreateData: {} as PurchaseOrder },
+      {
+        onSuccess: () => {
+          setOpen(false);
+          toast.success("Purchase order created", {
+            description: "New purchase order was successfully created.",
+          });
+        },
+        onError: () => {
+          toast.error("Create failed", {
+            description: "Unable to create this purchase order. Please try again later.",
+          });
+        },
+      },
+    );
+  }
 
   return (
     <section className="flex flex-col gap-6">
@@ -62,6 +84,8 @@ export function PurchaseOrdersList({
         onOpenChange={setOpen}
         title="Add Purchase Order"
         description="Create a new purchase order."
+        onSave={handleSave}
+        saveLabel={isPending ? "Creating..." : "Save"}
       >
         <PurchaseOrderForm />
       </CreateDialog>

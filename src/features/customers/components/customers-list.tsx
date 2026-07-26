@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { toast } from "sonner"
 import { PageHeader } from "@/components/shared/page-header";
 import { DataTable } from "@/components/shared/data-table";
 import { CreateDialog } from "@/components/shared/create-dialog";
@@ -9,6 +10,7 @@ import { PlusIcon } from "lucide-react";
 import { Customer } from "../types/customer.types";
 import { customerColumns, customerExportColumns } from "../columns";
 import { CustomerForm } from "./customer-form";
+import { useCreateCustomer } from "../hooks/customers.hooks";
 
 type CustomersListProps = {
   customersData: Customer[];
@@ -30,6 +32,26 @@ export function CustomersList({
   onChangePage,
 }: CustomersListProps) {
   const [open, setOpen] = useState(false);
+  const { isPending, mutate: createCustomer } = useCreateCustomer();
+
+  function handleSave() {
+    createCustomer(
+      { CreateData: {} as Customer },
+      {
+        onSuccess: () => {
+          setOpen(false);
+          toast.success("Customer created", {
+            description: "New customer was successfully created.",
+          });
+        },
+        onError: () => {
+          toast.error("Create failed", {
+            description: "Unable to create this customer. Please try again later.",
+          });
+        },
+      },
+    );
+  }
 
   return (
     <section className="flex flex-col gap-6">
@@ -62,6 +84,8 @@ export function CustomersList({
         onOpenChange={setOpen}
         title="Add Customer"
         description="Create a new customer account."
+        onSave={handleSave}
+        saveLabel={isPending ? "Creating..." : "Save"}
       >
         <CustomerForm />
       </CreateDialog>

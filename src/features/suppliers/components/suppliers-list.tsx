@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { toast } from "sonner"
 import { PageHeader } from "@/components/shared/page-header";
 import { DataTable } from "@/components/shared/data-table";
 import { CreateDialog } from "@/components/shared/create-dialog";
@@ -9,6 +10,7 @@ import { PlusIcon } from "lucide-react";
 import { Supplier } from "../types/supplier.types";
 import { supplierColumns, supplierExportColumns } from "../columns";
 import { SupplierForm } from "./supplier-form";
+import { useCreateSupplier } from "../hooks/suppliers.hooks";
 
 type SuppliersListProps = {
   suppliersData: Supplier[];
@@ -30,6 +32,26 @@ export function SuppliersList({
   onChangePage,
 }: SuppliersListProps) {
   const [open, setOpen] = useState(false);
+  const { isPending, mutate: createSupplier } = useCreateSupplier();
+
+  function handleSave() {
+    createSupplier(
+      { CreateData: {} as Supplier },
+      {
+        onSuccess: () => {
+          setOpen(false);
+          toast.success("Supplier created", {
+            description: "New supplier was successfully created.",
+          });
+        },
+        onError: () => {
+          toast.error("Create failed", {
+            description: "Unable to create this supplier. Please try again later.",
+          });
+        },
+      },
+    );
+  }
 
   return (
     <section className="flex flex-col gap-6">
@@ -62,6 +84,8 @@ export function SuppliersList({
         onOpenChange={setOpen}
         title="Add Supplier"
         description="Create a new supplier record."
+        onSave={handleSave}
+        saveLabel={isPending ? "Creating..." : "Save"}
       >
         <SupplierForm />
       </CreateDialog>

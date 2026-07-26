@@ -20,6 +20,15 @@ export async function DeleteCustomer({ id }: GetCustomerProps) {
   return data;
 }
 
+type CreateCustomerProps = {
+  CreateData: Customer;
+};
+
+export async function CreateCustomer({ CreateData }: CreateCustomerProps) {
+  const { data } = await api.post(`/customers`, CreateData);
+  return data;
+}
+
 type UseUpdateCustomerProps = {
   id: string;
   UpdateData: Customer;

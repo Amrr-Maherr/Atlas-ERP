@@ -1,5 +1,5 @@
-export { getInventory, getInventoryItem, DeleteInventoryItem } from "./api/inventory.api";
-export { useInventory, useInventoryItem, useDeleteInventoryItem } from "./hooks/inventory.hooks";
+export { getInventory, getInventoryItem, DeleteInventoryItem, CreateInventoryItem } from "./api/inventory.api";
+export { useInventory, useInventoryItem, useDeleteInventoryItem, useCreateInventoryItem } from "./hooks/inventory.hooks";
 export { InventoryList } from "./components/inventory-list";
 export { InventoryTable } from "./components/inventory-table";
 export { InventoryTableRow } from "./components/inventory-table-row";

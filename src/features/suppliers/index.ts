@@ -1,5 +1,5 @@
-export { getSuppliers, getSupplier, DeleteSupplier } from "./api/suppliers.api";
-export { useSuppliers, useSupplier, useDeleteSupplier } from "./hooks/suppliers.hooks";
+export { getSuppliers, getSupplier, DeleteSupplier, CreateSupplier } from "./api/suppliers.api";
+export { useSuppliers, useSupplier, useDeleteSupplier, useCreateSupplier } from "./hooks/suppliers.hooks";
 export { SuppliersList } from "./components/suppliers-list";
 export { SuppliersTable } from "./components/suppliers-table";
 export { SuppliersTableRow } from "./components/suppliers-table-row";

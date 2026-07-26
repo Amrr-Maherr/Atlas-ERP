@@ -20,6 +20,15 @@ export async function DeletePurchaseOrder({ id }: GetPurchaseOrderProps) {
   return data;
 }
 
+type CreatePurchaseOrderProps = {
+  CreateData: PurchaseOrder;
+};
+
+export async function CreatePurchaseOrder({ CreateData }: CreatePurchaseOrderProps) {
+  const { data } = await api.post(`/purchaseOrders`, CreateData);
+  return data;
+}
+
 type UseUpdatePurchaseOrderProps = {
   id: string;
   UpdateData: PurchaseOrder;

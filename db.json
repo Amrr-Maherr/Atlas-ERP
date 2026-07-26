@@ -549,6 +549,9 @@
       "parentCategory": null,
       "productCount": 0,
       "status": "active"
+    },
+    {
+      "id": "-qw1Y3EoPdo"
     }
   ],
   "customers": [
@@ -12101,6 +12104,12 @@
       "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&crop=face",
       "customerSince": "2026-04-12T23:04:21.517Z",
       "averageOrderValue": 304.03
+    },
+    {
+      "id": "mwRzvvTHi2E"
+    },
+    {
+      "id": "mhNsXmUHdGE"
     }
   ],
   "employees": [
@@ -95900,5 +95909,6 @@
       "createdAt": "2026-01-15T08:00:00.000Z",
       "updatedAt": "2026-07-02T08:00:00.000Z"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

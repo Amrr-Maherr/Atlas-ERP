@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getEmployees, getEmployee, DeleteEmployee, UpdateEmployee } from "../api/employees.api";
+import { getEmployees, getEmployee, DeleteEmployee, UpdateEmployee, CreateEmployee } from "../api/employees.api";
 import { Employee } from "../types/employee.types";
 
 export function useEmployees({ page = 1, per_page = 10 } = {}) {
@@ -27,6 +27,24 @@ export function useDeleteEmployee() {
 
   return useMutation({
     mutationFn: ({ id }: { id: string }) => DeleteEmployee({ id }),
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["employees"],
+      });
+    },
+  });
+}
+
+type UseCreateEmployeeProps = {
+  CreateData: Employee;
+};
+
+export function useCreateEmployee() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ CreateData }: UseCreateEmployeeProps) => CreateEmployee({ CreateData }),
 
     onSuccess: () => {
       queryClient.invalidateQueries({

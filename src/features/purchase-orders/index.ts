@@ -1,5 +1,5 @@
-export { getPurchaseOrders, getPurchaseOrder, DeletePurchaseOrder } from "./api/purchase-orders.api";
-export { usePurchaseOrders, usePurchaseOrder, useDeletePurchaseOrder } from "./hooks/purchase-orders.hooks";
+export { getPurchaseOrders, getPurchaseOrder, DeletePurchaseOrder, CreatePurchaseOrder } from "./api/purchase-orders.api";
+export { usePurchaseOrders, usePurchaseOrder, useDeletePurchaseOrder, useCreatePurchaseOrder } from "./hooks/purchase-orders.hooks";
 export { PurchaseOrdersList } from "./components/purchase-orders-list";
 export { PurchaseOrdersTable } from "./components/purchase-orders-table";
 export { PurchaseOrdersTableRow } from "./components/purchase-orders-table-row";

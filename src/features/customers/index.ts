@@ -1,5 +1,5 @@
-export { getCustomers, getCustomer, DeleteCustomer } from "./api/customers.api";
-export { useCustomers, useCustomer, useDeleteCustomer } from "./hooks/customers.hooks";
+export { getCustomers, getCustomer, DeleteCustomer, CreateCustomer } from "./api/customers.api";
+export { useCustomers, useCustomer, useDeleteCustomer, useCreateCustomer } from "./hooks/customers.hooks";
 export { CustomersList } from "./components/customers-list";
 export { CustomersTable } from "./components/customers-table";
 export { CustomersTableRow } from "./components/customers-table-row";

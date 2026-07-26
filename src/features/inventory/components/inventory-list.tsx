@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { toast } from "sonner"
 import { PageHeader } from "@/components/shared/page-header";
 import { DataTable } from "@/components/shared/data-table";
 import { CreateDialog } from "@/components/shared/create-dialog";
@@ -9,6 +10,7 @@ import { PlusIcon } from "lucide-react";
 import { InventoryItem } from "../types/inventory.types";
 import { inventoryColumns, inventoryExportColumns } from "../columns";
 import { InventoryForm } from "./inventory-form";
+import { useCreateInventoryItem } from "../hooks/inventory.hooks";
 
 type InventoryListProps = {
   inventoryData: InventoryItem[];
@@ -30,6 +32,26 @@ export function InventoryList({
   onChangePage,
 }: InventoryListProps) {
   const [open, setOpen] = useState(false);
+  const { isPending, mutate: createInventoryItem } = useCreateInventoryItem();
+
+  function handleSave() {
+    createInventoryItem(
+      { CreateData: {} as InventoryItem },
+      {
+        onSuccess: () => {
+          setOpen(false);
+          toast.success("Inventory item created", {
+            description: "New inventory item was successfully created.",
+          });
+        },
+        onError: () => {
+          toast.error("Create failed", {
+            description: "Unable to create this inventory item. Please try again later.",
+          });
+        },
+      },
+    );
+  }
 
   return (
     <section className="flex flex-col gap-6">
@@ -62,6 +84,8 @@ export function InventoryList({
         onOpenChange={setOpen}
         title="Add Inventory Item"
         description="Add a new item to your inventory."
+        onSave={handleSave}
+        saveLabel={isPending ? "Creating..." : "Save"}
       >
         <InventoryForm />
       </CreateDialog>

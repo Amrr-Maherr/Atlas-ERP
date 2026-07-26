@@ -19,6 +19,15 @@ export async function DeleteCategory({ id }: GetCategoryProps) {
   return data;
 }
 
+type CreateCategoryProps = {
+  CreateData: Category;
+};
+
+export async function CreateCategory({ CreateData }: CreateCategoryProps) {
+  const { data } = await api.post(`/categories`, CreateData);
+  return data;
+}
+
 type UseUpdateCategoryProps = {
   id: string;
   UpdateData: Category
