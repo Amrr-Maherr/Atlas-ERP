@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { formatDate } from "@/components/utils/format-date"
 import { BuildingIcon } from "lucide-react"
 import Image from "next/image"
+import { DataTableColumnHeader } from "@/components/shared/data-table"
 import { SupplierStatusBadge } from "./components/supplier-status-badge"
 import { SupplierRowActions } from "./components/supplier-row-actions"
 import type { Supplier } from "./types/supplier.types"
@@ -12,7 +13,7 @@ import type { Supplier } from "./types/supplier.types"
 export const supplierColumns: ColumnDef<Supplier>[] = [
   {
     id: "name",
-    header: "Supplier",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Supplier" />,
     cell: ({ row }) => {
       const supplier = row.original
       return (
@@ -31,7 +32,7 @@ export const supplierColumns: ColumnDef<Supplier>[] = [
   },
   {
     accessorKey: "contactPerson",
-    header: "Contact",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Contact" />,
     cell: ({ getValue }) => (
       <span className="block max-w-[200px] truncate text-muted-foreground">
         {getValue() as string}
@@ -40,41 +41,42 @@ export const supplierColumns: ColumnDef<Supplier>[] = [
   },
   {
     accessorKey: "phone",
-    header: "Phone",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Phone" />,
     cell: ({ getValue }) => <span className="text-muted-foreground">{getValue() as string}</span>,
   },
   {
     accessorKey: "country",
-    header: "Country",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Country" />,
     cell: ({ getValue }) => <span className="text-muted-foreground">{getValue() as string}</span>,
   },
   {
     accessorKey: "totalOrders",
-    header: "Orders",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Orders" />,
     cell: ({ getValue }) => <Badge variant="secondary">{getValue() as number}</Badge>,
   },
   {
     accessorKey: "balance",
-    header: "Balance",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Balance" />,
     cell: ({ getValue }) => (
       <span className="text-sm tabular-nums">${(getValue() as number).toLocaleString()}</span>
     ),
   },
   {
     accessorKey: "createdAt",
-    header: "Created",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Created" />,
     cell: ({ getValue }) => (
       <span className="text-muted-foreground">{formatDate(getValue() as string)}</span>
     ),
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ getValue }) => <SupplierStatusBadge status={getValue() as string} />,
   },
   {
     id: "actions",
     header: "Actions",
+    enableSorting: false,
     cell: ({ row }) => <SupplierRowActions supplier={row.original} />,
   },
 ]

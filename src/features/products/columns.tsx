@@ -1,18 +1,19 @@
 "use client"
 
 import type { ColumnDef } from "@tanstack/react-table"
+import { DataTableColumnHeader } from "@/components/shared/data-table"
+import { ProductStatusBadge } from "./components/product-status-badge"
+import { ProductRowActions } from "./components/product-row-actions"
+import type { Product } from "./types/product.types"
 import { Badge } from "@/components/ui/badge"
 import { formatDate } from "@/components/utils/format-date"
 import { ImageIcon } from "lucide-react"
 import Image from "next/image"
-import { ProductStatusBadge } from "./components/product-status-badge"
-import { ProductRowActions } from "./components/product-row-actions"
-import type { Product } from "./types/product.types"
 
 export const productColumns: ColumnDef<Product>[] = [
   {
     id: "name",
-    header: "Product",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Product" />,
     cell: ({ row }) => {
       const product = row.original
       return (
@@ -34,14 +35,14 @@ export const productColumns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: "sku",
-    header: "SKU",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="SKU" />,
     cell: ({ getValue }) => (
       <code className="text-xs bg-muted px-1.5 py-0.5 rounded">{getValue() as string}</code>
     ),
   },
   {
     accessorKey: "description",
-    header: "Description",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Description" />,
     cell: ({ getValue }) => (
       <span className="block max-w-[200px] truncate text-muted-foreground">
         {getValue() as string}
@@ -50,31 +51,32 @@ export const productColumns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: "price",
-    header: "Price",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Price" />,
     cell: ({ getValue }) => (
       <span className="font-medium tabular-nums">${getValue() as number}</span>
     ),
   },
   {
     accessorKey: "stock",
-    header: "Stock",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Stock" />,
     cell: ({ getValue }) => <Badge variant="secondary">{getValue() as number}</Badge>,
   },
   {
     accessorKey: "createdAt",
-    header: "Created",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Created" />,
     cell: ({ getValue }) => (
       <span className="text-muted-foreground">{formatDate(getValue() as string)}</span>
     ),
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ getValue }) => <ProductStatusBadge status={getValue() as string} />,
   },
   {
     id: "actions",
     header: "Actions",
+    enableSorting: false,
     cell: ({ row }) => <ProductRowActions product={row.original} />,
   },
 ]

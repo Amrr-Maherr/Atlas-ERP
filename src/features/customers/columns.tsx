@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { formatDate } from "@/components/utils/format-date"
 import { UserIcon } from "lucide-react"
 import Image from "next/image"
+import { DataTableColumnHeader } from "@/components/shared/data-table"
 import { CustomerStatusBadge } from "./components/customer-status-badge"
 import { CustomerRowActions } from "./components/customer-row-actions"
 import type { Customer } from "./types/customer.types"
@@ -12,7 +13,7 @@ import type { Customer } from "./types/customer.types"
 export const customerColumns: ColumnDef<Customer>[] = [
   {
     id: "name",
-    header: "Customer",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Customer" />,
     cell: ({ row }) => {
       const customer = row.original
       return (
@@ -31,7 +32,7 @@ export const customerColumns: ColumnDef<Customer>[] = [
   },
   {
     accessorKey: "email",
-    header: "Email",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
     cell: ({ getValue }) => (
       <span className="block max-w-[200px] truncate text-muted-foreground">
         {getValue() as string}
@@ -40,41 +41,42 @@ export const customerColumns: ColumnDef<Customer>[] = [
   },
   {
     accessorKey: "phone",
-    header: "Phone",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Phone" />,
     cell: ({ getValue }) => <span className="text-muted-foreground">{getValue() as string}</span>,
   },
   {
     accessorKey: "city",
-    header: "City",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="City" />,
     cell: ({ getValue }) => <span className="text-muted-foreground">{getValue() as string}</span>,
   },
   {
     accessorKey: "totalOrders",
-    header: "Orders",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Orders" />,
     cell: ({ getValue }) => <Badge variant="secondary">{getValue() as number}</Badge>,
   },
   {
     accessorKey: "totalSpent",
-    header: "Total Spent",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Total Spent" />,
     cell: ({ getValue }) => (
       <span className="text-sm tabular-nums">${(getValue() as number).toLocaleString()}</span>
     ),
   },
   {
     accessorKey: "createdAt",
-    header: "Created",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Created" />,
     cell: ({ getValue }) => (
       <span className="text-muted-foreground">{formatDate(getValue() as string)}</span>
     ),
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ getValue }) => <CustomerStatusBadge status={getValue() as string} />,
   },
   {
     id: "actions",
     header: "Actions",
+    enableSorting: false,
     cell: ({ row }) => <CustomerRowActions customer={row.original} />,
   },
 ]

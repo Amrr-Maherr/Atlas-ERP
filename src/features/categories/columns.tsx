@@ -1,20 +1,21 @@
-"use client";
+"use client"
 
-import type { ColumnDef } from "@tanstack/react-table";
-import { Badge } from "@/components/ui/badge";
-import { formatDate } from "@/components/utils/format-date";
-import { ImageIcon } from "lucide-react";
-import Image from "next/image";
-import { CategoryStatusBadge } from "./components/category-status-badge";
-import { CategoryRowActions } from "./components/category-row-actions";
-import type { Category } from "./types/category.types";
+import type { ColumnDef } from "@tanstack/react-table"
+import { Badge } from "@/components/ui/badge"
+import { formatDate } from "@/components/utils/format-date"
+import { ImageIcon } from "lucide-react"
+import Image from "next/image"
+import { DataTableColumnHeader } from "@/components/shared/data-table"
+import { CategoryStatusBadge } from "./components/category-status-badge"
+import { CategoryRowActions } from "./components/category-row-actions"
+import type { Category } from "./types/category.types"
 
 export const categoryColumns: ColumnDef<Category>[] = [
   {
     id: "name",
-    header: "Category",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Category" />,
     cell: ({ row }) => {
-      const category = row.original;
+      const category = row.original
       return (
         <div className="flex items-center gap-3">
           <div className="relative flex size-10 shrink-0 items-center justify-center rounded-md bg-muted overflow-hidden">
@@ -32,12 +33,12 @@ export const categoryColumns: ColumnDef<Category>[] = [
           </div>
           <span className="font-medium">{category.name}</span>
         </div>
-      );
+      )
     },
   },
   {
     accessorKey: "description",
-    header: "Description",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Description" />,
     cell: ({ getValue }) => (
       <span className="block max-w-[300px] truncate text-muted-foreground">
         {getValue() as string}
@@ -46,7 +47,7 @@ export const categoryColumns: ColumnDef<Category>[] = [
   },
   {
     accessorKey: "slug",
-    header: "Slug",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Slug" />,
     cell: ({ getValue }) => (
       <code className="text-xs bg-muted px-1.5 py-0.5 rounded">
         {getValue() as string}
@@ -55,18 +56,18 @@ export const categoryColumns: ColumnDef<Category>[] = [
   },
   {
     accessorKey: "productCount",
-    header: "Products",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Products" />,
     cell: ({ getValue }) => (
       <Badge variant="secondary">{getValue() as number}</Badge>
     ),
   },
   {
     accessorKey: "displayOrder",
-    header: "Order",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Order" />,
   },
   {
     accessorKey: "createdAt",
-    header: "Created",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Created" />,
     cell: ({ getValue }) => (
       <span className="text-muted-foreground">
         {formatDate(getValue() as string)}
@@ -75,7 +76,7 @@ export const categoryColumns: ColumnDef<Category>[] = [
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ getValue }) => (
       <CategoryStatusBadge status={getValue() as string} />
     ),
@@ -83,9 +84,10 @@ export const categoryColumns: ColumnDef<Category>[] = [
   {
     id: "actions",
     header: "Actions",
+    enableSorting: false,
     cell: ({ row }) => <CategoryRowActions category={row.original} />,
   },
-];
+]
 
 export const categoryExportColumns = [
   { key: "name" as const, label: "Category" },
@@ -95,4 +97,4 @@ export const categoryExportColumns = [
   { key: "displayOrder" as const, label: "Order" },
   { key: "createdAt" as const, label: "Created" },
   { key: "status" as const, label: "Status" },
-];
+]

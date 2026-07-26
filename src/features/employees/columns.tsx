@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { formatDate } from "@/components/utils/format-date"
 import { UserIcon } from "lucide-react"
 import Image from "next/image"
+import { DataTableColumnHeader } from "@/components/shared/data-table"
 import { EmployeeStatusBadge } from "./components/employee-status-badge"
 import { EmployeeRowActions } from "./components/employee-row-actions"
 import type { Employee } from "./types/employee.types"
@@ -12,7 +13,7 @@ import type { Employee } from "./types/employee.types"
 export const employeeColumns: ColumnDef<Employee>[] = [
   {
     id: "name",
-    header: "Employee",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Employee" />,
     cell: ({ row }) => {
       const employee = row.original
       return (
@@ -31,7 +32,7 @@ export const employeeColumns: ColumnDef<Employee>[] = [
   },
   {
     accessorKey: "email",
-    header: "Email",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
     cell: ({ getValue }) => (
       <span className="block max-w-[200px] truncate text-muted-foreground">
         {getValue() as string}
@@ -40,41 +41,42 @@ export const employeeColumns: ColumnDef<Employee>[] = [
   },
   {
     accessorKey: "department",
-    header: "Department",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Department" />,
     cell: ({ getValue }) => <Badge variant="secondary">{getValue() as string}</Badge>,
   },
   {
     accessorKey: "position",
-    header: "Position",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Position" />,
     cell: ({ getValue }) => <span className="text-muted-foreground">{getValue() as string}</span>,
   },
   {
     accessorKey: "phone",
-    header: "Phone",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Phone" />,
     cell: ({ getValue }) => <span className="text-muted-foreground">{getValue() as string}</span>,
   },
   {
     accessorKey: "hireDate",
-    header: "Hire Date",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Hire Date" />,
     cell: ({ getValue }) => (
       <span className="text-muted-foreground">{formatDate(getValue() as string)}</span>
     ),
   },
   {
     accessorKey: "createdAt",
-    header: "Created",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Created" />,
     cell: ({ getValue }) => (
       <span className="text-muted-foreground">{formatDate(getValue() as string)}</span>
     ),
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ getValue }) => <EmployeeStatusBadge status={getValue() as string} />,
   },
   {
     id: "actions",
     header: "Actions",
+    enableSorting: false,
     cell: ({ row }) => <EmployeeRowActions employee={row.original} />,
   },
 ]

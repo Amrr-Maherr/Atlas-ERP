@@ -3,6 +3,7 @@
 import type { ColumnDef } from "@tanstack/react-table"
 import { Badge } from "@/components/ui/badge"
 import { formatDate } from "@/components/utils/format-date"
+import { DataTableColumnHeader } from "@/components/shared/data-table"
 import { SaleStatusBadge } from "./components/sale-status-badge"
 import { SaleRowActions } from "./components/sale-row-actions"
 import type { Sale } from "./types/sale.types"
@@ -10,14 +11,14 @@ import type { Sale } from "./types/sale.types"
 export const saleColumns: ColumnDef<Sale>[] = [
   {
     accessorKey: "invoiceNumber",
-    header: "Invoice",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Invoice" />,
     cell: ({ getValue }) => (
       <code className="text-xs bg-muted px-1.5 py-0.5 rounded">{getValue() as string}</code>
     ),
   },
   {
     accessorKey: "customerName",
-    header: "Customer",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Customer" />,
     cell: ({ getValue }) => (
       <span className="block max-w-[200px] truncate text-muted-foreground">
         {getValue() as string}
@@ -26,36 +27,36 @@ export const saleColumns: ColumnDef<Sale>[] = [
   },
   {
     accessorKey: "employeeName",
-    header: "Employee",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Employee" />,
     cell: ({ getValue }) => <span className="text-muted-foreground">{getValue() as string}</span>,
   },
   {
     accessorKey: "items",
-    header: "Items",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Items" />,
     cell: ({ getValue }) => <Badge variant="secondary">{getValue() as number}</Badge>,
   },
   {
     accessorKey: "total",
-    header: "Total",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Total" />,
     cell: ({ getValue }) => (
       <span className="text-sm font-medium tabular-nums">${(getValue() as number).toLocaleString()}</span>
     ),
   },
   {
     accessorKey: "paymentStatus",
-    header: "Payment",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Payment" />,
     cell: ({ getValue }) => (
       <Badge variant="outline" className="text-xs">{getValue() as string}</Badge>
     ),
   },
   {
     accessorKey: "orderStatus",
-    header: "Status",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ getValue }) => <SaleStatusBadge status={getValue() as string} />,
   },
   {
     accessorKey: "createdAt",
-    header: "Created",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Created" />,
     cell: ({ getValue }) => (
       <span className="text-muted-foreground">{formatDate(getValue() as string)}</span>
     ),
@@ -63,6 +64,7 @@ export const saleColumns: ColumnDef<Sale>[] = [
   {
     id: "actions",
     header: "Actions",
+    enableSorting: false,
     cell: ({ row }) => <SaleRowActions sale={row.original} />,
   },
 ]

@@ -1,6 +1,7 @@
 "use client"
 
 import type { ColumnDef } from "@tanstack/react-table"
+import { DataTableColumnHeader } from "@/components/shared/data-table"
 import { InventoryStatusBadge } from "./components/inventory-status-badge"
 import { InventoryItemRowActions } from "./components/inventory-item-row-actions"
 import type { InventoryItem } from "./types/inventory.types"
@@ -8,38 +9,38 @@ import type { InventoryItem } from "./types/inventory.types"
 export const inventoryColumns: ColumnDef<InventoryItem>[] = [
   {
     accessorKey: "name",
-    header: "Product",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Product" />,
     cell: ({ getValue }) => <span className="text-sm font-medium">{getValue() as string}</span>,
   },
   {
     accessorKey: "sku",
-    header: "SKU",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="SKU" />,
     cell: ({ getValue }) => (
       <code className="text-xs bg-muted px-1.5 py-0.5 rounded">{getValue() as string}</code>
     ),
   },
   {
     accessorKey: "stock",
-    header: "Stock",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Stock" />,
     cell: ({ getValue }) => <span className="text-sm tabular-nums">{getValue() as number}</span>,
   },
   {
     accessorKey: "minStock",
-    header: "Min Stock",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Min Stock" />,
     cell: ({ getValue }) => (
       <span className="text-sm tabular-nums text-muted-foreground">{getValue() as number}</span>
     ),
   },
   {
     accessorKey: "reorderLevel",
-    header: "Reorder Level",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Reorder Level" />,
     cell: ({ getValue }) => (
       <span className="text-sm tabular-nums text-muted-foreground">{getValue() as number}</span>
     ),
   },
   {
     accessorKey: "costPrice",
-    header: "Cost Price",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Cost Price" />,
     cell: ({ getValue }) => (
       <span className="text-sm tabular-nums">${(getValue() as number).toLocaleString()}</span>
     ),
@@ -47,6 +48,7 @@ export const inventoryColumns: ColumnDef<InventoryItem>[] = [
   {
     id: "status",
     header: "Status",
+    enableSorting: false,
     cell: ({ row }) => {
       const item = row.original
       return <InventoryStatusBadge status={item.stock <= item.minStock ? "low" : "in-stock"} />
@@ -55,6 +57,7 @@ export const inventoryColumns: ColumnDef<InventoryItem>[] = [
   {
     id: "actions",
     header: "Actions",
+    enableSorting: false,
     cell: ({ row }) => <InventoryItemRowActions inventoryItem={row.original} />,
   },
 ]

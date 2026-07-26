@@ -25,20 +25,20 @@ The application uses a mock REST API powered by `json-server` with generated see
 
 ## Features
 
-| Module | List | Detail | Edit | Delete | Pagination | Export | Status Badge | Loading/Error/Empty |
-|--------|------|--------|------|--------|------------|--------|--------------|---------------------|
-| **Authentication** | — | — | — | — | — | — | — | — |
-| **Dashboard** | — | — | — | — | — | — | — | Yes |
-| **Categories** | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
-| **Customers** | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
-| **Suppliers** | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
-| **Products** | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
-| **Employees** | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
-| **Sales** | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
-| **Purchase Orders** | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
-| **Inventory** | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
-| **Settings** | Yes | — | — | — | — | — | — | Yes |
-| **Profile** | — | Yes | — | — | — | — | — | Yes |
+| Module | List | Detail | Edit | Delete | Pagination | Sort | Search | Export | Status Badge | Loading/Error/Empty |
+|--------|------|--------|------|--------|------------|------|--------|--------|--------------|---------------------|
+| **Authentication** | — | — | — | — | — | — | — | — | — | — |
+| **Dashboard** | — | — | — | — | — | — | — | — | — | Yes |
+| **Categories** | Yes | Yes | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
+| **Customers** | Yes | Yes | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
+| **Suppliers** | Yes | Yes | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
+| **Products** | Yes | Yes | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
+| **Employees** | Yes | Yes | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
+| **Sales** | Yes | Yes | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
+| **Purchase Orders** | Yes | Yes | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
+| **Inventory** | Yes | Yes | Yes | Yes | Yes | Yes | Yes | CSV/Excel/PDF | Yes | Yes |
+| **Settings** | Yes | — | — | — | — | — | — | — | — | Yes |
+| **Profile** | — | Yes | — | — | — | — | — | — | — | Yes |
 
 **Notes:**
 - All CRUD entity pages (Categories through Inventory) include a **Create Dialog** UI, but the create forms are not yet wired to POST endpoints.
@@ -198,6 +198,7 @@ List endpoints return paginated responses via `json-server`'s `_page` and `_per_
 | `sales` | 800 | Sales transactions |
 | `saleItems` | 2,818 | Line items for sales (not yet accessed by features) |
 | `purchaseOrders` | 150 | Procurement orders with line items |
+| `settings` | 22 | Application configuration settings |
 | `users` | 4 | User accounts for authentication |
 
 ---
@@ -214,6 +215,7 @@ atlas-erp/
 │   ├── purchaseOrders/
 │   ├── sales/
 │   ├── saleItems/
+│   ├── settings/
 │   ├── suppliers/
 │   ├── users/
 │   └── merge-db.js                  # Merges all JSON files into db.json
@@ -474,7 +476,6 @@ A comprehensive design system is documented in `DESIGN_SYSTEM.md`, covering:
 ## Future Improvements
 
 - **Create operations** — Wire up existing create form dialogs to POST endpoints for full CRUD
-- **Search and filtering** — Add search bars and filter controls to list views
 - **Real backend** — Replace json-server with a production API (REST or GraphQL)
 - **Server-side auth** — Implement JWT/OAuth with server-side route protection and middleware
 - **Role-based access** — Enforce permissions based on user roles in the UI and API
