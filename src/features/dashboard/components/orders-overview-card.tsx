@@ -52,7 +52,10 @@ export function OrdersOverviewCard({ sales }: OrdersOverviewCardProps) {
   const latestOrders = useMemo(
     () =>
       [...sales]
-        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+        .sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        )
         .slice(0, 10),
     [sales],
   );
@@ -73,7 +76,6 @@ export function OrdersOverviewCard({ sales }: OrdersOverviewCardProps) {
               <TableHeader>
                 <TableRow>
                   <TableHead>Invoice</TableHead>
-                  <TableHead>Customer</TableHead>
                   <TableHead>Total</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>Date</TableHead>
@@ -87,13 +89,15 @@ export function OrdersOverviewCard({ sales }: OrdersOverviewCardProps) {
                         {sale.invoiceNumber}
                       </code>
                     </TableCell>
-                    <TableCell className="text-sm">{sale.customerName}</TableCell>
                     <TableCell className="text-sm font-medium tabular-nums">
                       {formatCurrency(sale.total)}
                     </TableCell>
                     <TableCell>
                       <Badge
-                        className={STATUS_STYLES[sale.orderStatus] ?? "bg-gray-100 text-gray-800"}
+                        className={
+                          STATUS_STYLES[sale.orderStatus] ??
+                          "bg-gray-100 text-gray-800"
+                        }
                       >
                         {sale.orderStatus}
                       </Badge>

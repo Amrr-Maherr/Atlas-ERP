@@ -16,15 +16,12 @@ import {
 } from "@/components/ui/sidebar";
 import {
   LayoutDashboardIcon,
-  TagIcon,
   UsersIcon,
   TruckIcon,
   PackageIcon,
-  UserCogIcon,
   ReceiptIcon,
   ShoppingCartIcon,
   BoxesIcon,
-  Settings2Icon,
   CommandIcon,
   CircleUserRoundIcon,
 } from "lucide-react";
@@ -36,11 +33,6 @@ const data = {
       title: "Dashboard",
       url: "/dashboard",
       icon: <LayoutDashboardIcon />,
-    },
-    {
-      title: "Categories",
-      url: "/dashboard/categories",
-      icon: <TagIcon />,
     },
     {
       title: "Customers",
@@ -56,11 +48,6 @@ const data = {
       title: "Products",
       url: "/dashboard/products",
       icon: <PackageIcon />,
-    },
-    {
-      title: "Employees",
-      url: "/dashboard/employees",
-      icon: <UserCogIcon />,
     },
     {
       title: "Sales",
@@ -83,11 +70,6 @@ const data = {
       title: "Profile",
       url: "/dashboard/profile",
       icon: <CircleUserRoundIcon />,
-    },
-    {
-      title: "Settings",
-      url: "/dashboard/settings",
-      icon: <Settings2Icon />,
     },
   ],
 };

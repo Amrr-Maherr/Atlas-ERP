@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { toast } from "sonner"
+import { useState } from "react";
+import { toast } from "sonner";
 import { PageHeader } from "@/components/shared/page-header";
 import { DataTable } from "@/components/shared/data-table";
 import { CreateDialog } from "@/components/shared/create-dialog";
@@ -20,6 +20,10 @@ type CustomersListProps = {
   per_page?: number;
   total?: number;
   onChangePage?: (page: number) => void;
+  search?: string;
+  sort?: string;
+  onSearch?: (search: string) => void;
+  onSort?: (sort: string) => void;
 };
 
 export function CustomersList({
@@ -30,6 +34,10 @@ export function CustomersList({
   per_page,
   total,
   onChangePage,
+  search,
+  sort,
+  onSearch,
+  onSort,
 }: CustomersListProps) {
   const [open, setOpen] = useState(false);
   const { isPending, mutate: createCustomer } = useCreateCustomer();
@@ -46,7 +54,8 @@ export function CustomersList({
         },
         onError: () => {
           toast.error("Create failed", {
-            description: "Unable to create this customer. Please try again later.",
+            description:
+              "Unable to create this customer. Please try again later.",
           });
         },
       },
@@ -74,6 +83,10 @@ export function CustomersList({
         per_page={per_page}
         total={total}
         onChangePage={onChangePage}
+        search={search}
+        sort={sort}
+        onSearch={onSearch}
+        onSort={onSort}
         exportColumns={customerExportColumns}
         exportFilename="customers"
         emptyTitle="No customers yet"

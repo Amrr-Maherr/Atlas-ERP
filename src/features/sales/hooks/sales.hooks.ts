@@ -3,11 +3,12 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getSales, getSale, DeleteSale, UpdateSale, CreateSale } from "../api/sales.api";
 import { Sale } from "../types/sale.types";
+import type { ListQuery } from "../../../lib/list-query";
 
-export function useSales({ page = 1, per_page = 10 } = {}) {
+export function useSales({ page = 1, per_page = 10, search, sort }: ListQuery = {}) {
   return useQuery({
-    queryKey: ["sales", page, per_page],
-    queryFn: () => getSales({ page, per_page }),
+    queryKey: ["sales", page, per_page, search, sort],
+    queryFn: () => getSales({ page, per_page, search, sort }),
   });
 }
 

@@ -90,12 +90,8 @@ export function LoginForm({
               {...register("password", {
                 required: "Password is required",
                 minLength: {
-                  value: 5,
-                  message: "Password must be at least 5 characters",
-                },
-                maxLength: {
-                  value: 10,
-                  message: "Password must not exceed 10 characters",
+                  value: 8,
+                  message: "Password must be at least 8 characters",
                 },
               })}
               className={`${errors.password ? "border-solid border-red-500" : ""}`}

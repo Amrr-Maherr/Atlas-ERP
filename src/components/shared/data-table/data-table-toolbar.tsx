@@ -1,19 +1,29 @@
-"use client"
+"use client";
 
-import type { Table } from "@tanstack/react-table"
-import { SearchIcon, XIcon } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { ExportMenu } from "@/components/ui/export-menu"
-import type { ExportColumn } from "@/components/lib/export/exportCsv"
+import type { Table } from "@tanstack/react-table";
+import { SearchIcon, XIcon } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { ExportMenu } from "@/components/ui/export-menu";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import type { ExportColumn } from "@/components/lib/export/exportCsv";
 
 type DataTableToolbarProps<TData extends Record<string, unknown>> = {
-  table: Table<TData>
-  globalFilter: string
-  onGlobalFilterChange: (value: string) => void
-  exportColumns?: ExportColumn<TData>[]
-  exportFilename?: string
-}
+  table: Table<TData>;
+  globalFilter: string;
+  onGlobalFilterChange: (value: string) => void;
+  exportColumns?: ExportColumn<TData>[];
+  exportFilename?: string;
+  sort?: string;
+  sortOptions?: { value: string; label: string }[];
+  onSort?: (sort: string) => void;
+};
 
 export function DataTableToolbar<TData extends Record<string, unknown>>({
   table,
@@ -21,6 +31,9 @@ export function DataTableToolbar<TData extends Record<string, unknown>>({
   onGlobalFilterChange,
   exportColumns,
   exportFilename,
+  sort,
+  sortOptions = [],
+  onSort,
 }: DataTableToolbarProps<TData>) {
   return (
     <div className="flex items-center gap-2">
@@ -43,13 +56,30 @@ export function DataTableToolbar<TData extends Record<string, unknown>>({
           </Button>
         )}
       </div>
+      {sortOptions.length > 0 && (
+        <Select
+          value={sort ?? "createdAt"}
+          onValueChange={(value) => value && onSort?.(value)}
+        >
+          <SelectTrigger className="w-44" aria-label="Sort table">
+            <SelectValue placeholder="Sort by" />
+          </SelectTrigger>
+          <SelectContent>
+            {sortOptions.map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      )}
       {exportColumns && exportFilename && (
         <ExportMenu
-          data={table.getFilteredRowModel().rows.map((r) => r.original)}
+          data={table.getRowModel().rows.map((r) => r.original)}
           columns={exportColumns}
           filename={exportFilename}
         />
       )}
     </div>
-  )
+  );
 }

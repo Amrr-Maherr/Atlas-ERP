@@ -3,11 +3,12 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getInventory, getInventoryItem, DeleteInventoryItem, UpdateInventoryItem, CreateInventoryItem } from "../api/inventory.api";
 import { InventoryItem } from "../types/inventory.types";
+import type { ListQuery } from "../../../lib/list-query";
 
-export function useInventory({ page = 1, per_page = 10 } = {}) {
+export function useInventory({ page = 1, per_page = 10, search, sort }: ListQuery = {}) {
   return useQuery({
-    queryKey: ["inventory", page, per_page],
-    queryFn: () => getInventory({ page, per_page }),
+    queryKey: ["inventory", page, per_page, search, sort],
+    queryFn: () => getInventory({ page, per_page, search, sort }),
   });
 }
 

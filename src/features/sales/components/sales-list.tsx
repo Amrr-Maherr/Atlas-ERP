@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { toast } from "sonner"
+import { useState } from "react";
+import { toast } from "sonner";
 import { PageHeader } from "@/components/shared/page-header";
 import { DataTable } from "@/components/shared/data-table";
 import { CreateDialog } from "@/components/shared/create-dialog";
@@ -20,6 +20,10 @@ type SalesListProps = {
   per_page?: number;
   total?: number;
   onChangePage?: (page: number) => void;
+  search?: string;
+  sort?: string;
+  onSearch?: (search: string) => void;
+  onSort?: (sort: string) => void;
 };
 
 export function SalesList({
@@ -30,6 +34,10 @@ export function SalesList({
   per_page,
   total,
   onChangePage,
+  search,
+  sort,
+  onSearch,
+  onSort,
 }: SalesListProps) {
   const [open, setOpen] = useState(false);
   const { isPending, mutate: createSale } = useCreateSale();
@@ -74,6 +82,10 @@ export function SalesList({
         per_page={per_page}
         total={total}
         onChangePage={onChangePage}
+        search={search}
+        sort={sort}
+        onSearch={onSearch}
+        onSort={onSort}
         exportColumns={saleExportColumns}
         exportFilename="sales"
         emptyTitle="No sales yet"

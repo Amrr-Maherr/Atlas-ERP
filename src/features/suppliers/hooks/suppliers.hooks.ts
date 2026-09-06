@@ -3,11 +3,12 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getSuppliers, getSupplier, DeleteSupplier, UpdateSupplier, CreateSupplier } from "../api/suppliers.api";
 import { Supplier } from "../types/supplier.types";
+import type { ListQuery } from "../../../lib/list-query";
 
-export function useSuppliers({ page = 1, per_page = 10 } = {}) {
+export function useSuppliers({ page = 1, per_page = 10, search, sort }: ListQuery = {}) {
   return useQuery({
-    queryKey: ["suppliers", page, per_page],
-    queryFn: () => getSuppliers({ page, per_page }),
+    queryKey: ["suppliers", page, per_page, search, sort],
+    queryFn: () => getSuppliers({ page, per_page, search, sort }),
   });
 }
 

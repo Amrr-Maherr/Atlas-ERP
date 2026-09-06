@@ -3,11 +3,12 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getCustomers, getCustomer, DeleteCustomer, UpdateCustomer, CreateCustomer } from "../api/customers.api";
 import { Customer } from "../types/customer.types";
+import type { ListQuery } from "../../../lib/list-query";
 
-export function useCustomers({ page = 1, per_page = 10 } = {}) {
+export function useCustomers({ page = 1, per_page = 10, search, sort }: ListQuery = {}) {
   return useQuery({
-    queryKey: ["customers", page, per_page],
-    queryFn: () => getCustomers({ page, per_page }),
+    queryKey: ["customers", page, per_page, search, sort],
+    queryFn: () => getCustomers({ page, per_page, search, sort }),
   });
 }
 

@@ -1,3 +1,4 @@
+import axios from "axios";
 import api from "../../../lib/api";
 
 type HandleLoginProps = {
@@ -6,31 +7,39 @@ type HandleLoginProps = {
 };
 
 export default async function handleLogin({ email, password }: HandleLoginProps) {
-    const { data: users } = await api.get("/users", {
-        params: { email },
-    });
+    try {
+        const { data } = await api.post("/auth/login", { email, password });
 
-    if (!users.length) {
-        throw new Error("Invalid email or password.");
+        const user = data.data?.user as {
+            _id: string;
+            name: string;
+            email: string;
+            role: string;
+        };
+
+        if (!user) {
+            throw new Error("Invalid login response.");
+        }
+
+        localStorage.setItem("token", data.token);
+        localStorage.setItem(
+            "user",
+            JSON.stringify({ id: user._id, name: user.name, email: user.email, role: user.role }),
+        );
+
+        return {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+        };
+    } catch (error: unknown) {
+        if (axios.isAxiosError(error)) {
+            const message = error.response?.data?.message;
+            if (message) throw new Error(message);
+        }
+        throw error instanceof Error
+            ? error
+            : new Error("Login failed. Please try again.");
     }
-
-    const user = users[0];
-
-    if (user.password !== password) {
-        throw new Error("Invalid password.");
-    }
-    if (user.email !== email) {
-        throw new Error("Invalid email.");
-    }
-
-    if (!user.isActive) {
-        throw new Error("Your account has been deactivated.");
-    }
-
-    return {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-    };
 }

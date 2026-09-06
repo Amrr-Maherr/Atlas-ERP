@@ -5,8 +5,15 @@ import { SuppliersList } from "@/features/suppliers";
 
 export default function SuppliersPage() {
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("createdAt");
   const per_page = 10;
-  const { data, isLoading, error } = useSuppliers({ page, per_page });
+  const { data, isLoading, error } = useSuppliers({
+    page,
+    per_page,
+    search,
+    sort,
+  });
 
   return (
     <div className="flex flex-col gap-6 p-6">
@@ -18,6 +25,16 @@ export default function SuppliersPage() {
         per_page={per_page}
         total={data?.total ?? 0}
         onChangePage={setPage}
+        search={search}
+        sort={sort}
+        onSearch={(value) => {
+          setSearch(value);
+          setPage(1);
+        }}
+        onSort={(value) => {
+          setSort(value);
+          setPage(1);
+        }}
       />
     </div>
   );

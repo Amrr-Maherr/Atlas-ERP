@@ -3,11 +3,12 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getPurchaseOrders, getPurchaseOrder, DeletePurchaseOrder, UpdatePurchaseOrder, CreatePurchaseOrder } from "../api/purchase-orders.api";
 import { PurchaseOrder } from "../types/purchase-order.types";
+import type { ListQuery } from "../../../lib/list-query";
 
-export function usePurchaseOrders({ page = 1, per_page = 10 } = {}) {
+export function usePurchaseOrders({ page = 1, per_page = 10, search, sort }: ListQuery = {}) {
   return useQuery({
-    queryKey: ["purchaseOrders", page, per_page],
-    queryFn: () => getPurchaseOrders({ page, per_page }),
+    queryKey: ["purchaseOrders", page, per_page, search, sort],
+    queryFn: () => getPurchaseOrders({ page, per_page, search, sort }),
   });
 }
 
