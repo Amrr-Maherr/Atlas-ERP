@@ -45,6 +45,42 @@ The application uses a mock REST API powered by `json-server` with generated see
 - The **Inventory** feature reads from the same `/products` endpoint as Products, presenting a stock-focused view with computed status based on stock vs minimum stock levels.
 - **Settings** displays configuration data in a tabbed layout (Company, Finance, Inventory, Sales, Notifications, Preferences).
 
+### Screenshots
+
+Captured from the running app with the mock seed data (1440px wide).
+
+**Authentication**
+
+![Login](docs/screenshots/login.svg)
+
+**Products**
+
+![Products](docs/screenshots/products.svg)
+
+**Inventory**
+
+![Inventory](docs/screenshots/inventory.svg)
+
+**Sales**
+
+![Sales](docs/screenshots/sales.svg)
+
+**Purchase Orders**
+
+![Purchase Orders](docs/screenshots/purchase-orders.svg)
+
+**Customers**
+
+![Customers](docs/screenshots/customers.svg)
+
+**Suppliers**
+
+![Suppliers](docs/screenshots/suppliers.svg)
+
+**Employees**
+
+![Employees](docs/screenshots/employees.svg)
+
 ---
 
 ## Tech Stack
